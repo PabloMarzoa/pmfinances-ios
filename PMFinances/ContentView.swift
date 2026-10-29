@@ -103,6 +103,16 @@ public struct ContentView: View {
                 }
                 .sharedBackgroundVisibility(.hidden)
                 .contentMarginsRemoved()
+                ToolbarItem(placement: .principal) {
+                    HStack(spacing: 8) {
+                        Image("AppLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 22, height: 22)
+                        Text("Control de Finanzas")
+                            .font(.system(size: 16, weight: .bold))
+                    }
+                }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     toolbarActionButtons
                 }

@@ -17,6 +17,9 @@ public struct ConfigView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
+                    // Cabecera de la App
+                    appBrandingHeader
+
                     // Estado actual del almacenamiento
                     storageStatusCard
 
@@ -64,6 +67,34 @@ public struct ConfigView: View {
     }
 
     // MARK: - Subviews
+
+    private var appBrandingHeader: some View {
+        HStack(spacing: 14) {
+            Image("AppLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 44, height: 44)
+                .padding(6)
+                .background(Color.appCardBackground)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .stroke(Color.appBorder, lineWidth: 1)
+                )
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text("PMFinances")
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .foregroundStyle(.primary)
+
+                Text("Gestión y control de finanzas personales")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+        }
+    }
 
     private var storageStatusCard: some View {
         let meta = viewModel.metadata
