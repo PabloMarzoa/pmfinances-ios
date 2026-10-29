@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.4.0] - 2026-10-29
+
+### Added
+- **Multi-Language Support (English & Spanish)**:
+  - Implemented full localization support via native Xcode String Catalog (`Localizable.xcstrings`).
+  - Added an in-app language picker (Segmented Picker) in `ConfigView` allowing real-time switching between Español and English.
+  - Persisted user language preference across sessions via `@AppStorage("app_language")` dynamically injected into SwiftUI's `.environment(\.locale)`.
+  - Localized all UI views, navigation titles, KPI cards, charts, transaction types, time range filters, categories, dialogs, and toast notifications.
+
+---
+
 ## [0.3.0] - 2026-10-29
 
 ### Added

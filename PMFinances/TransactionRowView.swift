@@ -50,7 +50,7 @@ public struct TransactionRowView: View {
                     .font(.system(size: 15, weight: .bold, design: .monospaced))
                     .foregroundStyle(record.tipo == .ingreso ? Color.green : Color.primary)
 
-                Text(record.tipo.rawValue)
+                Text(record.tipo.localizedName)
                     .font(.system(size: 10, weight: .semibold))
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)

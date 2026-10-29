@@ -94,7 +94,7 @@ public struct FiltersBarView: View {
                             viewModel.timeRange = range
                         } label: {
                             HStack {
-                                Text(range.title)
+                                Text(range.localizedTitle)
                                 if viewModel.timeRange == range {
                                     Image(systemName: "checkmark")
                                 }
@@ -105,7 +105,7 @@ public struct FiltersBarView: View {
                     HStack(spacing: 5) {
                         Image(systemName: "calendar")
                             .font(.system(size: 11))
-                        Text(viewModel.timeRange.title)
+                        Text(viewModel.timeRange.localizedTitle)
                             .font(.system(size: 12, weight: .medium))
                     }
                     .padding(.horizontal, 10)
@@ -149,7 +149,7 @@ public struct FiltersBarView: View {
                             .fill(viewModel.selectedCategories.isEmpty ? Color.gray : Color.green)
                             .frame(width: 6, height: 6)
 
-                        Text(categoryButtonLabel)
+                        categoryButtonLabelView
                             .font(.system(size: 12, weight: .medium))
                     }
                     .padding(.horizontal, 10)
@@ -180,14 +180,14 @@ public struct FiltersBarView: View {
                             viewModel.selectedType = type.rawValue
                         } label: {
                             HStack {
-                                Text(type.rawValue)
+                                Text(type.localizedName)
                                 if viewModel.selectedType == type.rawValue { Image(systemName: "checkmark") }
                             }
                         }
                     }
                 } label: {
                     HStack(spacing: 5) {
-                        Text(viewModel.selectedType == "all" ? "Todos los tipos" : viewModel.selectedType)
+                        typeButtonLabelView
                             .font(.system(size: 12, weight: .medium))
                     }
                     .padding(.horizontal, 10)
@@ -301,14 +301,26 @@ public struct FiltersBarView: View {
         .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3)
     }
 
-    private var categoryButtonLabel: String {
+    @ViewBuilder
+    private var categoryButtonLabelView: some View {
         if viewModel.selectedCategories.isEmpty {
-            return "Categorías"
+            Text("Categorías")
+        } else if viewModel.selectedCategories.count == 1, let first = viewModel.selectedCategories.first {
+            Text(first)
+        } else {
+            Text("\(viewModel.selectedCategories.count) categorías")
         }
-        if viewModel.selectedCategories.count == 1, let first = viewModel.selectedCategories.first {
-            return first
+    }
+
+    @ViewBuilder
+    private var typeButtonLabelView: some View {
+        if viewModel.selectedType == "all" {
+            Text("Todos los tipos")
+        } else if let type = TransactionType(rawValue: viewModel.selectedType) {
+            Text(type.localizedName)
+        } else {
+            Text(viewModel.selectedType)
         }
-        return "\(viewModel.selectedCategories.count) categorías"
     }
 }
 

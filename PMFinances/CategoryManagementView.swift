@@ -23,7 +23,7 @@ public struct CategoryManagementView: View {
         return viewModel.categories.filter { $0.name.lowercased().contains(query) }
     }
 
-    private var deleteAlertMessage: String {
+    private var deleteAlertMessage: LocalizedStringKey {
         guard let item = categoryToDelete else { return "" }
         let count = viewModel.recordCount(for: item.name)
         if count > 0 {
@@ -310,7 +310,7 @@ private struct ColorPresetButton: View {
 private struct CategoryEditorModal: View {
     @Environment(\.dismiss) private var dismiss
 
-    let title: String
+    let title: LocalizedStringKey
     let initialName: String
     let initialHex: String
     let onSave: (String, String) -> Void
@@ -329,7 +329,7 @@ private struct CategoryEditorModal: View {
 
     private let gridColumns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 10), count: 6)
 
-    init(title: String, initialName: String, initialHex: String, onSave: @escaping (String, String) -> Void) {
+    init(title: LocalizedStringKey, initialName: String, initialHex: String, onSave: @escaping (String, String) -> Void) {
         self.title = title
         self.initialName = initialName
         self.initialHex = initialHex

@@ -10,6 +10,14 @@ public enum TransactionType: String, CaseIterable, Codable, Identifiable, Sendab
     public var isExpense: Bool {
         self != .ingreso
     }
+
+    public var localizedName: LocalizedStringKey {
+        switch self {
+        case .gastoUnico: return "Gasto único"
+        case .gastoRecurrente: return "Gasto recurrente"
+        case .ingreso: return "Ingreso"
+        }
+    }
 }
 
 public struct CategoryItem: Identifiable, Hashable, Codable, Sendable {
@@ -166,6 +174,19 @@ public enum TimeRangeFilter: String, CaseIterable, Identifiable, Sendable {
     public var id: String { rawValue }
 
     public var title: String {
+        switch self {
+        case .currentMonth: return "Este mes"
+        case .lastMonth: return "Mes pasado"
+        case .last3Months: return "Últimos 3 meses"
+        case .last6Months: return "Últimos 6 meses"
+        case .last12Months: return "Últimos 12 meses"
+        case .currentYear: return "Año actual"
+        case .all: return "Todo el histórico"
+        case .custom: return "Personalizado"
+        }
+    }
+
+    public var localizedTitle: LocalizedStringKey {
         switch self {
         case .currentMonth: return "Este mes"
         case .lastMonth: return "Mes pasado"

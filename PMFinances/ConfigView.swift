@@ -4,6 +4,7 @@ import UniformTypeIdentifiers
 public struct ConfigView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject public var viewModel: FinancialViewModel
+    @AppStorage("app_language") private var appLanguage: String = "es"
 
     @State private var showFolderPicker: Bool = false
     @State private var showCategoryManagement: Bool = false
@@ -19,6 +20,9 @@ public struct ConfigView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     // Cabecera de la App
                     appBrandingHeader
+
+                    // Selección de Idioma
+                    languageSection
 
                     // Estado actual del almacenamiento
                     storageStatusCard
@@ -60,6 +64,7 @@ public struct ConfigView: View {
                 CategoryManagementView(viewModel: viewModel)
             }
         }
+        .environment(\.locale, Locale(identifier: appLanguage))
         #if os(macOS)
         .frame(minWidth: 440, idealWidth: 460, minHeight: 520)
         #endif
@@ -94,6 +99,33 @@ public struct ConfigView: View {
 
             Spacer()
         }
+    }
+
+    private var languageSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 8) {
+                Image(systemName: "globe")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(.purple)
+
+                Text("Idioma de la Aplicación")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(.primary)
+            }
+
+            Picker("Idioma", selection: $appLanguage) {
+                Text("Español").tag("es")
+                Text("English").tag("en")
+            }
+            .pickerStyle(.segmented)
+        }
+        .padding(16)
+        .background(Color.appCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color.appBorder, lineWidth: 1)
+        )
     }
 
     private var storageStatusCard: some View {

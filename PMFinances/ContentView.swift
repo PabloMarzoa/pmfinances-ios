@@ -2,6 +2,7 @@ import SwiftUI
 
 public struct ContentView: View {
     @StateObject private var viewModel = FinancialViewModel()
+    @AppStorage("app_language") private var appLanguage: String = "es"
 
     public init() {}
 
@@ -78,7 +79,7 @@ public struct ContentView: View {
                 if viewModel.showSuccessToast {
                     VStack {
                         Spacer()
-                        Text(viewModel.toastMessage)
+                        Text(LocalizedStringKey(viewModel.toastMessage))
                             .font(.system(size: 13, weight: .medium))
                             .foregroundStyle(.white)
                             .padding(.horizontal, 16)
@@ -137,6 +138,7 @@ public struct ContentView: View {
                 ConfigView(viewModel: viewModel)
             }
         }
+        .environment(\.locale, Locale(identifier: appLanguage))
         .preferredColorScheme(.dark)
     }
 

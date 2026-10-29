@@ -93,7 +93,7 @@ public struct EditRecordView: View {
 
                         Picker("", selection: $tipo) {
                             ForEach(TransactionType.allCases) { t in
-                                Text(t.rawValue).tag(t)
+                                Text(t.localizedName).tag(t)
                             }
                         }
                         .labelsHidden()
