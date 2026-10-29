@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2026-10-29
+
+### Added
+- **Collapsible Category Breakdown Card**:
+  - Made the "Gastos por Categoría" card in `ChartsView` interactively collapsible with fluid animation.
+  - Added directional chevron indicator (pointing up when expanded, pointing down when collapsed).
+  - Persisted collapsed/expanded state across app sessions using `@AppStorage`.
+
+---
+
 ## [0.2.0] - 2026-10-29
 
 ### Added

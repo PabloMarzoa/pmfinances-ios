@@ -5,6 +5,8 @@ public struct ChartsView: View {
     public let selectedCategories: Set<String>
     public let onCategoryTapped: (String) -> Void
 
+    @AppStorage("pmfinances_category_card_collapsed") private var isCollapsed: Bool = false
+
     public init(stats: FinancialStats, selectedCategories: Set<String>, onCategoryTapped: @escaping (String) -> Void) {
         self.stats = stats
         self.selectedCategories = selectedCategories
@@ -24,108 +26,125 @@ public struct ChartsView: View {
     // MARK: - Category Breakdown Card
 
     private var categoryBreakdownCard: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Gastos por Categoría")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(.primary)
-
-                    Text("Distribución de los gastos en el período")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.secondary)
+        VStack(alignment: .leading, spacing: isCollapsed ? 0 : 14) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.25)) {
+                    isCollapsed.toggle()
                 }
+            } label: {
+                HStack {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Gastos por Categoría")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundStyle(.primary)
 
-                Spacer()
-
-                Text("\(stats.categoryBreakdown.count) categorías")
-                    .font(.system(size: 11, weight: .semibold, design: .monospaced))
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(Color.appTertiaryFill)
-                    .clipShape(Capsule())
-                    .overlay(Capsule().stroke(Color.appBorder, lineWidth: 1))
-            }
-
-            if stats.categoryBreakdown.isEmpty {
-                Text("No hay gastos registrados en este período.")
-                    .font(.system(size: 13))
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.vertical, 24)
-            } else {
-                // Stacked Bar
-                GeometryReader { proxy in
-                    HStack(spacing: 2) {
-                        ForEach(stats.categoryBreakdown) { cat in
-                            let width = max(proxy.size.width * CGFloat(cat.percentage / 100.0) - 2, 3)
-                            cat.color
-                                .frame(width: width)
-                                .opacity(selectedCategories.isEmpty || selectedCategories.contains(cat.category) ? 1.0 : 0.3)
-                        }
+                        Text("Distribución de los gastos en el período")
+                            .font(.system(size: 12))
+                            .foregroundStyle(.secondary)
                     }
-                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+
+                    Spacer()
+
+                    HStack(spacing: 8) {
+                        Text("\(stats.categoryBreakdown.count) categorías")
+                            .font(.system(size: 11, weight: .semibold, design: .monospaced))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.appTertiaryFill)
+                            .clipShape(Capsule())
+                            .overlay(Capsule().stroke(Color.appBorder, lineWidth: 1))
+
+                        Image(systemName: "chevron.down")
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(.secondary)
+                            .rotationEffect(.degrees(isCollapsed ? 0 : 180))
+                    }
                 }
-                .frame(height: 14)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
 
-                // Category List
-                VStack(spacing: 8) {
-                    ForEach(stats.categoryBreakdown) { cat in
-                        let isSelected = selectedCategories.contains(cat.category)
+            if !isCollapsed {
+                if stats.categoryBreakdown.isEmpty {
+                    Text("No hay gastos registrados en este período.")
+                        .font(.system(size: 13))
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.vertical, 24)
+                } else {
+                    // Stacked Bar
+                    GeometryReader { proxy in
+                        HStack(spacing: 2) {
+                            ForEach(stats.categoryBreakdown) { cat in
+                                let width = max(proxy.size.width * CGFloat(cat.percentage / 100.0) - 2, 3)
+                                cat.color
+                                    .frame(width: width)
+                                    .opacity(selectedCategories.isEmpty || selectedCategories.contains(cat.category) ? 1.0 : 0.3)
+                            }
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                    }
+                    .frame(height: 14)
 
-                        Button {
-                            onCategoryTapped(cat.category)
-                        } label: {
-                            HStack(spacing: 10) {
-                                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                                    .fill(cat.color)
-                                    .frame(width: 14, height: 14)
+                    // Category List
+                    VStack(spacing: 8) {
+                        ForEach(stats.categoryBreakdown) { cat in
+                            let isSelected = selectedCategories.contains(cat.category)
 
-                                VStack(alignment: .leading, spacing: 2) {
-                                    HStack(spacing: 6) {
-                                        Text(cat.category)
-                                            .font(.system(size: 13, weight: isSelected ? .bold : .medium))
-                                            .foregroundStyle(isSelected ? Color.green : Color.primary)
+                            Button {
+                                onCategoryTapped(cat.category)
+                            } label: {
+                                HStack(spacing: 10) {
+                                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                        .fill(cat.color)
+                                        .frame(width: 14, height: 14)
 
-                                        Text("(\(cat.count) movs)")
-                                            .font(.system(size: 11))
-                                            .foregroundStyle(.secondary)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        HStack(spacing: 6) {
+                                            Text(cat.category)
+                                                .font(.system(size: 13, weight: isSelected ? .bold : .medium))
+                                                .foregroundStyle(isSelected ? Color.green : Color.primary)
 
-                                        if isSelected {
-                                            Text("Filtro")
-                                                .font(.system(size: 9, weight: .bold))
-                                                .textCase(.uppercase)
-                                                .padding(.horizontal, 5)
-                                                .padding(.vertical, 2)
-                                                .background(Color.green.opacity(0.15))
-                                                .foregroundStyle(.green)
-                                                .clipShape(RoundedRectangle(cornerRadius: 4))
+                                            Text("(\(cat.count) movs)")
+                                                .font(.system(size: 11))
+                                                .foregroundStyle(.secondary)
+
+                                            if isSelected {
+                                                Text("Filtro")
+                                                    .font(.system(size: 9, weight: .bold))
+                                                    .textCase(.uppercase)
+                                                    .padding(.horizontal, 5)
+                                                    .padding(.vertical, 2)
+                                                    .background(Color.green.opacity(0.15))
+                                                    .foregroundStyle(.green)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                            }
                                         }
                                     }
+
+                                    Spacer()
+
+                                    VStack(alignment: .trailing, spacing: 2) {
+                                        Text(String(format: "%.2f €", cat.total))
+                                            .font(.system(size: 13, weight: .semibold, design: .monospaced))
+                                            .foregroundStyle(.primary)
+
+                                        Text(String(format: "%.1f%%", cat.percentage))
+                                            .font(.system(size: 11))
+                                            .foregroundStyle(.secondary)
+                                    }
                                 }
-
-                                Spacer()
-
-                                VStack(alignment: .trailing, spacing: 2) {
-                                    Text(String(format: "%.2f €", cat.total))
-                                        .font(.system(size: 13, weight: .semibold, design: .monospaced))
-                                        .foregroundStyle(.primary)
-
-                                    Text(String(format: "%.1f%%", cat.percentage))
-                                        .font(.system(size: 11))
-                                        .foregroundStyle(.secondary)
-                                }
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                                .background(isSelected ? Color.green.opacity(0.1) : Color.appSecondaryFill)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                        .stroke(isSelected ? Color.green.opacity(0.6) : Color.appBorder, lineWidth: 1)
+                                )
                             }
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 8)
-                            .background(isSelected ? Color.green.opacity(0.1) : Color.appSecondaryFill)
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                    .stroke(isSelected ? Color.green.opacity(0.6) : Color.appBorder, lineWidth: 1)
-                            )
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
                 }
             }
