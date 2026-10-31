@@ -168,30 +168,6 @@ public struct EditRecordView: View {
                         )
                     }
 
-                    // Botón Guardar Cambios
-                    Button {
-                        save()
-                    } label: {
-                        HStack {
-                            Spacer()
-                            if isSaving {
-                                ProgressView()
-                                    .tint(.white)
-                            } else {
-                                Text("Guardar Cambios")
-                                    .font(.system(size: 15, weight: .bold))
-                            }
-                            Spacer()
-                        }
-                        .padding(.vertical, 12)
-                        .background(isValid ? Color.green : Color.gray.opacity(0.3))
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                    }
-                    .buttonStyle(.plain)
-                    .disabled(!isValid || isSaving)
-                    .padding(.top, 10)
-
                     // Botón Eliminar Movimiento
                     Button(role: .destructive) {
                         showDeleteConfirmation = true
@@ -212,6 +188,7 @@ public struct EditRecordView: View {
                         )
                     }
                     .buttonStyle(.plain)
+                    .padding(.top, 10)
                 }
                 .padding(20)
             }
@@ -221,19 +198,27 @@ public struct EditRecordView: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") {
-                        dismiss()
+                #if os(iOS)
+                ToolbarItem(placement: .topBarLeading) {
+                    CircularDismissButton()
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    CircularSaveButton(isSaving: isSaving, isEnabled: isValid) {
+                        save()
                     }
+                }
+                #else
+                ToolbarItem(placement: .cancellationAction) {
+                    CircularDismissButton()
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Guardar") {
+                    CircularSaveButton(isSaving: isSaving, isEnabled: isValid) {
                         save()
                     }
-                    .disabled(!isValid || isSaving)
-                    .fontWeight(.bold)
                 }
+                #endif
             }
             .confirmationDialog(
                 "¿Eliminar este movimiento?",
@@ -286,8 +271,9 @@ public struct EditRecordView: View {
     EditRecordView(
         viewModel: FinancialViewModel(),
         record: FinancialRecord(
-            name: "Supermercado",
-            cantidad: 64.50,
+            id: UUID().uuidString,
+            name: "Compra Supermercado",
+            cantidad: 45.50,
             categoria: "Comida",
             fecha: Date(),
             tipo: .gastoUnico

@@ -1,2434 +1,2449 @@
 {
-  "sourceLanguage" : "es",
-  "strings" : {
-    "" : {
-
-    },
-    "-%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "-%@"
+  "sourceLanguage": "es",
+  "strings": {
+    "": {},
+    "-%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "-%@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "-%@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "-%@"
           }
         }
       }
     },
-    "-%lld€" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "-%lld€"
+    "-%lld€": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "-%lld€"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "-%lld€"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "-%lld€"
           }
         }
       }
     },
-    "¿Cómo sincronizar con iCloud?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "How to sync with iCloud?"
+    "¿Cómo sincronizar con iCloud?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How to sync with iCloud?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Cómo sincronizar con iCloud?"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Cómo sincronizar con iCloud?"
           }
         }
       }
     },
-    "¿Eliminar este movimiento?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete this transaction?"
+    "¿Eliminar este movimiento?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this transaction?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Eliminar este movimiento?"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Eliminar este movimiento?"
           }
         }
       }
     },
-    "¿Seguro que deseas eliminar la categoría '%@'?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Are you sure you want to delete category '%@'?"
+    "¿Seguro que deseas eliminar la categoría '%@'?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Are you sure you want to delete category '%@'?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Seguro que deseas eliminar la categoría '%@'?"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Seguro que deseas eliminar la categoría '%@'?"
           }
         }
       }
     },
-    "(%lld movs)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(%lld txs)"
+    "(%lld movs)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "(%lld txs)"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(%lld movs)"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "(%lld movs)"
           }
         }
       }
     },
-    "%@%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@%2$@"
+    "%@%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@%2$@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@%2$@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@%2$@"
           }
         }
       }
     },
-    "%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
+    "%lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
           }
         }
       }
     },
-    "%lld categorías" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld categories"
+    "%lld categorías": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld categorías"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld categorías"
           }
         }
       }
     },
-    "%lld categorías configuradas" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld configured categories"
+    "%lld categorías configuradas": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld configured categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld categorías configuradas"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld categorías configuradas"
           }
         }
       }
     },
-    "%lld configuradas" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld configured"
+    "%lld configuradas": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld configured"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld configuradas"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld configuradas"
           }
         }
       }
     },
-    "%lld registrados" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld recorded"
+    "%lld registrados": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld recorded"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld registrados"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld registrados"
           }
         }
       }
     },
-    "•" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "•"
+    "•": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "•"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "•"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "•"
           }
         }
       }
     },
-    "→" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "→"
+    "→": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "→"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "→"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "→"
           }
         }
       }
     },
-    "+%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "+%@"
+    "+%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "+%@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%@"
           }
         }
       }
     },
-    "+%lld€" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "+%lld€"
+    "+%lld€": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%lld€"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "+%lld€"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%lld€"
           }
         }
       }
     },
-    "€" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "€"
+    "€": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "€"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "€"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "€"
           }
         }
       }
     },
-    "0,00" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "0.00"
+    "0,00": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0.00"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "0,00"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0,00"
           }
         }
       }
     },
-    "50 € - 200 €" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "€50 - €200"
+    "50 € - 200 €": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "€50 - €200"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "50 € - 200 €"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "50 € - 200 €"
           }
         }
       }
     },
-    "200 € - 500 €" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "€200 - €500"
+    "200 € - 500 €": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "€200 - €500"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "200 € - 500 €"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "200 € - 500 €"
           }
         }
       }
     },
-    "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resetting will restore the 22 standard categories recommended by the app."
+    "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resetting will restore the 22 standard categories recommended by the app."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación."
           }
         }
       }
     },
-    "Almacenamiento Local" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Local Storage"
+    "Almacenamiento Local": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local Storage"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Almacenamiento Local"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Almacenamiento Local"
           }
         }
       }
     },
-    "Almacenamiento y Sincronización" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Storage & Sync"
+    "Almacenamiento y Sincronización": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storage & Sync"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Almacenamiento y Sincronización"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Almacenamiento y Sincronización"
           }
         }
       }
     },
-    "Añadir" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add"
+    "Añadir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Añadir"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añadir"
           }
         }
       }
     },
-    "Año actual" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Current year"
+    "Añadir Categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Category"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Año actual"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añadir Categoría"
           }
         }
       }
     },
-    "Archivo: finanzas.json" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "File: finanzas.json"
+    "Año actual": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current year"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Archivo: finanzas.json"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Año actual"
           }
         }
       }
     },
-    "Balance Neto" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Net Balance"
+    "Archivo: finanzas.json": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File: finanzas.json"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Balance Neto"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Archivo: finanzas.json"
           }
         }
       }
     },
-    "Balance: %@%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Balance: %1$@%2$@"
+    "Balance Neto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net Balance"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Balance: %1$@%2$@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balance Neto"
           }
         }
       }
     },
-    "Borrar filtros" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear filters"
+    "Balance: %@%@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balance: %1$@%2$@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Borrar filtros"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balance: %1$@%2$@"
           }
         }
       }
     },
-    "Buscar categoría..." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search category..."
+    "Borrar filtros": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear filters"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buscar categoría..."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borrar filtros"
           }
         }
       }
     },
-    "Buscar movimiento..." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search transaction..."
+    "Buscar categoría...": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search category..."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buscar movimiento..."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar categoría..."
           }
         }
       }
     },
-    "Cambiar Carpeta de Guardado" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change Storage Folder"
+    "Buscar movimiento...": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search transaction..."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cambiar Carpeta de Guardado"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar movimiento..."
           }
         }
       }
     },
-    "Cancelar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
+    "Cambiar Carpeta de Guardado": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change Storage Folder"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancelar"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cambiar Carpeta de Guardado"
           }
         }
       }
     },
-    "Cargar Datos de Demostración" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Load Demo Data"
+    "Cancelar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cargar Datos de Demostración"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
           }
         }
       }
     },
-    "Carpeta configurada correctamente" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Folder configured successfully"
+    "Cargar Datos de Demostración": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Load Demo Data"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Carpeta configurada correctamente"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cargar Datos de Demostración"
           }
         }
       }
     },
-    "Carpeta Personalizada" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom Folder"
+    "Carpeta configurada correctamente": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder configured successfully"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Carpeta Personalizada"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carpeta configurada correctamente"
           }
         }
       }
     },
-    "Categoría" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category"
+    "Carpeta Personalizada": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom Folder"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoría"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carpeta Personalizada"
           }
         }
       }
     },
-    "Categoría actualizada" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category updated"
+    "Categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Category"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoría actualizada"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categoría"
           }
         }
       }
     },
-    "Categoría añadida: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category added: %@"
+    "Categoría actualizada": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Category updated"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoría añadida: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categoría actualizada"
           }
         }
       }
     },
-    "Categoría eliminada" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category deleted"
+    "Categoría añadida: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Category added: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoría eliminada"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categoría añadida: %@"
           }
         }
       }
     },
-    "Categorías" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categories"
+    "Categoría eliminada": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Category deleted"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categorías"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categoría eliminada"
           }
         }
       }
     },
-    "Categorías de Movimientos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transaction Categories"
+    "Categorías": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categorías de Movimientos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categorías"
           }
         }
       }
     },
-    "Categorías restablecidas" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categories restored"
+    "Categorías de Movimientos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction Categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categorías restablecidas"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categorías de Movimientos"
           }
         }
       }
     },
-    "Cerrar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Close"
+    "Categorías restablecidas": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categories restored"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cerrar"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categorías restablecidas"
           }
         }
       }
     },
-    "Color" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Color"
+    "Cerrar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Color"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cerrar"
           }
         }
       }
     },
-    "Comparativa Ingresos vs Gastos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Income vs Expenses Comparison"
+    "Color": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comparativa Ingresos vs Gastos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color"
           }
         }
       }
     },
-    "Concepto" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Description"
+    "Comparativa Ingresos vs Gastos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income vs Expenses Comparison"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Concepto"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparativa Ingresos vs Gastos"
           }
         }
       }
     },
-    "Control de Finanzas" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Finance Tracker"
+    "Concepto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Description"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Control de Finanzas"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concepto"
           }
         }
       }
     },
-    "Cualquier importe" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Any amount"
+    "Control de Finanzas": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finance Tracker"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cualquier importe"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Control de Finanzas"
           }
         }
       }
     },
-    "Datos de demo cargados en finanzas.json" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Demo data loaded into finanzas.json"
+    "Cualquier importe": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Any amount"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Datos de demo cargados en finanzas.json"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cualquier importe"
           }
         }
       }
     },
-    "Desde" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "From"
+    "Datos de demo cargados en finanzas.json": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demo data loaded into finanzas.json"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desde"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datos de demo cargados en finanzas.json"
           }
         }
       }
     },
-    "Diferencia neta ahorro" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Net savings difference"
+    "Desde": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diferencia neta ahorro"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desde"
           }
         }
       }
     },
-    "Distribución de los gastos en el período" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Distribution of expenses for the period"
+    "Diferencia neta ahorro": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net savings difference"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Distribución de los gastos en el período"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diferencia neta ahorro"
           }
         }
       }
     },
-    "Editar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit"
+    "Distribución de los gastos en el período": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Distribution of expenses for the period"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Distribución de los gastos en el período"
           }
         }
       }
     },
-    "Editar Categoría" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit Category"
+    "Editar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar Categoría"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar"
           }
         }
       }
     },
-    "Editar Movimiento" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit Transaction"
+    "Editar Categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Category"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar Movimiento"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar Categoría"
           }
         }
       }
     },
-    "ej. Compra Mercadona" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. Grocery shopping"
+    "Editar Movimiento": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Transaction"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ej. Compra Mercadona"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar Movimiento"
           }
         }
       }
     },
-    "ej. Restaurantes, Farmacia, Viajes..." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. Dining, Pharmacy, Travel..."
+    "ej. Compra Mercadona": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. Grocery shopping"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ej. Restaurantes, Farmacia, Viajes..."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ej. Compra Mercadona"
           }
         }
       }
     },
-    "Elegir" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose"
+    "ej. Restaurantes, Farmacia, Viajes...": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. Dining, Pharmacy, Travel..."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elegir"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ej. Restaurantes, Farmacia, Viajes..."
           }
         }
       }
     },
-    "Elige una carpeta en iCloud Drive para mantener tus datos sincronizados." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose a folder in iCloud Drive to keep your data synced across devices."
+    "Elegir": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elige una carpeta en iCloud Drive para mantener tus datos sincronizados."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elegir"
           }
         }
       }
     },
-    "Eliminar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete"
+    "Elige una carpeta en iCloud Drive para mantener tus datos sincronizados.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a folder in iCloud Drive to keep your data synced across devices."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elige una carpeta en iCloud Drive para mantener tus datos sincronizados."
           }
         }
       }
     },
-    "Eliminar Categoría" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete Category"
+    "Eliminar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar Categoría"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar"
           }
         }
       }
     },
-    "Eliminar Movimiento" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete Transaction"
+    "Eliminar Categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Category"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar Movimiento"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar Categoría"
           }
         }
       }
     },
-    "English" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "English"
+    "Eliminar Movimiento": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Transaction"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inglés"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar Movimiento"
           }
         }
       }
     },
-    "Error al actualizar: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error updating: %@"
+    "English": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "English"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al actualizar: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inglés"
           }
         }
       }
     },
-    "Error al cargar demo: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error loading demo: %@"
+    "Error al actualizar: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error updating: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al cargar demo: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al actualizar: %@"
           }
         }
       }
     },
-    "Error al configurar carpeta: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error configuring folder: %@"
+    "Error al cargar demo: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error loading demo: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al configurar carpeta: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al cargar demo: %@"
           }
         }
       }
     },
-    "Error al eliminar categoría: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error deleting category: %@"
+    "Error al configurar carpeta: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error configuring folder: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al eliminar categoría: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al configurar carpeta: %@"
           }
         }
       }
     },
-    "Error al eliminar: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error deleting: %@"
+    "Error al eliminar categoría: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error deleting category: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al eliminar: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al eliminar categoría: %@"
           }
         }
       }
     },
-    "Error al guardar categoría: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error saving category: %@"
+    "Error al eliminar: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error deleting: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al guardar categoría: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al eliminar: %@"
           }
         }
       }
     },
-    "Error al guardar: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error saving: %@"
+    "Error al guardar categoría: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error saving category: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al guardar: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al guardar categoría: %@"
           }
         }
       }
     },
-    "Error al restablecer categorías: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error restoring categories: %@"
+    "Error al guardar: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error saving: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error al restablecer categorías: %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al guardar: %@"
           }
         }
       }
     },
-    "Español" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spanish"
+    "Error al restablecer categorías: %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error restoring categories: %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Español"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error al restablecer categorías: %@"
           }
         }
       }
     },
-    "Esta acción eliminará \"%@\" permanentemente." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This will permanently delete \"%@\"."
+    "Español": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spanish"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esta acción eliminará \"%@\" permanentemente."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Español"
           }
         }
       }
     },
-    "Este mes" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This month"
+    "Esta acción eliminará \"%@\" permanentemente.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This will permanently delete \"%@\"."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este mes"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta acción eliminará \"%@\" permanentemente."
           }
         }
       }
     },
-    "Evolución Mensual" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly Trend"
+    "Este mes": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This month"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Evolución Mensual"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este mes"
           }
         }
       }
     },
-    "Fecha" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Date"
+    "Evolución Mensual": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly Trend"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fecha"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evolución Mensual"
           }
         }
       }
     },
-    "Filtro" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filter"
+    "Fecha": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filtro"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fecha"
           }
         }
       }
     },
-    "finanzas_export.csv" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "finanzas_export.csv"
+    "Filtro": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filter"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "finanzas_export.csv"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filtro"
           }
         }
       }
     },
-    "Gasto recurrente" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recurring expense"
+    "finanzas_export.csv": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "finanzas_export.csv"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gasto recurrente"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "finanzas_export.csv"
           }
         }
       }
     },
-    "Gasto único" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "One-time expense"
+    "Gasto recurrente": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recurring expense"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gasto único"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gasto recurrente"
           }
         }
       }
     },
-    "Gastos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expenses"
+    "Gasto único": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One-time expense"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gastos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gasto único"
           }
         }
       }
     },
-    "Gastos por Categoría" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expenses by Category"
+    "Gastos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gastos por Categoría"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gastos"
           }
         }
       }
     },
-    "Gastos Totales" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Expenses"
+    "Gastos por Categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses by Category"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gastos Totales"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gastos por Categoría"
           }
         }
       }
     },
-    "Gastos:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expenses:"
+    "Gastos Totales": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total Expenses"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gastos:"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gastos Totales"
           }
         }
       }
     },
-    "Gestión y control de finanzas personales" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personal finance management & tracking"
+    "Gastos:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses:"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gestión y control de finanzas personales"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gastos:"
           }
         }
       }
     },
-    "Gestionar Categorías" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manage Categories"
+    "Gestión y control de finanzas personales": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal finance management & tracking"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gestionar Categorías"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gestión y control de finanzas personales"
           }
         }
       }
     },
-    "Guardar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save"
+    "Gestionar Categorías": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage Categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gestionar Categorías"
           }
         }
       }
     },
-    "Guardar Cambios" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save Changes"
+    "Guardar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar Cambios"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar"
           }
         }
       }
     },
-    "Guardar Categoría" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save Category"
+    "Guardar Cambios": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save Changes"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar Categoría"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar Cambios"
           }
         }
       }
     },
-    "Guardar Movimiento" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save Transaction"
+    "Guardar Categoría": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save Category"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar Movimiento"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar Categoría"
           }
         }
       }
     },
-    "Hasta" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To"
+    "Guardar Movimiento": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save Transaction"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hasta"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar Movimiento"
           }
         }
       }
     },
-    "Hasta 50 €" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Up to €50"
+    "Hasta": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hasta 50 €"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasta"
           }
         }
       }
     },
-    "Hay %lld transacciones registradas con la categoría '%@'. Si la eliminas, esas transacciones se moverán a 'Otros'." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "There are %1$lld transactions recorded with category '%2$@'. If deleted, they will be moved to 'Otros'."
+    "Hasta 50 €": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up to €50"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hay %1$lld transacciones registradas con la categoría '%2$@'. Si la eliminas, esas transacciones se moverán a 'Otros'."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasta 50 €"
           }
         }
       }
     },
-    "Idioma" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Language"
+    "Hay %lld transacciones registradas con la categoría '%@'. Si la eliminas, esas transacciones se moverán a 'Otros'.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There are %1$lld transactions recorded with category '%2$@'. If deleted, they will be moved to 'Otros'."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Idioma"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hay %1$lld transacciones registradas con la categoría '%2$@'. Si la eliminas, esas transacciones se moverán a 'Otros'."
           }
         }
       }
     },
-    "Idioma de la Aplicación" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Language"
+    "Idioma": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Idioma de la Aplicación"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma"
           }
         }
       }
     },
-    "Importe" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Amount"
+    "Idioma de la Aplicación": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Language"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importe"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma de la Aplicación"
           }
         }
       }
     },
-    "Ingreso" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Income"
+    "Importe": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingreso"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importe"
           }
         }
       }
     },
-    "Ingresos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Income"
+    "Ingreso": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingresos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingreso"
           }
         }
       }
     },
-    "Ingresos Totales" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Income"
+    "Ingresos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingresos Totales"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingresos"
           }
         }
       }
     },
-    "Ingresos:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Income:"
+    "Ingresos Totales": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total Income"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingresos:"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingresos Totales"
           }
         }
       }
     },
-    "Limpiar categorías" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear categories"
+    "Ingresos:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income:"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limpiar categorías"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingresos:"
           }
         }
       }
     },
-    "Limpiar importe" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear amount"
+    "Limpiar categorías": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limpiar importe"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpiar categorías"
           }
         }
       }
     },
-    "Más de 500 €" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Over €500"
+    "Limpiar importe": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear amount"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Más de 500 €"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpiar importe"
           }
         }
       }
     },
-    "Mes pasado" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last month"
+    "Más de 500 €": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Over €500"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mes pasado"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Más de 500 €"
           }
         }
       }
     },
-    "Movimiento actualizado" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transaction updated"
+    "Mes pasado": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last month"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Movimiento actualizado"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mes pasado"
           }
         }
       }
     },
-    "Movimiento eliminado" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transaction deleted"
+    "Movimiento actualizado": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction updated"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Movimiento eliminado"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Movimiento actualizado"
           }
         }
       }
     },
-    "Movimiento guardado en finanzas.json" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transaction saved to finanzas.json"
+    "Movimiento eliminado": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction deleted"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Movimiento guardado en finanzas.json"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Movimiento eliminado"
           }
         }
       }
     },
-    "Movimientos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transactions"
+    "Movimiento guardado en finanzas.json": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction saved to finanzas.json"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Movimientos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Movimiento guardado en finanzas.json"
           }
         }
       }
     },
-    "No hay categorías configuradas" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No categories configured"
+    "Movimientos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transactions"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No hay categorías configuradas"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Movimientos"
           }
         }
       }
     },
-    "No hay datos suficientes para calcular la evolución mensual." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not enough data to compute monthly trends."
+    "No hay categorías configuradas": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No categories configured"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No hay datos suficientes para calcular la evolución mensual."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No hay categorías configuradas"
           }
         }
       }
     },
-    "No hay gastos registrados en este período." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No expenses recorded in this period."
+    "No hay datos suficientes para calcular la evolución mensual.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not enough data to compute monthly trends."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No hay gastos registrados en este período."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No hay datos suficientes para calcular la evolución mensual."
           }
         }
       }
     },
-    "No se encontraron movimientos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No transactions found"
+    "No hay gastos registrados en este período.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No expenses recorded in this period."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se encontraron movimientos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No hay gastos registrados en este período."
           }
         }
       }
     },
-    "No se encontró ninguna categoría con '%@'" : {
-
+    "No se encontraron movimientos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No transactions found"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se encontraron movimientos"
+          }
+        }
+      }
     },
-    "No se encontró ninguna categoría con %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No category found matching %@"
+    "No se encontró ninguna categoría con '%@'": {},
+    "No se encontró ninguna categoría con %@": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No category found matching %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se encontró ninguna categoría con %@"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se encontró ninguna categoría con %@"
           }
         }
       }
     },
-    "Nombre de la Categoría" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category Name"
+    "Nombre de la Categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Category Name"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de la Categoría"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nombre de la Categoría"
           }
         }
       }
     },
-    "Nueva Categoría" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New Category"
+    "Nueva Categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Category"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nueva Categoría"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nueva Categoría"
           }
         }
       }
     },
-    "Nuevo Movimiento" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New Transaction"
+    "Nuevo Movimiento": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Transaction"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nuevo Movimiento"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nuevo Movimiento"
           }
         }
       }
     },
-    "Opciones de Datos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data Options"
+    "Opciones de Datos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data Options"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opciones de Datos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opciones de Datos"
           }
         }
       }
     },
-    "Período seleccionado" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selected period"
+    "Período seleccionado": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selected period"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Período seleccionado"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Período seleccionado"
           }
         }
       }
     },
-    "Personalizado" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom"
+    "Personalizado": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personalizado"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizado"
           }
         }
       }
     },
-    "PMFinances" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PMFinances"
+    "PMFinances": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PMFinances"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PMFinances"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PMFinances"
           }
         }
       }
     },
-    "Prueba a ajustar o borrar los filtros aplicados." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Try adjusting or clearing the active filters."
+    "Prueba a ajustar o borrar los filtros aplicados.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try adjusting or clearing the active filters."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prueba a ajustar o borrar los filtros aplicados."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prueba a ajustar o borrar los filtros aplicados."
           }
         }
       }
     },
-    "Rec: %lld€" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rec: %lld€"
+    "Rec: %lld€": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rec: %lld€"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rec: %lld€"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rec: %lld€"
           }
         }
       }
     },
-    "Recargar Datos del Archivo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reload Data from File"
+    "Recargar Datos del Archivo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reload Data from File"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recargar Datos del Archivo"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recargar Datos del Archivo"
           }
         }
       }
     },
-    "Reintentar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Retry"
+    "Reintentar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reintentar"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reintentar"
           }
         }
       }
     },
-    "Restablecer" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reset"
+    "Restablecer": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restablecer"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restablecer"
           }
         }
       }
     },
-    "Restablecer a Carpeta Local de la App" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reset to Default App Folder"
+    "Restablecer a Carpeta Local de la App": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset to Default App Folder"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restablecer a Carpeta Local de la App"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restablecer a Carpeta Local de la App"
           }
         }
       }
     },
-    "Restablecer Categorías" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reset Categories"
+    "Restablecer Categorías": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset Categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restablecer Categorías"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restablecer Categorías"
           }
         }
       }
     },
-    "Restablecer Categorías Iniciales" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restore Default Categories"
+    "Restablecer Categorías Iniciales": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore Default Categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restablecer Categorías Iniciales"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restablecer Categorías Iniciales"
           }
         }
       }
     },
-    "Restablecer Filtros" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reset Filters"
+    "Restablecer Filtros": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset Filters"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restablecer Filtros"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restablecer Filtros"
           }
         }
       }
     },
-    "Restablecido a carpeta por defecto" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reset to default app folder"
+    "Restablecido a carpeta por defecto": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset to default app folder"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restablecido a carpeta por defecto"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restablecido a carpeta por defecto"
           }
         }
       }
     },
-    "Se restaurará la lista de categorías original. ¿Deseas continuar?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The default category list will be restored. Do you want to continue?"
+    "Se restaurará la lista de categorías original. ¿Deseas continuar?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The default category list will be restored. Do you want to continue?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se restaurará la lista de categorías original. ¿Deseas continuar?"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se restaurará la lista de categorías original. ¿Deseas continuar?"
           }
         }
       }
     },
-    "Seleccionar Carpeta (iCloud o Local)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select Folder (iCloud or Local)"
+    "Seleccionar Carpeta (iCloud o Local)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select Folder (iCloud or Local)"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccionar Carpeta (iCloud o Local)"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seleccionar Carpeta (iCloud o Local)"
           }
         }
       }
     },
-    "Sincronización iCloud disponible" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iCloud Sync Available"
+    "Sincronización iCloud disponible": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sync Available"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sincronización iCloud disponible"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sincronización iCloud disponible"
           }
         }
       }
     },
-    "Sincronizado con iCloud" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synced with iCloud"
+    "Sincronizado con iCloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synced with iCloud"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sincronizado con iCloud"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sincronizado con iCloud"
           }
         }
       }
     },
-    "Sobre ingresos del período" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Of total period income"
+    "Sobre ingresos del período": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Of total period income"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobre ingresos del período"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sobre ingresos del período"
           }
         }
       }
     },
-    "Tasa de Ahorro" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Savings Rate"
+    "Tasa de Ahorro": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savings Rate"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tasa de Ahorro"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasa de Ahorro"
           }
         }
       }
     },
-    "Tipo de Movimiento" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transaction Type"
+    "Tipo de Movimiento": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction Type"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tipo de Movimiento"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipo de Movimiento"
           }
         }
       }
     },
-    "Todo el histórico" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All time"
+    "Todo el histórico": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All time"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todo el histórico"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todo el histórico"
           }
         }
       }
     },
-    "Todos los tipos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All types"
+    "Todos los tipos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All types"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todos los tipos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todos los tipos"
           }
         }
       }
     },
-    "Total de Categorías" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Categories"
+    "Total de Categorías": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total Categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total de Categorías"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total de Categorías"
           }
         }
       }
     },
-    "Tus Categorías" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your Categories"
+    "Tus Categorías": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your Categories"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tus Categorías"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tus Categorías"
           }
         }
       }
     },
-    "Ubicación de los Datos" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data Location"
+    "Ubicación de los Datos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data Location"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ubicación de los Datos"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ubicación de los Datos"
           }
         }
       }
     },
-    "Últimos 3 meses" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last 3 months"
+    "Últimos 3 meses": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last 3 months"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Últimos 3 meses"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Últimos 3 meses"
           }
         }
       }
     },
-    "Últimos 6 meses" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last 6 months"
+    "Últimos 6 meses": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last 6 months"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Últimos 6 meses"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Últimos 6 meses"
           }
         }
       }
     },
-    "Últimos 12 meses" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last 12 months"
+    "Últimos 12 meses": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last 12 months"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Últimos 12 meses"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Últimos 12 meses"
           }
         }
       }
     },
-    "Único: %lld€" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "One-off: %lld€"
+    "Único: %lld€": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One-off: %lld€"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Único: %lld€"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Único: %lld€"
           }
         }
       }
     },
-    "VISTA PREVIA" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PREVIEW"
+    "VISTA PREVIA": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PREVIEW"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "VISTA PREVIA"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VISTA PREVIA"
           }
         }
       }
     },
-    "Ya existe otra categoría con el nombre '%@'" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Another category named '%@' already exists"
+    "Ya existe otra categoría con el nombre '%@'": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another category named '%@' already exists"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ya existe otra categoría con el nombre '%@'"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya existe otra categoría con el nombre '%@'"
           }
         }
       }
     },
-    "Ya existe una categoría con ese nombre" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A category with that name already exists"
+    "Ya existe una categoría con ese nombre": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A category with that name already exists"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ya existe una categoría con ese nombre"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya existe una categoría con ese nombre"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

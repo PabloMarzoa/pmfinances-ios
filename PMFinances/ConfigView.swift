@@ -47,11 +47,15 @@ public struct ConfigView: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") {
-                        dismiss()
-                    }
+                #if os(iOS)
+                ToolbarItem(placement: .topBarLeading) {
+                    CircularDismissButton()
                 }
+                #else
+                ToolbarItem(placement: .cancellationAction) {
+                    CircularDismissButton()
+                }
+                #endif
             }
             .fileImporter(
                 isPresented: $showFolderPicker,
@@ -409,10 +413,6 @@ public struct ConfigView: View {
             print("Error selecting folder: \(error.localizedDescription)")
         }
     }
-}
-
-#Preview {
-    ConfigView(viewModel: FinancialViewModel())
 }
 
 #Preview {

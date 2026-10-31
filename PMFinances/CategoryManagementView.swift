@@ -48,18 +48,35 @@ public struct CategoryManagementView: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") {
-                        dismiss()
+                #if os(iOS)
+                ToolbarItem(placement: .topBarLeading) {
+                    CircularDismissButton()
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isCreatingNew = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 14, weight: .bold))
                     }
+                    .tint(.green)
+                    .accessibilityLabel("Añadir Categoría")
+                }
+                #else
+                ToolbarItem(placement: .cancellationAction) {
+                    CircularDismissButton()
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         isCreatingNew = true
                     } label: {
                         Image(systemName: "plus")
+                            .font(.system(size: 14, weight: .bold))
                     }
+                    .tint(.green)
+                    .accessibilityLabel("Añadir Categoría")
                 }
+                #endif
             }
             .sheet(isPresented: $isCreatingNew) {
                 newCategoryModal
@@ -319,6 +336,10 @@ private struct CategoryEditorModal: View {
     @State private var selectedColor: Color = .green
     @State private var selectedHex: String = "#10B981"
 
+    private var isNameValid: Bool {
+        !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
     private let presetHexColors: [String] = [
         "#10B981", "#059669", "#06B6D4", "#0284C7",
         "#3B82F6", "#6366F1", "#8B5CF6", "#A855F7",
@@ -343,7 +364,6 @@ private struct CategoryEditorModal: View {
                     previewSection
                     nameFieldSection
                     colorSelectionSection
-                    saveButtonSection
                 }
                 .padding(20)
             }
@@ -353,11 +373,25 @@ private struct CategoryEditorModal: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") {
-                        dismiss()
+                #if os(iOS)
+                ToolbarItem(placement: .topBarLeading) {
+                    CircularDismissButton()
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    CircularSaveButton(isEnabled: isNameValid) {
+                        saveCategory()
                     }
                 }
+                #else
+                ToolbarItem(placement: .cancellationAction) {
+                    CircularDismissButton()
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    CircularSaveButton(isEnabled: isNameValid) {
+                        saveCategory()
+                    }
+                }
+                #endif
             }
             .onAppear {
                 name = initialName
@@ -366,6 +400,14 @@ private struct CategoryEditorModal: View {
             }
         }
         .preferredColorScheme(.dark)
+    }
+
+    private func saveCategory() {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !trimmed.isEmpty {
+            onSave(trimmed, selectedHex)
+            dismiss()
+        }
     }
 
     @ViewBuilder
@@ -460,33 +502,6 @@ private struct CategoryEditorModal: View {
                     .stroke(Color.appBorder, lineWidth: 1)
             )
         }
-    }
-
-    @ViewBuilder
-    private var saveButtonSection: some View {
-        let isNameEmpty = name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-
-        Button {
-            let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
-            if !trimmed.isEmpty {
-                onSave(trimmed, selectedHex)
-                dismiss()
-            }
-        } label: {
-            HStack {
-                Spacer()
-                Text("Guardar Categoría")
-                    .font(.system(size: 15, weight: .bold))
-                Spacer()
-            }
-            .padding(.vertical, 13)
-            .background(isNameEmpty ? Color.gray.opacity(0.3) : Color.green)
-            .foregroundStyle(isNameEmpty ? Color.gray : Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-        }
-        .buttonStyle(.plain)
-        .disabled(isNameEmpty)
-        .padding(.top, 8)
     }
 }
 

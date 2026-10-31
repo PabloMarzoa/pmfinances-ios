@@ -3,6 +3,7 @@ import SwiftUI
 public struct ContentView: View {
     @StateObject private var viewModel = FinancialViewModel()
     @AppStorage("app_language") private var appLanguage: String = "es"
+    @State private var activeSwipedRecordId: String? = nil
 
     public init() {}
 
@@ -305,36 +306,18 @@ public struct ContentView: View {
             } else {
                 LazyVStack(spacing: 8) {
                     ForEach(viewModel.filteredRecords) { record in
-                        Button {
-                            viewModel.selectedRecordForEdit = record
-                        } label: {
-                            TransactionRowView(record: record)
-                                .padding(.horizontal, 14)
-                                .padding(.vertical, 8)
-                                .background(Color.appCardBackground)
-                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                        .stroke(Color.appBorder, lineWidth: 0.8)
-                                )
-                                .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 1)
-                        }
-                        .buttonStyle(.plain)
-                        .contextMenu {
-                            Button {
+                        SwipeableTransactionRow(
+                            record: record,
+                            activeSwipedId: $activeSwipedRecordId,
+                            onTap: {
                                 viewModel.selectedRecordForEdit = record
-                            } label: {
-                                Label("Editar", systemImage: "pencil")
-                            }
-
-                            Button(role: .destructive) {
+                            },
+                            onDelete: {
                                 Task {
                                     await viewModel.deleteRecord(id: record.id)
                                 }
-                            } label: {
-                                Label("Eliminar", systemImage: "trash")
                             }
-                        }
+                        )
                     }
                 }
             }

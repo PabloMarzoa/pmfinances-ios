@@ -70,3 +70,66 @@ public extension View {
         #endif
     }
 }
+
+// MARK: - iOS Notes Style Toolbar Buttons
+
+public struct CircularToolbarButtonStyle: ButtonStyle {
+    public init() {}
+
+    public func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.92 : 1.0)
+            .opacity(configuration.isPressed ? 0.75 : 1.0)
+            .animation(.easeOut(duration: 0.15), value: configuration.isPressed)
+    }
+}
+
+public struct CircularDismissButton: View {
+    @Environment(\.dismiss) private var dismiss
+    private let action: (() -> Void)?
+
+    public init(action: (() -> Void)? = nil) {
+        self.action = action
+    }
+
+    public var body: some View {
+        Button {
+            if let action = action {
+                action()
+            } else {
+                dismiss()
+            }
+        } label: {
+            Image(systemName: "chevron.left")
+                .font(.system(size: 14, weight: .bold))
+        }
+        .tint(.primary)
+        .accessibilityLabel("Cerrar")
+    }
+}
+
+public struct CircularSaveButton: View {
+    private let isSaving: Bool
+    private let isEnabled: Bool
+    private let action: () -> Void
+
+    public init(isSaving: Bool = false, isEnabled: Bool = true, action: @escaping () -> Void) {
+        self.isSaving = isSaving
+        self.isEnabled = isEnabled
+        self.action = action
+    }
+
+    public var body: some View {
+        Button(action: action) {
+            if isSaving {
+                ProgressView()
+            } else {
+                Image(systemName: "checkmark")
+                    .font(.system(size: 14, weight: .bold))
+            }
+        }
+        .disabled(!isEnabled || isSaving)
+        .tint(isEnabled ? .green : .secondary)
+        .accessibilityLabel("Guardar")
+    }
+}

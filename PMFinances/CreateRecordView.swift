@@ -159,30 +159,6 @@ public struct CreateRecordView: View {
                                 .stroke(Color.appBorder, lineWidth: 1)
                         )
                     }
-
-                    // Botón Guardar
-                    Button {
-                        save()
-                    } label: {
-                        HStack {
-                            Spacer()
-                            if isSaving {
-                                ProgressView()
-                                    .tint(.white)
-                            } else {
-                                Text("Guardar Movimiento")
-                                    .font(.system(size: 15, weight: .bold))
-                            }
-                            Spacer()
-                        }
-                        .padding(.vertical, 12)
-                        .background(isValid ? Color.green : Color.gray.opacity(0.3))
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                    }
-                    .buttonStyle(.plain)
-                    .disabled(!isValid || isSaving)
-                    .padding(.top, 10)
                 }
                 .padding(20)
             }
@@ -192,19 +168,27 @@ public struct CreateRecordView: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") {
-                        dismiss()
+                #if os(iOS)
+                ToolbarItem(placement: .topBarLeading) {
+                    CircularDismissButton()
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    CircularSaveButton(isSaving: isSaving, isEnabled: isValid) {
+                        save()
                     }
+                }
+                #else
+                ToolbarItem(placement: .cancellationAction) {
+                    CircularDismissButton()
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Guardar") {
+                    CircularSaveButton(isSaving: isSaving, isEnabled: isValid) {
                         save()
                     }
-                    .disabled(!isValid || isSaving)
-                    .fontWeight(.bold)
                 }
+                #endif
             }
         }
         #if os(macOS)

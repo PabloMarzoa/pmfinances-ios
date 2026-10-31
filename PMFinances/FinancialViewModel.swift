@@ -160,7 +160,9 @@ public class FinancialViewModel: ObservableObject {
     public func deleteRecord(id: String) async {
         guard let index = allRecords.firstIndex(where: { $0.id == id }) else { return }
         let original = allRecords[index]
-        allRecords.remove(at: index)
+        withAnimation(.easeInOut(duration: 0.25)) {
+            _ = allRecords.remove(at: index)
+        }
         selectedRecordForEdit = nil
 
         do {
