@@ -3,6 +3,7 @@ import SwiftUI
 public enum AppScreen: String, CaseIterable, Identifiable {
     case records = "Registros"
     case statistics = "Estadísticas"
+    case comparison = "Comparativa"
 
     public var id: String { rawValue }
 
@@ -10,6 +11,7 @@ public enum AppScreen: String, CaseIterable, Identifiable {
         switch self {
         case .records: return LocalizedStringKey("Registros")
         case .statistics: return LocalizedStringKey("Estadísticas")
+        case .comparison: return LocalizedStringKey("Comparativa")
         }
     }
 
@@ -17,6 +19,7 @@ public enum AppScreen: String, CaseIterable, Identifiable {
         switch self {
         case .records: return "list.bullet.rectangle"
         case .statistics: return "chart.pie.fill"
+        case .comparison: return "arrow.left.arrow.right"
         }
     }
 }
@@ -46,8 +49,10 @@ public struct ContentView: View {
                             errorBanner(error)
                         }
 
-                        // Filtros siempre arriba de todo
-                        FiltersBarView(viewModel: viewModel)
+                        // Filtros siempre arriba de todo en Registros y Estadísticas
+                        if selectedScreen != .comparison {
+                            FiltersBarView(viewModel: viewModel)
+                        }
 
                         // Contenido de la pantalla seleccionada
                         switch selectedScreen {
@@ -82,6 +87,9 @@ public struct ContentView: View {
 
                             // Gráfico de tarta de gastos por categoría (no interactivo)
                             CategoryPieChartView(stats: viewModel.stats)
+
+                        case .comparison:
+                            ComparisonView(viewModel: viewModel)
                         }
                     }
                     .padding(.horizontal, 16)

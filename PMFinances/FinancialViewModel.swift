@@ -336,7 +336,10 @@ public class FinancialViewModel: ObservableObject {
     }
 
     public var hasActiveFilters: Bool {
-        timeRange != .currentMonth ||
+        timeRange != .currentMonth || hasActiveCommonFilters
+    }
+
+    public var hasActiveCommonFilters: Bool {
         !selectedCategories.isEmpty ||
         selectedType != "all" ||
         !searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
@@ -345,6 +348,10 @@ public class FinancialViewModel: ObservableObject {
 
     public func clearFilters() {
         timeRange = .currentMonth
+        clearCommonFilters()
+    }
+
+    public func clearCommonFilters() {
         selectedCategories.removeAll()
         selectedType = "all"
         searchQuery = ""
@@ -354,26 +361,34 @@ public class FinancialViewModel: ObservableObject {
     // MARK: - Filtered Records
 
     public var filteredRecords: [FinancialRecord] {
+        filteredRecords(for: timeRange, customStart: customStartDate, customEnd: customEndDate)
+    }
+
+    public func filteredRecords(
+        for range: TimeRangeFilter,
+        customStart: Date? = nil,
+        customEnd: Date? = nil
+    ) -> [FinancialRecord] {
         let calendar = Calendar.current
         let now = Date()
 
         return allRecords.filter { record in
             // 1. Time range filter
-            if !matchesTimeRange(date: record.fecha, calendar: calendar, now: now) {
+            if !matchesTimeRange(range, date: record.fecha, calendar: calendar, now: now, customStart: customStart, customEnd: customEnd) {
                 return false
             }
 
-            // 2. Category filter
+            // 2. Common Category filter
             if !selectedCategories.isEmpty && !selectedCategories.contains(record.categoria) {
                 return false
             }
 
-            // 3. Type filter
+            // 3. Common Type filter
             if selectedType != "all" && record.tipo.rawValue != selectedType {
                 return false
             }
 
-            // 4. Amount filter
+            // 4. Common Amount filter
             if let min = minAmount, record.cantidad < min {
                 return false
             }
@@ -381,7 +396,7 @@ public class FinancialViewModel: ObservableObject {
                 return false
             }
 
-            // 5. Search query
+            // 5. Common Search query
             let query = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
             if !query.isEmpty {
                 let matchName = record.name.lowercased().contains(query)
@@ -395,8 +410,15 @@ public class FinancialViewModel: ObservableObject {
         }
     }
 
-    private func matchesTimeRange(date: Date, calendar: Calendar, now: Date) -> Bool {
-        switch timeRange {
+    public func matchesTimeRange(
+        _ range: TimeRangeFilter,
+        date: Date,
+        calendar: Calendar = .current,
+        now: Date = Date(),
+        customStart: Date? = nil,
+        customEnd: Date? = nil
+    ) -> Bool {
+        switch range {
         case .currentMonth:
             return calendar.isDate(date, equalTo: now, toGranularity: .month) &&
                    calendar.isDate(date, equalTo: now, toGranularity: .year)
@@ -418,8 +440,8 @@ public class FinancialViewModel: ObservableObject {
         case .all:
             return true
         case .custom:
-            let start = calendar.startOfDay(for: customStartDate)
-            let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: customEndDate) ?? customEndDate
+            let start = calendar.startOfDay(for: customStart ?? customStartDate)
+            let end = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: customEnd ?? customEndDate) ?? (customEnd ?? customEndDate)
             return date >= start && date <= end
         }
     }
@@ -427,8 +449,20 @@ public class FinancialViewModel: ObservableObject {
     // MARK: - Stats Calculation
 
     public var stats: FinancialStats {
+        calculateStats(for: filteredRecords)
+    }
+
+    public func stats(
+        for range: TimeRangeFilter,
+        customStart: Date? = nil,
+        customEnd: Date? = nil
+    ) -> FinancialStats {
+        let recs = filteredRecords(for: range, customStart: customStart, customEnd: customEnd)
+        return calculateStats(for: recs)
+    }
+
+    public func calculateStats(for records: [FinancialRecord]) -> FinancialStats {
         var s = FinancialStats()
-        let records = filteredRecords
         s.recordCount = records.count
 
         var expenseByCat: [String: (total: Double, count: Int)] = [:]

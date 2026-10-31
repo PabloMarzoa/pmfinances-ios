@@ -49,9 +49,11 @@ public struct FlowLayout: Layout {
 
 public struct FiltersBarView: View {
     @ObservedObject public var viewModel: FinancialViewModel
+    public var showTimeRange: Bool = true
 
-    public init(viewModel: FinancialViewModel) {
+    public init(viewModel: FinancialViewModel, showTimeRange: Bool = true) {
         self.viewModel = viewModel
+        self.showTimeRange = showTimeRange
     }
 
     public var body: some View {
@@ -87,38 +89,40 @@ public struct FiltersBarView: View {
 
             // Filter Chips Flow Layout (wraps to next line when chips don't fit)
             FlowLayout(spacing: 8) {
-                // Time Range Menu
-                Menu {
-                    ForEach(TimeRangeFilter.allCases) { range in
-                        Button {
-                            viewModel.timeRange = range
-                        } label: {
-                            HStack {
-                                Text(range.localizedTitle)
-                                if viewModel.timeRange == range {
-                                    Image(systemName: "checkmark")
+                if showTimeRange {
+                    // Time Range Menu
+                    Menu {
+                        ForEach(TimeRangeFilter.allCases) { range in
+                            Button {
+                                viewModel.timeRange = range
+                            } label: {
+                                HStack {
+                                    Text(range.localizedTitle)
+                                    if viewModel.timeRange == range {
+                                        Image(systemName: "checkmark")
+                                    }
                                 }
                             }
                         }
+                    } label: {
+                        HStack(spacing: 5) {
+                            Image(systemName: "calendar")
+                                .font(.system(size: 11))
+                            Text(viewModel.timeRange.localizedTitle)
+                                .font(.system(size: 12, weight: .medium))
+                        }
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .background(viewModel.timeRange != .currentMonth ? Color.green.opacity(0.18) : Color.appSecondaryFill)
+                        .foregroundStyle(viewModel.timeRange != .currentMonth ? Color.green : Color.primary)
+                        .clipShape(Capsule())
+                        .overlay(
+                            Capsule()
+                                .stroke(viewModel.timeRange != .currentMonth ? Color.green.opacity(0.6) : Color.appBorder, lineWidth: 1)
+                        )
                     }
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: "calendar")
-                            .font(.system(size: 11))
-                        Text(viewModel.timeRange.localizedTitle)
-                            .font(.system(size: 12, weight: .medium))
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
-                    .background(viewModel.timeRange != .currentMonth ? Color.green.opacity(0.18) : Color.appSecondaryFill)
-                    .foregroundStyle(viewModel.timeRange != .currentMonth ? Color.green : Color.primary)
-                    .clipShape(Capsule())
-                    .overlay(
-                        Capsule()
-                            .stroke(viewModel.timeRange != .currentMonth ? Color.green.opacity(0.6) : Color.appBorder, lineWidth: 1)
-                    )
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
 
                 // Category Filter Menu
                 Menu {
@@ -243,9 +247,14 @@ public struct FiltersBarView: View {
                 .buttonStyle(.plain)
 
                 // Clear Filters Button
-                if viewModel.hasActiveFilters {
+                let hasFilters = showTimeRange ? viewModel.hasActiveFilters : viewModel.hasActiveCommonFilters
+                if hasFilters {
                     Button {
-                        viewModel.clearFilters()
+                        if showTimeRange {
+                            viewModel.clearFilters()
+                        } else {
+                            viewModel.clearCommonFilters()
+                        }
                     } label: {
                         HStack(spacing: 4) {
                             Image(systemName: "xmark")
@@ -268,7 +277,7 @@ public struct FiltersBarView: View {
             }
 
             // Custom Date Range Row
-            if viewModel.timeRange == .custom {
+            if showTimeRange && viewModel.timeRange == .custom {
                 HStack(spacing: 12) {
                     DatePicker("Desde", selection: $viewModel.customStartDate, displayedComponents: .date)
                         .labelsHidden()

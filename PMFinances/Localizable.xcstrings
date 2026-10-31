@@ -114,6 +114,16 @@
         }
       }
     },
+    "%@%@ (%@%@)": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@%2$@ (%3$@%4$@)"
+          }
+        }
+      }
+    },
     "%lld": {
       "localizations": {
         "en": {
@@ -179,6 +189,7 @@
         }
       }
     },
+    "%lld movs": {},
     "%lld registrados": {
       "localizations": {
         "en": {
@@ -323,6 +334,23 @@
         }
       }
     },
+    "A:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A:"
+          }
+        }
+      }
+    },
+    "A: %@": {},
     "Ajustes": {
       "localizations": {
         "en": {
@@ -468,6 +496,23 @@
         }
       }
     },
+    "B:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "B:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "B:"
+          }
+        }
+      }
+    },
+    "B: %@": {},
     "Balance Neto": {
       "localizations": {
         "en": {
@@ -778,6 +823,54 @@
         }
       }
     },
+    "Comparación del gasto en cada categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expense comparison across categories"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparación del gasto en cada categoría"
+          }
+        }
+      }
+    },
+    "Comparativa": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparison"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparativa"
+          }
+        }
+      }
+    },
+    "Comparativa de Intervalos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interval Comparison"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparativa de Intervalos"
+          }
+        }
+      }
+    },
     "Comparativa Ingresos vs Gastos": {
       "localizations": {
         "en": {
@@ -790,6 +883,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Comparativa Ingresos vs Gastos"
+          }
+        }
+      }
+    },
+    "Comparativa Visual": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visual Comparison"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparativa Visual"
           }
         }
       }
@@ -873,6 +982,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Desde"
+          }
+        }
+      }
+    },
+    "Dif:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diff:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dif:"
           }
         }
       }
@@ -1367,6 +1492,22 @@
         }
       }
     },
+    "Filtros comunes para ambos intervalos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Common filters for both intervals"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filtros comunes para ambos intervalos"
+          }
+        }
+      }
+    },
     "finanzas_export.csv": {
       "localizations": {
         "en": {
@@ -1755,6 +1896,22 @@
         }
       }
     },
+    "Ingresos, Gastos y Balance lado a lado": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income, Expenses and Balance side by side"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingresos, Gastos y Balance lado a lado"
+          }
+        }
+      }
+    },
     "Ingresos:": {
       "localizations": {
         "en": {
@@ -1767,6 +1924,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ingresos:"
+          }
+        }
+      }
+    },
+    "Intercambiar intervalos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swap intervals"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intercambiar intervalos"
+          }
+        }
+      }
+    },
+    "Intervalo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interval"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intervalo"
           }
         }
       }
@@ -1831,6 +2020,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mes pasado"
+          }
+        }
+      }
+    },
+    "Métrica": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metric"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Métrica"
           }
         }
       }
@@ -1930,6 +2135,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "No hay datos suficientes para calcular la evolución mensual."
+          }
+        }
+      }
+    },
+    "No hay gastos para comparar en las categorías seleccionadas.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No expenses to compare for the selected categories."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No hay gastos para comparar en las categorías seleccionadas."
           }
         }
       }
@@ -2107,6 +2328,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "PMFinances"
+          }
+        }
+      }
+    },
+    "Preajustes:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Presets:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preajustes:"
           }
         }
       }
@@ -2300,6 +2537,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Se restaurará la lista de categorías original. ¿Deseas continuar?"
+          }
+        }
+      }
+    },
+    "Selecciona dos períodos temporales para comparar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select two time periods to compare"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selecciona dos períodos temporales para comparar"
           }
         }
       }
@@ -2572,6 +2825,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "VISTA PREVIA"
+          }
+        }
+      }
+    },
+    "VS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VS"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VS"
           }
         }
       }
