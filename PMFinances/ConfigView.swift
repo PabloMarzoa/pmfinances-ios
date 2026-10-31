@@ -549,6 +549,22 @@ public struct ShortcutsSettingsView: View {
         self.viewModel = viewModel
     }
 
+    private func runShortcut() {
+        #if os(iOS)
+        if let url = URL(string: "shortcuts://run-shortcut?name=Nuevo%20Registro") {
+            UIApplication.shared.open(url) { success in
+                if !success, let fallback = URL(string: "shortcuts://") {
+                    UIApplication.shared.open(fallback)
+                }
+            }
+        }
+        #elseif os(macOS)
+        if let url = URL(string: "shortcuts://") {
+            NSWorkspace.shared.open(url)
+        }
+        #endif
+    }
+
     private func openShortcutsApp() {
         #if os(iOS)
         if let url = URL(string: "shortcuts://") {
@@ -564,16 +580,19 @@ public struct ShortcutsSettingsView: View {
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Header explicativo
+                // Header explicativo con estado del atajo
                 headerCard
 
-                // Botón abrir app Atajos
-                openShortcutsButton
+                // Tarjeta detallando los 5 campos que compone el nuevo registro
+                fieldsRequirementCard
 
-                // Categorías sincronizadas
+                // Botones de acción principales
+                actionButtons
+
+                // Categorías dinámicas
                 dynamicCategoriesCard
 
-                // Guía de uso con Siri
+                // Comandos de voz con Siri
                 siriVoiceCard
 
                 // Automatización Apple Pay
@@ -592,7 +611,7 @@ public struct ShortcutsSettingsView: View {
     }
 
     private var headerCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
             HStack(spacing: 12) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -603,12 +622,22 @@ public struct ShortcutsSettingsView: View {
                         .foregroundStyle(.orange)
                 }
 
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Integración con Atajos de Apple")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(.primary)
+                VStack(alignment: .leading, spacing: 3) {
+                    HStack(spacing: 6) {
+                        Text("Atajo Completo Listo")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundStyle(.primary)
 
-                    Text("Añade movimientos directamente a finanzas.json sin abrir la app.")
+                        Text("NATIVO")
+                            .font(.system(size: 9, weight: .black))
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.green.opacity(0.2))
+                            .foregroundStyle(.green)
+                            .clipShape(Capsule())
+                    }
+
+                    Text("Creado e integrado automáticamente en iOS.")
                         .font(.system(size: 12))
                         .foregroundStyle(.secondary)
                 }
@@ -617,7 +646,7 @@ public struct ShortcutsSettingsView: View {
             Divider()
                 .background(Color.appBorder)
 
-            Text("PMFinances incluye acciones nativas para Apple Shortcuts (App Intents). Cualquier atajo que crees se alimenta automáticamente de tus categorías y guarda las transacciones en tu archivo JSON.")
+            Text("El atajo está completamente configurado y listo para usar sin necesidad de crear bloques a mano. Al ejecutarse por voz, desde la app Atajos o desde un widget, te solicita interactivamente los datos del movimiento y lo guarda al instante en tu finanzas.json.")
                 .font(.system(size: 13))
                 .foregroundStyle(.secondary)
         }
@@ -630,31 +659,123 @@ public struct ShortcutsSettingsView: View {
         )
     }
 
-    private var openShortcutsButton: some View {
-        Button {
-            openShortcutsApp()
-        } label: {
-            HStack(spacing: 10) {
-                Image(systemName: "arrow.up.forward.app.fill")
-                    .font(.system(size: 16))
+    private var fieldsRequirementCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 6) {
+                Image(systemName: "checklist")
+                    .font(.system(size: 14))
+                    .foregroundStyle(.orange)
 
-                Text("Abrir la App Atajos de Apple")
-                    .font(.system(size: 15, weight: .bold))
-
-                Spacer()
-
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundStyle(.secondary)
+                Text("Datos requeridos por el Atajo")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(.primary)
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 14)
-            .background(Color.orange)
-            .foregroundStyle(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .shadow(color: Color.orange.opacity(0.3), radius: 6, x: 0, y: 3)
+
+            Text("Cada nuevo registro solicita de forma autónoma:")
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
+
+            VStack(alignment: .leading, spacing: 8) {
+                requirementRow(
+                    icon: "eurosign.circle.fill",
+                    color: .green,
+                    title: "Importe / Cantidad",
+                    detail: "Pregunta el valor numérico en euros (ej. 45,50 €)."
+                )
+
+                requirementRow(
+                    icon: "text.alignleft",
+                    color: .blue,
+                    title: "Concepto o Comercio",
+                    detail: "Pregunta el nombre o descripción (ej. Mercadona, Amazon, Nómina)."
+                )
+
+                requirementRow(
+                    icon: "tag.fill",
+                    color: .purple,
+                    title: "Categoría Dinámica",
+                    detail: "Muestra un selector interactivo con tus categorías actuales de la app."
+                )
+
+                requirementRow(
+                    icon: "arrow.triangle.2.circlepath.circle.fill",
+                    color: .cyan,
+                    title: "Tipo de Movimiento",
+                    detail: "Selector entre Gasto Único, Gasto Recurrente o Ingreso."
+                )
+
+                requirementRow(
+                    icon: "clock.fill",
+                    color: .orange,
+                    title: "Fecha de Creación",
+                    detail: "Se asigna automáticamente la fecha y hora exacta del momento en que se ejecuta."
+                )
+            }
         }
-        .buttonStyle(.plain)
+        .padding(16)
+        .background(Color.appCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.appBorder, lineWidth: 1)
+        )
+    }
+
+    private var actionButtons: some View {
+        VStack(spacing: 10) {
+            Button {
+                runShortcut()
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: "play.circle.fill")
+                        .font(.system(size: 18))
+
+                    Text("Ejecutar Atajo 'Nuevo Registro'")
+                        .font(.system(size: 15, weight: .bold))
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(.white.opacity(0.8))
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 14)
+                .background(Color.orange)
+                .foregroundStyle(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .shadow(color: Color.orange.opacity(0.3), radius: 6, x: 0, y: 3)
+            }
+            .buttonStyle(.plain)
+
+            Button {
+                openShortcutsApp()
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: "square.stack.3d.up.fill")
+                        .font(.system(size: 16))
+
+                    Text("Abrir la App Atajos de Apple")
+                        .font(.system(size: 14, weight: .semibold))
+
+                    Spacer()
+
+                    Image(systemName: "arrow.up.forward")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+                .background(Color.appSecondaryFill)
+                .foregroundStyle(.primary)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .stroke(Color.appBorder, lineWidth: 1)
+                )
+            }
+            .buttonStyle(.plain)
+        }
     }
 
     private var dynamicCategoriesCard: some View {
@@ -718,14 +839,14 @@ public struct ShortcutsSettingsView: View {
                     .foregroundStyle(.primary)
             }
 
-            Text("Puedes pedirle a Siri que registre tus gastos diciendo:")
+            Text("Siri te preguntará interactivamente el importe, concepto, categoría y tipo:")
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
 
             VStack(alignment: .leading, spacing: 6) {
-                siriExampleRow("“Oye Siri, añade un gasto en PMFinances”")
                 siriExampleRow("“Oye Siri, nuevo registro en PMFinances”")
-                siriExampleRow("“Oye Siri, añade 15 euros a Amazon en PMFinances”")
+                siriExampleRow("“Oye Siri, añade un gasto en PMFinances”")
+                siriExampleRow("“Oye Siri, registra un movimiento en PMFinances”")
             }
         }
         .padding(16)
@@ -793,6 +914,25 @@ public struct ShortcutsSettingsView: View {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .stroke(Color.appBorder, lineWidth: 1)
         )
+    }
+
+    private func requirementRow(icon: String, color: Color, title: String, detail: String) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: icon)
+                .font(.system(size: 14))
+                .foregroundStyle(color)
+                .frame(width: 20, height: 20)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(.primary)
+
+                Text(detail)
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
+            }
+        }
     }
 
     private func siriExampleRow(_ text: String) -> some View {

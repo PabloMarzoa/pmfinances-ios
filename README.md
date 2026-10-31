@@ -9,7 +9,8 @@
 ### 1. Tres Pantallas Principales (Selector en Barra Superior)
 - **Registros**:
   - Listado cronológico de movimientos con tarjetas elegantes y contrastadas.
-  - Acciones gestuales de deslizar (*swipe actions*) para editar o eliminar transacciones al instante.
+  - **Deslizar para borrar optimizado**: El gesto de borrado rápido se activa únicamente al deslizar desde el lado derecho de la fila (zona del importe), garantizando un desplazamiento vertical (*scroll*) suave y sin interferencias en el resto de la fila.
+  - Menú contextual al mantener pulsado para editar o eliminar.
   - Desglose superior de categorías con selección interactiva.
   - Botón flotante para registrar nuevos movimientos rápidamente.
 - **Estadísticas**:
@@ -25,34 +26,40 @@
 
 ---
 
-### 2. Integración con Atajos de Apple y Siri (App Intents)
+### 2. Atajo Completo Autónomo y Siri (Apple Shortcuts & App Intents)
 
-PMFinances incluye compatibilidad nativa con **Apple Shortcuts** a través del framework moderno **App Intents**, permitiendo registrar gastos en `finanzas.json` en segundo plano sin necesidad de abrir la aplicación.
+PMFinances incluye un **atajo nativo 100% completo y listo para usar** mediante el framework moderno **App Intents**. No es necesario diseñar flujos ni conectar bloques manualmente en la app Atajos; el atajo **"Nuevo Registro"** ya viene creado y preconfigurado en el sistema operativo.
 
-#### Acciones disponibles en la App Atajos:
-1. **Añadir Registro Financiero (`AddFinancialRecordIntent`)**:
-   - **Parámetros**:
-     - **Concepto / Descripción**: Nombre del movimiento (ej. *"Supermercado"*, *"Cena con amigos"*, *"Amazon"*).
-     - **Importe (€)**: Cantidad numérica.
-     - **Categoría**: Menú desplegable alimentado **en tiempo real** con tus categorías de `categorias.json`.
-     - **Tipo**: *Gasto Único*, *Gasto Recurrente* o *Ingreso* (por defecto *Gasto Único*).
-     - **Fecha**: Fecha y hora del movimiento (por defecto la actual).
-   - Escribe directamente en el archivo JSON activo (local o iCloud Drive) y devuelve un resumen de confirmación.
-2. **Obtener Categorías de PMFinances (`GetCategoriesIntent`)**:
-   - Devuelve la lista actual de categorías configuradas en la app para usarlas en flujos de trabajo personalizados.
+#### ¿Qué tiene que hacer el usuario al descargarse la app para usarlo?
+**Absolutamente nada técnico ni manual.** Al instalar PMFinances, iOS registra automáticamente el atajo en el sistema. Cualquier usuario puede utilizarlo al instante de 3 formas:
+1. **Con la voz mediante Siri (sin tocar nada)**:
+   - Diciendo: *“Oye Siri, nuevo registro en PMFinances”* (o *“Oye Siri, añade un gasto en PMFinances”*).
+   - Siri preguntará interactivamente por voz o tarjeta en pantalla los datos requeridos y guardará el registro.
+2. **Desde la App Atajos de Apple**:
+   - Abrir la app nativa **Atajos**; en la sección de PMFinances aparecerá el atajo **"Nuevo Registro"** listo para pulsar.
+3. **Desde los Ajustes de la App**:
+   - En *Ajustes > Atajos de Siri*, pulsar directamente en **"Ejecutar Atajo 'Nuevo Registro'"**.
 
-#### Formas de Uso:
-- **Comandos de Voz con Siri**:
-  - *"Oye Siri, añade un gasto en PMFinances"*
-  - *"Oye Siri, nuevo registro en PMFinances"*
-- **Automatizaciones de iOS (ej. con Apple Pay)**:
+#### Flujo Interactivo Completo (5 Datos Requeridos):
+Al ejecutarse, el atajo solicita de forma guiada y autónoma:
+1. **Importe / Cantidad (€)**: Solicita el valor numérico (ej. *45,50 €*).
+2. **Concepto o Comercio**: Pregunta el nombre o descripción del gasto/ingreso (ej. *Mercadona, Amazon, Nómina*).
+3. **Categoría Dinámica**: Muestra un selector interactivo alimentado **en tiempo real** con las categorías de `categorias.json`.
+4. **Tipo de Movimiento**: Selector interactivo entre *Gasto Único*, *Gasto Recurrente* o *Ingreso*.
+5. **Fecha del Momento de Creación**: Asigna automáticamente la fecha y hora exacta en la que se ejecuta el atajo.
+
+Al finalizar, escribe la transacción directamente en el archivo `finanzas.json` (almacenamiento local o iCloud Drive) y emite un diálogo de confirmación con el resumen.
+
+#### Configuraciones Opcionales para Máxima Comodidad:
+- **Botón de Acción (iPhone 15 Pro, iPhone 16)**:
+  - En *Ajustes de iOS > Botón de Acción > Atajo > Nuevo Registro*. Permite registrar un gasto en 2 segundos manteniendo pulsado el botón lateral.
+- **Widgets de Pantalla de Bloqueo o Inicio**:
+  - Añade un widget de la app Atajos apuntando a *Nuevo Registro* para tener un acceso directo permanente.
+- **Automatización Inmediata con Apple Pay**:
   1. En la app **Atajos**, ve a la pestaña **Automatización**.
   2. Pulsa en **+** y selecciona **Transacción** (Apple Pay).
   3. Elige tus tarjetas bancarias y marca *Ejecutar inmediatamente*.
-  4. Añade la acción *Añadir Registro Financiero* de PMFinances vinculando el comercio y el importe de la transacción. ¡Tus compras se guardarán solas al pagar con el iPhone o Apple Watch!
-- **Botón de Acción y Pantalla de Inicio**:
-  - Asigna el atajo al Botón de Acción en *Ajustes > Botón de acción > Atajo* (iPhone 15 Pro, 16, etc.).
-  - Añade un widget de Atajos a tu pantalla de inicio o pantalla de bloqueo para registrar gastos con un solo toque.
+  4. Vincula la acción *Añadir Registro Financiero* usando el importe y comercio de la transacción detectada.
 
 ---
 

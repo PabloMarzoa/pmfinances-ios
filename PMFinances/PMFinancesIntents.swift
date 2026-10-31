@@ -16,6 +16,14 @@ public enum TransactionTypeIntentOption: String, AppEnum, Sendable {
         .ingreso: "Ingreso"
     ]
 
+    public var localizedTitle: String {
+        switch self {
+        case .gastoUnico: return "Gasto Único"
+        case .gastoRecurrente: return "Gasto Recurrente"
+        case .ingreso: return "Ingreso"
+        }
+    }
+
     public func toDomainType() -> TransactionType {
         switch self {
         case .gastoUnico: return .gastoUnico
@@ -37,41 +45,40 @@ public struct DynamicCategoryOptionsProvider: DynamicOptionsProvider {
     }
 }
 
-// MARK: - Add Financial Record Intent
+// MARK: - Complete Add Financial Record Intent
 
 public struct AddFinancialRecordIntent: AppIntent {
     public static var title: LocalizedStringResource = "Añadir Registro Financiero"
-    public static var description = IntentDescription("Añade un nuevo movimiento a finanzas.json en PMFinances.")
+    public static var description = IntentDescription("Atajo completo para añadir un movimiento a finanzas.json solicitando importe, concepto, categoría, tipo y fecha actual.")
+
+    @Parameter(
+        title: "Importe (€)",
+        description: "Cantidad en euros del movimiento"
+    )
+    public var cantidad: Double?
 
     @Parameter(
         title: "Concepto",
         description: "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)"
     )
-    public var name: String
-
-    @Parameter(
-        title: "Importe (€)",
-        description: "Cantidad en euros"
-    )
-    public var cantidad: Double
+    public var name: String?
 
     @Parameter(
         title: "Categoría",
-        description: "Categoría del movimiento alimentada desde PMFinances",
+        description: "Categoría del movimiento alimentada desde las categorías de PMFinances",
         optionsProvider: DynamicCategoryOptionsProvider()
     )
-    public var categoria: String
+    public var categoria: String?
 
     @Parameter(
-        title: "Tipo",
-        description: "Tipo de transacción (Gasto Único, Gasto Recurrente o Ingreso)",
-        default: .gastoUnico
+        title: "Tipo de Movimiento",
+        description: "Tipo de transacción (Gasto Único, Gasto Recurrente o Ingreso)"
     )
-    public var tipo: TransactionTypeIntentOption
+    public var tipo: TransactionTypeIntentOption?
 
     @Parameter(
         title: "Fecha",
-        description: "Fecha y hora del movimiento",
+        description: "Fecha y hora del movimiento (por defecto el momento en que se crea el registro)",
         default: .now
     )
     public var fecha: Date
@@ -86,21 +93,69 @@ public struct AddFinancialRecordIntent: AppIntent {
     }
 
     public func perform() async throws -> some IntentResult & ProvidesDialog {
-        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        let finalName = trimmedName.isEmpty ? "Movimiento sin concepto" : trimmedName
-        let cleanCategory = categoria.trimmingCharacters(in: .whitespacesAndNewlines)
-        let finalCategory = cleanCategory.isEmpty ? "Otros" : cleanCategory
+        // 1. Importe / Cantidad (solicitar si no se ha proporcionado)
+        let resolvedAmount: Double
+        if let c = cantidad, c > 0 {
+            resolvedAmount = c
+        } else {
+            resolvedAmount = try await $cantidad.requestValue(
+                IntentDialog("Introduce el importe o cantidad en euros (€):")
+            )
+        }
 
+        // 2. Concepto (solicitar si no se ha proporcionado)
+        let resolvedName: String
+        if let n = name?.trimmingCharacters(in: .whitespacesAndNewlines), !n.isEmpty {
+            resolvedName = n
+        } else {
+            resolvedName = try await $name.requestValue(
+                IntentDialog("Introduce el concepto o comercio:")
+            )
+        }
+
+        // 3. Categoría (alimentada en tiempo real de categorias.json)
+        let categories = (try? LocalStorageService.shared.fetchCategories()) ?? FinancialCategory.defaultCategories
+        let categoryNames = categories.map { $0.name }.filter { !$0.isEmpty }
+        let validCategories = categoryNames.isEmpty ? ["Otros"] : categoryNames
+
+        let resolvedCategory: String
+        if let cat = categoria?.trimmingCharacters(in: .whitespacesAndNewlines), !cat.isEmpty {
+            resolvedCategory = cat
+        } else {
+            resolvedCategory = try await $categoria.requestDisambiguation(
+                among: validCategories,
+                dialog: IntentDialog("Selecciona una categoría:")
+            )
+        }
+
+        // 4. Tipo de movimiento (Gasto Único, Gasto Recurrente o Ingreso)
+        let resolvedTipo: TransactionTypeIntentOption
+        if let t = tipo {
+            resolvedTipo = t
+        } else {
+            resolvedTipo = try await $tipo.requestDisambiguation(
+                among: TransactionTypeIntentOption.allCases,
+                dialog: IntentDialog("Selecciona el tipo de movimiento:")
+            )
+        }
+
+        // 5. Fecha del momento en que se crea el registro
+        let resolvedDate = fecha
+
+        // Guardar directamente en finanzas.json
         _ = try LocalStorageService.shared.createRecord(
-            name: finalName,
-            cantidad: abs(cantidad),
-            categoria: finalCategory,
-            tipo: tipo.toDomainType(),
-            fecha: fecha
+            name: resolvedName,
+            cantidad: abs(resolvedAmount),
+            categoria: resolvedCategory,
+            tipo: resolvedTipo.toDomainType(),
+            fecha: resolvedDate
         )
 
-        let formattedAmount = String(format: "%.2f €", abs(cantidad))
-        return .result(dialog: "Añadido a PMFinances: \(finalName) (\(formattedAmount)) en \(finalCategory).")
+        let formattedAmount = String(format: "%.2f €", abs(resolvedAmount))
+        let tipoName = resolvedTipo.localizedTitle
+        return .result(
+            dialog: "Añadido a PMFinances: \(resolvedName) (\(formattedAmount)) en \(resolvedCategory) como \(tipoName)."
+        )
     }
 }
 
@@ -132,9 +187,10 @@ public struct PMFinancesShortcuts: AppShortcutsProvider {
                 "Añadir gasto en \(.applicationName)",
                 "Nuevo registro en \(.applicationName)",
                 "Añadir movimiento a \(.applicationName)",
-                "Registrar gasto con \(.applicationName)"
+                "Registrar gasto con \(.applicationName)",
+                "Crear gasto en \(.applicationName)"
             ],
-            shortTitle: "Añadir Registro",
+            shortTitle: "Nuevo Registro",
             systemImageName: "plus.circle.fill"
         )
         AppShortcut(

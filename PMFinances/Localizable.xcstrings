@@ -1,3307 +1,3803 @@
 {
-  "sourceLanguage": "es",
-  "strings": {
-    "": {},
-    "-%@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "-%@"
+  "sourceLanguage" : "es",
+  "strings" : {
+    "" : {
+
+    },
+    "-%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%@"
+          }
+        }
+      }
+    },
+    "-%lld€" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld€"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-%lld€"
+          }
+        }
+      }
+    },
+    "¿Cómo sincronizar con iCloud?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to sync with iCloud?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cómo sincronizar con iCloud?"
+          }
+        }
+      }
+    },
+    "¿Eliminar este movimiento?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete this transaction?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Eliminar este movimiento?"
+          }
+        }
+      }
+    },
+    "¿Seguro que deseas eliminar la categoría '%@'?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete category '%@'?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Seguro que deseas eliminar la categoría '%@'?"
+          }
+        }
+      }
+    },
+    "“Oye Siri, añade un gasto en PMFinances”" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Hey Siri, add an expense in PMFinances”"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Oye Siri, añade un gasto en PMFinances”"
+          }
+        }
+      }
+    },
+    "“Oye Siri, nuevo registro en PMFinances”" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Hey Siri, new record in PMFinances”"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Oye Siri, nuevo registro en PMFinances”"
+          }
+        }
+      }
+    },
+    "“Oye Siri, registra un movimiento en PMFinances”" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Hey Siri, record a transaction in PMFinances”"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Oye Siri, registra un movimiento en PMFinances”"
+          }
+        }
+      }
+    },
+    "(%lld movs)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(%lld txs)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(%lld movs)"
+          }
+        }
+      }
+    },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@%2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
+    "%@%@ (%@%@)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@ (%3$@%4$@)"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld categorías" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld categories"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld categorías"
+          }
+        }
+      }
+    },
+    "%lld categorías configuradas" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld configured categories"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld categorías configuradas"
+          }
+        }
+      }
+    },
+    "%lld configuradas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld configured"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld configuradas"
+          }
+        }
+      }
+    },
+    "%lld disponibles" : {
+
+    },
+    "%lld movs" : {
+
+    },
+    "%lld registrados" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld recorded"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld registrados"
+          }
+        }
+      }
+    },
+    "•" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "•"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "•"
+          }
+        }
+      }
+    },
+    "→" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→"
+          }
+        }
+      }
+    },
+    "+%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%@"
+          }
+        }
+      }
+    },
+    "+%lld€" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld€"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld€"
+          }
+        }
+      }
+    },
+    "€" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "€"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "€"
+          }
+        }
+      }
+    },
+    "0,00" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0.00"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0,00"
+          }
+        }
+      }
+    },
+    "50 € - 200 €" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "€50 - €200"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50 € - 200 €"
           }
+        }
+      }
+    },
+    "200 € - 500 €" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "€200 - €500"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "200 € - 500 €"
+          }
+        }
+      }
+    },
+    "A:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A:"
+          }
+        }
+      }
+    },
+    "A: %@" : {
+
+    },
+    "Abrir la App Atajos de Apple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Apple Shortcuts App"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir la App Atajos de Apple"
+          }
+        }
+      }
+    },
+    "Ajustes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes"
+          }
+        }
+      }
+    },
+    "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetting will restore the 22 standard categories recommended by the app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación."
+          }
+        }
+      }
+    },
+    "Almacenamiento de datos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Storage"
+          }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "-%@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almacenamiento de datos"
           }
         }
       }
     },
-    "-%lld€": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "-%lld€"
+    "Almacenamiento Local" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local Storage"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "-%lld€"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almacenamiento Local"
           }
         }
       }
     },
-    "¿Cómo sincronizar con iCloud?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "How to sync with iCloud?"
+    "Almacenamiento y Sincronización" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Storage & Sync"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "¿Cómo sincronizar con iCloud?"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almacenamiento y Sincronización"
           }
         }
       }
     },
-    "¿Eliminar este movimiento?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete this transaction?"
+    "Añade movimientos directamente a finanzas.json sin abrir la app." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add records directly to finanzas.json without opening the app."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "¿Eliminar este movimiento?"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade movimientos directamente a finanzas.json sin abrir la app."
           }
         }
       }
     },
-    "¿Seguro que deseas eliminar la categoría '%@'?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Are you sure you want to delete category '%@'?"
+    "Añade un nuevo movimiento a finanzas.json en PMFinances." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adds a new record to finanzas.json in PMFinances."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "¿Seguro que deseas eliminar la categoría '%@'?"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añade un nuevo movimiento a finanzas.json en PMFinances."
+          }
+        }
+      }
+    },
+    "Añadido a PMFinances: %@ (%@) en %@ como %@." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Añadido a PMFinances: %1$@ (%2$@) en %3$@ como %4$@."
           }
         }
       }
     },
-    "(%lld movs)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "(%lld txs)"
+    "Añadir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "(%lld movs)"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir"
           }
         }
       }
     },
-    "%@%@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@%2$@"
+    "Añadir ${name} de ${cantidad} € en ${categoria}" : {
+
+    },
+    "Añadir Categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Category"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@%2$@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir Categoría"
           }
         }
       }
     },
-    "%@%@ (%@%@)": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@%2$@ (%3$@%4$@)"
+    "Añadir Registro" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Record"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir Registro"
           }
         }
       }
     },
-    "%lld": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld"
+    "Añadir Registro Financiero" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Financial Record"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir Registro Financiero"
           }
         }
       }
     },
-    "%lld categorías": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld categories"
+    "Año actual" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current year"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld categorías"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Año actual"
           }
         }
       }
     },
-    "%lld categorías configuradas": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld configured categories"
+    "Archivo: finanzas.json" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File: finanzas.json"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld categorías configuradas"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivo: finanzas.json"
           }
         }
       }
     },
-    "%lld configuradas": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld configured"
+    "Atajo Completo Listo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete Shortcut Ready"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld configuradas"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atajo Completo Listo"
           }
         }
       }
     },
-    "%lld disponibles": {},
-    "%lld movs": {},
-    "%lld registrados": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld recorded"
+    "Atajo completo para añadir un movimiento a finanzas.json solicitando importe, concepto, categoría, tipo y fecha actual." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete shortcut to add a transaction to finanzas.json prompting for amount, description, category, type, and current date."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld registrados"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atajo completo para añadir un movimiento a finanzas.json solicitando importe, concepto, categoría, tipo y fecha actual."
           }
         }
       }
     },
-    "•": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "•"
+    "Atajos de Siri" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri Shortcuts"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "•"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atajos de Siri"
           }
         }
       }
     },
-    "→": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "→"
+    "Automatización con Apple Pay" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Pay Automation"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "→"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatización con Apple Pay"
           }
         }
       }
     },
-    "+%@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "+%@"
+    "B:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "+%@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B:"
           }
         }
       }
     },
-    "+%lld€": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "+%lld€"
+    "B: %@" : {
+
+    },
+    "Balance Neto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Net Balance"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "+%lld€"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance Neto"
           }
         }
       }
     },
-    "€": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "€"
+    "Balance: %@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance: %1$@%2$@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "€"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance: %1$@%2$@"
           }
         }
       }
     },
-    "0,00": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0.00"
+    "Borrar filtros" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear filters"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0,00"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar filtros"
           }
         }
       }
     },
-    "50 € - 200 €": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "€50 - €200"
+    "Botón de Acción y Widgets" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Action Button and Widgets"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "50 € - 200 €"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Botón de Acción y Widgets"
           }
         }
       }
     },
-    "200 € - 500 €": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "€200 - €500"
+    "Buscar categoría..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search category..."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "200 € - 500 €"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar categoría..."
           }
         }
       }
     },
-    "A:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A:"
+    "Buscar movimiento..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search transaction..."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar movimiento..."
           }
         }
       }
     },
-    "A: %@": {},
-    "Abrir la App Atajos de Apple": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Apple Shortcuts App"
+    "Cada nuevo registro solicita de forma autónoma:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each new record autonomously requests:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abrir la App Atajos de Apple"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada nuevo registro solicita de forma autónoma:"
           }
         }
       }
     },
-    "Ajustes": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Settings"
+    "Cambiar Carpeta de Guardado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Storage Folder"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ajustes"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar Carpeta de Guardado"
           }
         }
       }
     },
-    "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Resetting will restore the 22 standard categories recommended by the app."
+    "Cancelar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
           }
         }
       }
     },
-    "Almacenamiento de datos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data Storage"
+    "Cantidad en euros" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount in euros"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Almacenamiento de datos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cantidad en euros"
           }
         }
       }
     },
-    "Almacenamiento Local": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Local Storage"
+    "Cantidad en euros del movimiento" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction amount in euros"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Almacenamiento Local"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cantidad en euros del movimiento"
           }
         }
       }
     },
-    "Almacenamiento y Sincronización": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Storage & Sync"
+    "Cargar Datos de Demostración" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Load Demo Data"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Almacenamiento y Sincronización"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargar Datos de Demostración"
           }
         }
       }
     },
-    "Añade movimientos directamente a finanzas.json sin abrir la app.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add records directly to finanzas.json without opening the app."
+    "Carpeta configurada correctamente" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folder configured successfully"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Añade movimientos directamente a finanzas.json sin abrir la app."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carpeta configurada correctamente"
           }
         }
       }
     },
-    "Añade un nuevo movimiento a finanzas.json en PMFinances.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Adds a new record to finanzas.json in PMFinances."
+    "Carpeta Personalizada" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Folder"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Añade un nuevo movimiento a finanzas.json en PMFinances."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carpeta Personalizada"
           }
         }
       }
     },
-    "Añadido a PMFinances: %@ (%@) en %@.": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Añadido a PMFinances: %1$@ (%2$@) en %3$@."
+    "Categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría"
           }
         }
       }
     },
-    "Añadir": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add"
+    "Categoría actualizada" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category updated"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Añadir"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría actualizada"
           }
         }
       }
     },
-    "Añadir ${name} de ${cantidad} € en ${categoria}": {},
-    "Añadir Categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add Category"
+    "Categoría añadida: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category added: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Añadir Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría añadida: %@"
           }
         }
       }
     },
-    "Añadir Registro": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add Record"
+    "Categoría del movimiento alimentada desde las categorías de PMFinances" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction category fetched from PMFinances categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Añadir Registro"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría del movimiento alimentada desde las categorías de PMFinances"
           }
         }
       }
     },
-    "Añadir Registro Financiero": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add Financial Record"
+    "Categoría del movimiento alimentada desde PMFinances" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction category fetched from PMFinances"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Añadir Registro Financiero"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría del movimiento alimentada desde PMFinances"
           }
         }
       }
     },
-    "Año actual": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Current year"
+    "Categoría Dinámica" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Category"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Año actual"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría Dinámica"
           }
         }
       }
     },
-    "Archivo: finanzas.json": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "File: finanzas.json"
+    "Categoría eliminada" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category deleted"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Archivo: finanzas.json"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría eliminada"
           }
         }
       }
     },
-    "Atajos de Siri": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Siri Shortcuts"
+    "Categorías" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atajos de Siri"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorías"
           }
         }
       }
     },
-    "Automatización con Apple Pay": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apple Pay Automation"
+    "Categorías de Movimientos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction Categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatización con Apple Pay"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorías de Movimientos"
           }
         }
       }
     },
-    "B:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "B:"
+    "Categorías Dinámicas en Atajos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Categories in Shortcuts"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "B:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorías Dinámicas en Atajos"
           }
         }
       }
     },
-    "B: %@": {},
-    "Balance Neto": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Net Balance"
+    "Categorías restablecidas" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories restored"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Balance Neto"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorías restablecidas"
           }
         }
       }
     },
-    "Balance: %@%@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Balance: %1$@%2$@"
+    "Cerrar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Balance: %1$@%2$@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
           }
         }
       }
     },
-    "Borrar filtros": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear filters"
+    "Color" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Borrar filtros"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color"
           }
         }
       }
     },
-    "Botón de Acción y Widgets": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Action Button and Widgets"
+    "Comandos de Voz con Siri" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri Voice Commands"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Botón de Acción y Widgets"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comandos de Voz con Siri"
           }
         }
       }
     },
-    "Buscar categoría...": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search category..."
+    "Comparación del gasto en cada categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense comparison across categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Buscar categoría..."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comparación del gasto en cada categoría"
           }
         }
       }
     },
-    "Buscar movimiento...": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search transaction..."
+    "Comparativa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comparison"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Buscar movimiento..."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comparativa"
           }
         }
       }
     },
-    "Cambiar Carpeta de Guardado": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Change Storage Folder"
+    "Comparativa de Intervalos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interval Comparison"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cambiar Carpeta de Guardado"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comparativa de Intervalos"
           }
         }
       }
     },
-    "Cancelar": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+    "Comparativa Ingresos vs Gastos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income vs Expenses Comparison"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancelar"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comparativa Ingresos vs Gastos"
           }
         }
       }
     },
-    "Cantidad en euros": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amount in euros"
+    "Comparativa Visual" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visual Comparison"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cantidad en euros"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comparativa Visual"
           }
         }
       }
     },
-    "Cargar Datos de Demostración": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Load Demo Data"
+    "Concepto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cargar Datos de Demostración"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concepto"
           }
         }
       }
     },
-    "Carpeta configurada correctamente": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Folder configured successfully"
+    "Concepto o Comercio" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description or Merchant"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Carpeta configurada correctamente"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concepto o Comercio"
           }
         }
       }
     },
-    "Carpeta Personalizada": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Custom Folder"
+    "Control de Finanzas" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finance Tracker"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Carpeta Personalizada"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Control de Finanzas"
           }
         }
       }
     },
-    "Categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category"
+    "Creado e integrado automáticamente en iOS." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically created and integrated into iOS."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creado e integrado automáticamente en iOS."
           }
         }
       }
     },
-    "Categoría actualizada": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category updated"
+    "Cualquier importe" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Any amount"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categoría actualizada"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cualquier importe"
           }
         }
       }
     },
-    "Categoría añadida: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category added: %@"
+    "Datos de demo cargados en finanzas.json" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demo data loaded into finanzas.json"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categoría añadida: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos de demo cargados en finanzas.json"
           }
         }
       }
     },
-    "Categoría del movimiento alimentada desde PMFinances": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction category fetched from PMFinances"
+    "Datos requeridos por el Atajo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data required by the Shortcut"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categoría del movimiento alimentada desde PMFinances"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos requeridos por el Atajo"
           }
         }
       }
     },
-    "Categoría eliminada": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category deleted"
+    "Desde" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categoría eliminada"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desde"
           }
         }
       }
     },
-    "Categorías": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categories"
+    "Devuelve la lista actual de categorías configuradas en PMFinances." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Returns the current list of categories configured in PMFinances."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categorías"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devuelve la lista actual de categorías configuradas en PMFinances."
           }
         }
       }
     },
-    "Categorías de Movimientos": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction Categories"
+    "Dif:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diff:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categorías de Movimientos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dif:"
           }
         }
       }
     },
-    "Categorías Dinámicas en Atajos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dynamic Categories in Shortcuts"
+    "Diferencia neta ahorro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Net savings difference"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categorías Dinámicas en Atajos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diferencia neta ahorro"
           }
         }
       }
     },
-    "Categorías restablecidas": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categories restored"
+    "Distribución de los gastos en el período" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distribution of expenses for the period"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Categorías restablecidas"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distribución de los gastos en el período"
           }
         }
       }
     },
-    "Cerrar": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Close"
+    "Distribución porcentual en gráfico circular" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Percentage distribution in pie chart"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cerrar"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distribución porcentual en gráfico circular"
           }
         }
       }
     },
-    "Color": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Color"
+    "Editar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Color"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
           }
         }
       }
     },
-    "Comandos de Voz con Siri": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Siri Voice Commands"
+    "Editar Categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Category"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comandos de Voz con Siri"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Categoría"
           }
         }
       }
     },
-    "Comparación del gasto en cada categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expense comparison across categories"
+    "Editar Movimiento" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Transaction"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comparación del gasto en cada categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Movimiento"
           }
         }
       }
     },
-    "Comparativa": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comparison"
+    "ej. Compra Mercadona" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Grocery shopping"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comparativa"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. Compra Mercadona"
           }
         }
       }
     },
-    "Comparativa de Intervalos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Interval Comparison"
+    "ej. Restaurantes, Farmacia, Viajes..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Dining, Pharmacy, Travel..."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comparativa de Intervalos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. Restaurantes, Farmacia, Viajes..."
           }
         }
       }
     },
-    "Comparativa Ingresos vs Gastos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Income vs Expenses Comparison"
+    "Ejecutar Atajo 'Nuevo Registro'" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run 'New Record' Shortcut"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comparativa Ingresos vs Gastos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejecutar Atajo 'Nuevo Registro'"
           }
         }
       }
     },
-    "Comparativa Visual": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Visual Comparison"
+    "El atajo consulta en tiempo real tus categorías de categorias.json:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The shortcut fetches your categories from categorias.json in real time:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comparativa Visual"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El atajo consulta en tiempo real tus categorías de categorias.json:"
           }
         }
       }
     },
-    "Concepto": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Description"
+    "El atajo está completamente configurado y listo para usar sin necesidad de crear bloques a mano. Al ejecutarse por voz, desde la app Atajos o desde un widget, te solicita interactivamente los datos del movimiento y lo guarda al instante en tu finanzas.json." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The shortcut is fully configured and ready to use without manually connecting blocks. When triggered by voice, from the Shortcuts app, or via widget, it interactively asks for the transaction details and immediately saves them to your finanzas.json."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Concepto"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El atajo está completamente configurado y listo para usar sin necesidad de crear bloques a mano. Al ejecutarse por voz, desde la app Atajos o desde un widget, te solicita interactivamente los datos del movimiento y lo guarda al instante en tu finanzas.json."
           }
         }
       }
     },
-    "Control de Finanzas": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Finance Tracker"
+    "El cambio de idioma se aplica inmediatamente a toda la aplicación." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language change is applied immediately to the entire app."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Control de Finanzas"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cambio de idioma se aplica inmediatamente a toda la aplicación."
           }
         }
       }
     },
-    "Cualquier importe": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Any amount"
+    "Elegir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cualquier importe"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir"
           }
         }
       }
     },
-    "Datos de demo cargados en finanzas.json": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Demo data loaded into finanzas.json"
+    "Elige una carpeta en iCloud Drive para mantener tus datos sincronizados." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a folder in iCloud Drive to keep your data synced across devices."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Datos de demo cargados en finanzas.json"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una carpeta en iCloud Drive para mantener tus datos sincronizados."
           }
         }
       }
     },
-    "Desde": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "From"
+    "Eliminar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Desde"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
           }
         }
       }
     },
-    "Devuelve la lista actual de categorías configuradas en PMFinances.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Returns the current list of categories configured in PMFinances."
+    "Eliminar Categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Category"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Devuelve la lista actual de categorías configuradas en PMFinances."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar Categoría"
           }
         }
       }
     },
-    "Dif:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diff:"
+    "Eliminar Movimiento" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Transaction"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dif:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar Movimiento"
           }
         }
       }
     },
-    "Diferencia neta ahorro": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Net savings difference"
+    "English" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diferencia neta ahorro"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inglés"
           }
         }
       }
     },
-    "Distribución de los gastos en el período": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Distribution of expenses for the period"
+    "Error al actualizar: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error updating: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Distribución de los gastos en el período"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al actualizar: %@"
           }
         }
       }
     },
-    "Distribución porcentual en gráfico circular": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Percentage distribution in pie chart"
+    "Error al cargar demo: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error loading demo: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Distribución porcentual en gráfico circular"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al cargar demo: %@"
           }
         }
       }
     },
-    "Editar": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit"
+    "Error al configurar carpeta: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error configuring folder: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Editar"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al configurar carpeta: %@"
           }
         }
       }
     },
-    "Editar Categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit Category"
+    "Error al eliminar categoría: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error deleting category: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Editar Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al eliminar categoría: %@"
           }
         }
       }
     },
-    "Editar Movimiento": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit Transaction"
+    "Error al eliminar: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error deleting: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Editar Movimiento"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al eliminar: %@"
           }
         }
       }
     },
-    "ej. Compra Mercadona": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "e.g. Grocery shopping"
+    "Error al guardar categoría: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error saving category: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ej. Compra Mercadona"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al guardar categoría: %@"
           }
         }
       }
     },
-    "ej. Restaurantes, Farmacia, Viajes...": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "e.g. Dining, Pharmacy, Travel..."
+    "Error al guardar: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error saving: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ej. Restaurantes, Farmacia, Viajes..."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al guardar: %@"
           }
         }
       }
     },
-    "El atajo consulta en tiempo real tus categorías de categorias.json:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The shortcut fetches your categories from categorias.json in real time:"
+    "Error al restablecer categorías: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error restoring categories: %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El atajo consulta en tiempo real tus categorías de categorias.json:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al restablecer categorías: %@"
           }
         }
       }
     },
-    "El cambio de idioma se aplica inmediatamente a toda la aplicación.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language change is applied immediately to the entire app."
+    "Español" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spanish"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El cambio de idioma se aplica inmediatamente a toda la aplicación."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Español"
           }
         }
       }
     },
-    "Elegir": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose"
+    "Esta acción eliminará \"%@\" permanentemente." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will permanently delete \"%@\"."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Elegir"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta acción eliminará \"%@\" permanentemente."
           }
         }
       }
     },
-    "Elige una carpeta en iCloud Drive para mantener tus datos sincronizados.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose a folder in iCloud Drive to keep your data synced across devices."
+    "Estadísticas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Elige una carpeta en iCloud Drive para mantener tus datos sincronizados."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas"
           }
         }
       }
     },
-    "Eliminar": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete"
+    "Este mes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This month"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eliminar"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este mes"
           }
         }
       }
     },
-    "Eliminar Categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete Category"
+    "Evolución Mensual" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly Trend"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eliminar Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evolución Mensual"
           }
         }
       }
     },
-    "Eliminar Movimiento": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete Transaction"
+    "Fecha" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eliminar Movimiento"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
           }
         }
       }
     },
-    "English": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "English"
+    "Fecha de Creación" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creation Date"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inglés"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de Creación"
           }
         }
       }
     },
-    "Error al actualizar: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error updating: %@"
+    "Fecha y hora del movimiento" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date and time of transaction"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al actualizar: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha y hora del movimiento"
           }
         }
       }
     },
-    "Error al cargar demo: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error loading demo: %@"
+    "Fecha y hora del movimiento (por defecto el momento en que se crea el registro)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date and time of transaction (defaults to creation time)"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al cargar demo: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha y hora del movimiento (por defecto el momento en que se crea el registro)"
           }
         }
       }
     },
-    "Error al configurar carpeta: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error configuring folder: %@"
+    "Filtro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al configurar carpeta: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtro"
           }
         }
       }
     },
-    "Error al eliminar categoría: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error deleting category: %@"
+    "Filtros comunes para ambos intervalos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Common filters for both intervals"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al eliminar categoría: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtros comunes para ambos intervalos"
           }
         }
       }
     },
-    "Error al eliminar: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error deleting: %@"
+    "finanzas_export.csv" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "finanzas_export.csv"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al eliminar: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "finanzas_export.csv"
           }
         }
       }
     },
-    "Error al guardar categoría: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error saving category: %@"
+    "Gasto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al guardar categoría: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto"
           }
         }
       }
     },
-    "Error al guardar: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error saving: %@"
+    "Gasto recurrente" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recurring expense"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al guardar: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto recurrente"
           }
         }
       }
     },
-    "Error al restablecer categorías: %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error restoring categories: %@"
+    "Gasto Recurrente" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recurring Expense"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al restablecer categorías: %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto Recurrente"
           }
         }
       }
     },
-    "Español": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spanish"
+    "Gasto único" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One-time expense"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Español"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto único"
           }
         }
       }
     },
-    "Esta acción eliminará \"%@\" permanentemente.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This will permanently delete \"%@\"."
+    "Gasto Único" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One-time Expense"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Esta acción eliminará \"%@\" permanentemente."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto Único"
           }
         }
       }
     },
-    "Estadísticas": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statistics"
+    "Gastos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Estadísticas"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos"
           }
         }
       }
     },
-    "Este mes": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This month"
+    "Gastos por Categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses by Category"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Este mes"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos por Categoría"
           }
         }
       }
     },
-    "Evolución Mensual": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Monthly Trend"
+    "Gastos Totales" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Expenses"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Evolución Mensual"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos Totales"
           }
         }
       }
     },
-    "Fecha": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date"
+    "Gastos:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fecha"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos:"
           }
         }
       }
     },
-    "Fecha y hora del movimiento": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date and time of transaction"
+    "Gestión y control de finanzas personales" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal finance management & tracking"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fecha y hora del movimiento"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestión y control de finanzas personales"
           }
         }
       }
     },
-    "Filtro": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filter"
+    "Gestionar Categorías" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filtro"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar Categorías"
           }
         }
       }
     },
-    "Filtros comunes para ambos intervalos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Common filters for both intervals"
+    "Gráfico de Gastos por Categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses by Category Chart"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filtros comunes para ambos intervalos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gráfico de Gastos por Categoría"
           }
         }
       }
     },
-    "finanzas_export.csv": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "finanzas_export.csv"
+    "Guardar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "finanzas_export.csv"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
           }
         }
       }
     },
-    "Gasto": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expense"
+    "Guardar Cambios" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Changes"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gasto"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar Cambios"
           }
         }
       }
     },
-    "Gasto recurrente": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recurring expense"
+    "Guardar Categoría" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Category"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gasto recurrente"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar Categoría"
           }
         }
       }
     },
-    "Gasto Recurrente": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recurring Expense"
+    "Guardar Movimiento" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Transaction"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gasto Recurrente"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar Movimiento"
           }
         }
       }
     },
-    "Gasto único": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One-time expense"
+    "Hasta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gasto único"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta"
           }
         }
       }
     },
-    "Gasto Único": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One-time Expense"
+    "Hasta 50 €" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up to €50"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gasto Único"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta 50 €"
           }
         }
       }
     },
-    "Gastos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expenses"
+    "Hay %lld transacciones registradas con la categoría '%@'. Si la eliminas, esas transacciones se moverán a 'Otros'." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are %1$lld transactions recorded with category '%2$@'. If deleted, they will be moved to 'Otros'."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gastos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hay %1$lld transacciones registradas con la categoría '%2$@'. Si la eliminas, esas transacciones se moverán a 'Otros'."
           }
         }
       }
     },
-    "Gastos por Categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expenses by Category"
+    "Idioma" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gastos por Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma"
           }
         }
       }
     },
-    "Gastos Totales": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total Expenses"
+    "Idioma de la Aplicación" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Language"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gastos Totales"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma de la Aplicación"
           }
         }
       }
     },
-    "Gastos:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expenses:"
+    "Importe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gastos:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importe"
           }
         }
       }
     },
-    "Gestión y control de finanzas personales": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Personal finance management & tracking"
+    "Importe (€)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount (€)"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gestión y control de finanzas personales"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importe (€)"
           }
         }
       }
     },
-    "Gestionar Categorías": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Manage Categories"
+    "Importe / Cantidad" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gestionar Categorías"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importe / Cantidad"
           }
         }
       }
     },
-    "Gráfico de Gastos por Categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expenses by Category Chart"
+    "Ingreso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gráfico de Gastos por Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingreso"
           }
         }
       }
     },
-    "Guardar": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save"
+    "Ingresos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Guardar"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresos"
           }
         }
       }
     },
-    "Guardar Cambios": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save Changes"
+    "Ingresos Totales" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Income"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Guardar Cambios"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresos Totales"
           }
         }
       }
     },
-    "Guardar Categoría": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save Category"
+    "Ingresos, Gastos y Balance lado a lado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income, Expenses and Balance side by side"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Guardar Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresos, Gastos y Balance lado a lado"
           }
         }
       }
     },
-    "Guardar Movimiento": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save Transaction"
+    "Ingresos:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Guardar Movimiento"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresos:"
           }
         }
       }
     },
-    "Hasta": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "To"
+    "Integración con Atajos de Apple" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Shortcuts Integration"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hasta"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Integración con Atajos de Apple"
           }
         }
       }
     },
-    "Hasta 50 €": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Up to €50"
+    "Intercambiar intervalos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap intervals"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hasta 50 €"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intercambiar intervalos"
           }
         }
       }
     },
-    "Hay %lld transacciones registradas con la categoría '%@'. Si la eliminas, esas transacciones se moverán a 'Otros'.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "There are %1$lld transactions recorded with category '%2$@'. If deleted, they will be moved to 'Otros'."
+    "Intervalo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interval"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hay %1$lld transacciones registradas con la categoría '%2$@'. Si la eliminas, esas transacciones se moverán a 'Otros'."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intervalo"
           }
         }
       }
     },
-    "Idioma": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language"
+    "Introduce el concepto o comercio:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the description or merchant:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Idioma"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce el concepto o comercio:"
           }
         }
       }
     },
-    "Idioma de la Aplicación": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Language"
+    "Introduce el importe o cantidad en euros (€):" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the amount in euros (€):"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Idioma de la Aplicación"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce el importe o cantidad en euros (€):"
           }
         }
       }
     },
-    "Importe": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amount"
+    "Limpiar categorías" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Importe"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpiar categorías"
           }
         }
       }
     },
-    "Importe (€)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Amount (€)"
+    "Limpiar importe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear amount"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Importe (€)"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpiar importe"
           }
         }
       }
     },
-    "Ingreso": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Income"
+    "Más de 500 €" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Over €500"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingreso"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más de 500 €"
           }
         }
       }
     },
-    "Ingresos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Income"
+    "Mes pasado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last month"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingresos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes pasado"
           }
         }
       }
     },
-    "Ingresos Totales": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total Income"
+    "Métrica" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metric"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingresos Totales"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Métrica"
           }
         }
       }
     },
-    "Ingresos, Gastos y Balance lado a lado": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Income, Expenses and Balance side by side"
+    "Movimiento actualizado" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction updated"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingresos, Gastos y Balance lado a lado"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movimiento actualizado"
           }
         }
       }
     },
-    "Ingresos:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Income:"
+    "Movimiento eliminado" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction deleted"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingresos:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movimiento eliminado"
           }
         }
       }
     },
-    "Integración con Atajos de Apple": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apple Shortcuts Integration"
+    "Movimiento guardado en finanzas.json" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction saved to finanzas.json"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Integración con Atajos de Apple"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movimiento guardado en finanzas.json"
           }
         }
       }
     },
-    "Intercambiar intervalos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Swap intervals"
+    "Movimientos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transactions"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Intercambiar intervalos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movimientos"
           }
         }
       }
     },
-    "Intervalo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Interval"
+    "Muestra un selector interactivo con tus categorías actuales de la app." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Displays an interactive selector with your app categories."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Intervalo"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muestra un selector interactivo con tus categorías actuales de la app."
           }
         }
       }
     },
-    "Limpiar categorías": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear categories"
+    "NATIVO" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NATIVE"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Limpiar categorías"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NATIVO"
           }
         }
       }
     },
-    "Limpiar importe": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clear amount"
+    "No hay categorías configuradas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No categories configured"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Limpiar importe"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay categorías configuradas"
           }
         }
       }
     },
-    "Más de 500 €": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Over €500"
+    "No hay datos suficientes para calcular la evolución mensual." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not enough data to compute monthly trends."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Más de 500 €"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay datos suficientes para calcular la evolución mensual."
           }
         }
       }
     },
-    "Mes pasado": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last month"
+    "No hay gastos para comparar en las categorías seleccionadas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No expenses to compare for the selected categories."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mes pasado"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay gastos para comparar en las categorías seleccionadas."
           }
         }
       }
     },
-    "Métrica": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Metric"
+    "No hay gastos registrados en este período." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No expenses recorded in this period."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Métrica"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay gastos registrados en este período."
           }
         }
       }
     },
-    "Movimiento actualizado": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction updated"
+    "No se encontraron movimientos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No transactions found"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Movimiento actualizado"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontraron movimientos"
           }
         }
       }
     },
-    "Movimiento eliminado": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction deleted"
+    "No se encontró ninguna categoría con '%@'" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No category found matching '%@'"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Movimiento eliminado"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ninguna categoría con '%@'"
           }
         }
       }
     },
-    "Movimiento guardado en finanzas.json": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction saved to finanzas.json"
+    "No se encontró ninguna categoría con %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No category found matching %@"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Movimiento guardado en finanzas.json"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró ninguna categoría con %@"
           }
         }
       }
     },
-    "Movimientos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transactions"
+    "Nombre de la Categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category Name"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Movimientos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de la Categoría"
           }
         }
       }
     },
-    "No hay categorías configuradas": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No categories configured"
+    "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name or description of transaction (e.g. Supermarket, Amazon, Salary)"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No hay categorías configuradas"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)"
           }
         }
       }
     },
-    "No hay datos suficientes para calcular la evolución mensual.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Not enough data to compute monthly trends."
+    "Nueva Categoría" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Category"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No hay datos suficientes para calcular la evolución mensual."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva Categoría"
           }
         }
       }
     },
-    "No hay gastos para comparar en las categorías seleccionadas.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No expenses to compare for the selected categories."
+    "Nuevo Movimiento" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Transaction"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No hay gastos para comparar en las categorías seleccionadas."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuevo Movimiento"
           }
         }
       }
     },
-    "No hay gastos registrados en este período.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No expenses recorded in this period."
+    "Nuevo Registro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Record"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No hay gastos registrados en este período."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuevo Registro"
           }
         }
       }
     },
-    "No se encontraron movimientos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No transactions found"
+    "Obtener Categorías de PMFinances" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get PMFinances Categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No se encontraron movimientos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtener Categorías de PMFinances"
           }
         }
       }
     },
-    "No se encontró ninguna categoría con '%@'": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No category found matching '%@'"
+    "Opciones de Datos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Options"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No se encontró ninguna categoría con '%@'"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opciones de Datos"
           }
         }
       }
     },
-    "No se encontró ninguna categoría con %@": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No category found matching %@"
+    "Período seleccionado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected period"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No se encontró ninguna categoría con %@"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Período seleccionado"
           }
         }
       }
     },
-    "Nombre de la Categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category Name"
+    "Personalizado" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nombre de la Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizado"
           }
         }
       }
     },
-    "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name or description of transaction (e.g. Supermarket, Amazon, Salary)"
+    "PMFinances" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PMFinances"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PMFinances"
           }
         }
       }
     },
-    "Nueva Categoría": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New Category"
+    "PMFinances incluye acciones nativas para Apple Shortcuts (App Intents). Cualquier atajo que crees se alimenta automáticamente de tus categorías y guarda las transacciones en tu archivo JSON." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PMFinances includes native actions for Apple Shortcuts (App Intents). Any shortcut you create automatically loads your categories and saves transactions to your JSON file."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nueva Categoría"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PMFinances incluye acciones nativas para Apple Shortcuts (App Intents). Cualquier atajo que crees se alimenta automáticamente de tus categorías y guarda las transacciones en tu archivo JSON."
           }
         }
       }
     },
-    "Nuevo Movimiento": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New Transaction"
+    "Preajustes:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presets:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nuevo Movimiento"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preajustes:"
           }
         }
       }
     },
-    "Obtener Categorías de PMFinances": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Get PMFinances Categories"
+    "Pregunta el nombre o descripción (ej. Mercadona, Amazon, Nómina)." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks for the name or description (e.g. Supermarket, Amazon, Salary)."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Obtener Categorías de PMFinances"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pregunta el nombre o descripción (ej. Mercadona, Amazon, Nómina)."
           }
         }
       }
     },
-    "Opciones de Datos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data Options"
+    "Pregunta el valor numérico en euros (ej. 45,50 €)." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks for the numeric value in euros (e.g., 45.50 €)."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opciones de Datos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pregunta el valor numérico en euros (ej. 45,50 €)."
           }
         }
       }
     },
-    "Período seleccionado": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selected period"
+    "Prueba a ajustar o borrar los filtros aplicados." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try adjusting or clearing the active filters."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Período seleccionado"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba a ajustar o borrar los filtros aplicados."
           }
         }
       }
     },
-    "Personalizado": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Custom"
+    "Puedes pedirle a Siri que registre tus gastos diciendo:" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can ask Siri to log expenses by saying:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Personalizado"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puedes pedirle a Siri que registre tus gastos diciendo:"
           }
         }
       }
     },
-    "PMFinances": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PMFinances"
+    "Rec: %lld€" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rec: %lld€"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PMFinances"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rec: %lld€"
           }
         }
       }
     },
-    "PMFinances incluye acciones nativas para Apple Shortcuts (App Intents). Cualquier atajo que crees se alimenta automáticamente de tus categorías y guarda las transacciones en tu archivo JSON.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PMFinances includes native actions for Apple Shortcuts (App Intents). Any shortcut you create automatically loads your categories and saves transactions to your JSON file."
+    "Recargar Datos del Archivo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reload Data from File"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PMFinances incluye acciones nativas para Apple Shortcuts (App Intents). Cualquier atajo que crees se alimenta automáticamente de tus categorías y guarda las transacciones en tu archivo JSON."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recargar Datos del Archivo"
           }
         }
       }
     },
-    "Preajustes:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Presets:"
+    "Registra compras de forma automática al pagar con tu iPhone o Apple Watch:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically record purchases when paying with iPhone or Apple Watch:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preajustes:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra compras de forma automática al pagar con tu iPhone o Apple Watch:"
           }
         }
       }
     },
-    "Prueba a ajustar o borrar los filtros aplicados.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Try adjusting or clearing the active filters."
+    "Registros" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Records"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prueba a ajustar o borrar los filtros aplicados."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registros"
           }
         }
       }
     },
-    "Puedes pedirle a Siri que registre tus gastos diciendo:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You can ask Siri to log expenses by saying:"
+    "Reintentar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puedes pedirle a Siri que registre tus gastos diciendo:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
           }
         }
       }
     },
-    "Rec: %lld€": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rec: %lld€"
+    "Restablecer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rec: %lld€"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer"
           }
         }
       }
     },
-    "Recargar Datos del Archivo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reload Data from File"
+    "Restablecer a Carpeta Local de la App" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset to Default App Folder"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recargar Datos del Archivo"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer a Carpeta Local de la App"
           }
         }
       }
     },
-    "Registra compras de forma automática al pagar con tu iPhone o Apple Watch:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatically record purchases when paying with iPhone or Apple Watch:"
+    "Restablecer Categorías" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Registra compras de forma automática al pagar con tu iPhone o Apple Watch:"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer Categorías"
           }
         }
       }
     },
-    "Registros": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Records"
+    "Restablecer Categorías Iniciales" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Default Categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Registros"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer Categorías Iniciales"
           }
         }
       }
     },
-    "Reintentar": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retry"
+    "Restablecer Filtros" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Filters"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reintentar"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer Filtros"
           }
         }
       }
     },
-    "Restablecer": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset"
+    "Restablecido a carpeta por defecto" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset to default app folder"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restablecer"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecido a carpeta por defecto"
           }
         }
       }
     },
-    "Restablecer a Carpeta Local de la App": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset to Default App Folder"
+    "Se asigna automáticamente la fecha y hora exacta del momento en que se ejecuta." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatically assigned the exact date and time when executed."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restablecer a Carpeta Local de la App"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se asigna automáticamente la fecha y hora exacta del momento en que se ejecuta."
           }
         }
       }
     },
-    "Restablecer Categorías": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset Categories"
+    "Se restaurará la lista de categorías original. ¿Deseas continuar?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The default category list will be restored. Do you want to continue?"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restablecer Categorías"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se restaurará la lista de categorías original. ¿Deseas continuar?"
           }
         }
       }
     },
-    "Restablecer Categorías Iniciales": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restore Default Categories"
+    "Selecciona dos períodos temporales para comparar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select two time periods to compare"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restablecer Categorías Iniciales"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona dos períodos temporales para comparar"
           }
         }
       }
     },
-    "Restablecer Filtros": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset Filters"
+    "Selecciona el tipo de movimiento:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select the transaction type:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restablecer Filtros"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona el tipo de movimiento:"
           }
         }
       }
     },
-    "Restablecido a carpeta por defecto": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset to default app folder"
+    "Selecciona una categoría:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a category:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restablecido a carpeta por defecto"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona una categoría:"
           }
         }
       }
     },
-    "Se restaurará la lista de categorías original. ¿Deseas continuar?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The default category list will be restored. Do you want to continue?"
+    "Seleccionar Carpeta (iCloud o Local)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Folder (iCloud or Local)"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se restaurará la lista de categorías original. ¿Deseas continuar?"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar Carpeta (iCloud o Local)"
           }
         }
       }
     },
-    "Selecciona dos períodos temporales para comparar": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select two time periods to compare"
+    "Selector entre Gasto Único, Gasto Recurrente o Ingreso." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selector between One-time Expense, Recurring Expense, or Income."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selecciona dos períodos temporales para comparar"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selector entre Gasto Único, Gasto Recurrente o Ingreso."
           }
         }
       }
     },
-    "Seleccionar Carpeta (iCloud o Local)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select Folder (iCloud or Local)"
+    "Sincronización iCloud disponible" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud Sync Available"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seleccionar Carpeta (iCloud o Local)"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sincronización iCloud disponible"
           }
         }
       }
     },
-    "Sincronización iCloud disponible": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iCloud Sync Available"
+    "Sincronizado con iCloud" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synced with iCloud"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sincronización iCloud disponible"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sincronizado con iCloud"
           }
         }
       }
     },
-    "Sincronizado con iCloud": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Synced with iCloud"
+    "Siri te preguntará interactivamente el importe, concepto, categoría y tipo:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri will interactively ask for amount, description, category, and type:"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sincronizado con iCloud"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siri te preguntará interactivamente el importe, concepto, categoría y tipo:"
           }
         }
       }
     },
-    "Sobre ingresos del período": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Of total period income"
+    "Sobre ingresos del período" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Of total period income"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sobre ingresos del período"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre ingresos del período"
           }
         }
       }
     },
-    "Tasa de Ahorro": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Savings Rate"
+    "Tasa de Ahorro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Savings Rate"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tasa de Ahorro"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasa de Ahorro"
           }
         }
       }
     },
-    "Tienes %lld categorías configuradas en PMFinances: %@.": {
-      "localizations": {
-        "es": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Tienes %1$lld categorías configuradas en PMFinances: %2$@."
+    "Tienes %lld categorías configuradas en PMFinances: %@." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tienes %1$lld categorías configuradas en PMFinances: %2$@."
           }
         }
       }
     },
-    "Tipo": {},
-    "Tipo de Movimiento": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction Type"
+    "Tipo de Movimiento" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction Type"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tipo de Movimiento"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de Movimiento"
           }
         }
       }
     },
-    "Tipo de transacción (Gasto Único, Gasto Recurrente o Ingreso)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction type (One-time Expense, Recurring Expense, or Income)"
+    "Tipo de transacción (Gasto Único, Gasto Recurrente o Ingreso)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction type (One-time Expense, Recurring Expense, or Income)"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tipo de transacción (Gasto Único, Gasto Recurrente o Ingreso)"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de transacción (Gasto Único, Gasto Recurrente o Ingreso)"
           }
         }
       }
     },
-    "Todo el histórico": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All time"
+    "Todo el histórico" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All time"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Todo el histórico"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo el histórico"
           }
         }
       }
     },
-    "Todos los tipos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All types"
+    "Todos los tipos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All types"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Todos los tipos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los tipos"
           }
         }
       }
     },
-    "Total de Categorías": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total Categories"
+    "Total de Categorías" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total de Categorías"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total de Categorías"
           }
         }
       }
     },
-    "Total Gastos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total Expenses"
+    "Total Gastos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Expenses"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Total Gastos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Gastos"
           }
         }
       }
     },
-    "Tus Categorías": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your Categories"
+    "Tus Categorías" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Categories"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tus Categorías"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus Categorías"
           }
         }
       }
     },
-    "Ubicación de los Datos": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data Location"
+    "Ubicación de los Datos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Location"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ubicación de los Datos"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubicación de los Datos"
           }
         }
       }
     },
-    "Últimos 3 meses": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last 3 months"
+    "Últimos 3 meses" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 3 months"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Últimos 3 meses"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Últimos 3 meses"
           }
         }
       }
     },
-    "Últimos 6 meses": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last 6 months"
+    "Últimos 6 meses" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 6 months"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Últimos 6 meses"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Últimos 6 meses"
           }
         }
       }
     },
-    "Últimos 12 meses": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last 12 months"
+    "Últimos 12 meses" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 12 months"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Últimos 12 meses"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Últimos 12 meses"
           }
         }
       }
     },
-    "Único: %lld€": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One-off: %lld€"
+    "Único: %lld€" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One-off: %lld€"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Único: %lld€"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Único: %lld€"
           }
         }
       }
     },
-    "VISTA PREVIA": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PREVIEW"
+    "VISTA PREVIA" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PREVIEW"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "VISTA PREVIA"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VISTA PREVIA"
           }
         }
       }
     },
-    "VS": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "VS"
+    "VS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VS"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "VS"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VS"
           }
         }
       }
     },
-    "Ya existe otra categoría con el nombre '%@'": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Another category named '%@' already exists"
+    "Ya existe otra categoría con el nombre '%@'" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another category named '%@' already exists"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ya existe otra categoría con el nombre '%@'"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya existe otra categoría con el nombre '%@'"
           }
         }
       }
     },
-    "Ya existe una categoría con ese nombre": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A category with that name already exists"
+    "Ya existe una categoría con ese nombre" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A category with that name already exists"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ya existe una categoría con ese nombre"
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya existe una categoría con ese nombre"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.5.0] - 2026-10-31
+
+### Added
+- **Apple Shortcuts & Siri Integration (App Intents)**:
+  - Complete, autonomous native shortcut (`AddFinancialRecordIntent`) pre-registered in iOS via `AppShortcutsProvider`.
+  - Step-by-step interactive prompt requesting the 5 required transaction data points: Amount (€), Description/Merchant, Dynamic Category, Transaction Type, and exact Creation Date/Time.
+  - Dynamic category provider (`DynamicCategoryOptionsProvider`) feeding categories in real time from `categorias.json`.
+  - Automatic background persistence directly to `finanzas.json` (Local Storage and iCloud Drive).
+  - Dedicated "Atajos de Siri" settings screen in `ConfigView` with direct "Run Shortcut" button and guides for Siri, Apple Pay automations, and Action Button / Widgets.
+- **Interval Comparison Screen ("Comparativa")**:
+  - Independent dual time range selection (Interval A vs Interval B) with shared global filters.
+  - Comparative KPI cards with delta pill indicators (+/- € and +/- %).
+  - Side-by-side comparative bar chart and category-by-category expense comparisons.
+- **Category Customization & Submenus in Settings**:
+  - Reorganized Settings into submenus: Idioma, Categorías, Atajos de Siri, and Almacenamiento de datos.
+  - Dedicated category manager (`categorias.json`) with customizable color palettes.
+
+### Improved
+- **Optimized Swipe-to-Delete Interaction**:
+  - Restricted the horizontal swipe-to-delete gesture recognizer to the trailing edge (rightmost 95 pt, over the amount/badge area) in `TransactionRowView`.
+  - Completely resolved gesture contention with vertical scrolling, ensuring smooth, uninterrupted scrolling across the entire transaction list.
+- **Documentation**:
+  - Updated `README.md` with comprehensive user onboarding instructions for Apple Shortcuts and Siri.
+
+---
+
 ## [0.4.0] - 2026-10-29
 
 ### Added

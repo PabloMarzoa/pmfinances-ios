@@ -152,7 +152,21 @@ public struct SwipeableTransactionRow: View {
                             onTap()
                         }
                     }
-                    .gesture(dragGesture)
+                    .overlay(alignment: .trailing) {
+                        // Zona de activación del deslizamiento (únicamente en el lado derecho de la fila)
+                        // Esto permite hacer scroll vertical suave sin interferencias en el resto de la fila
+                        Color.clear
+                            .frame(width: 95)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                if offset != 0 {
+                                    closeSwipe()
+                                } else {
+                                    onTap()
+                                }
+                            }
+                            .gesture(dragGesture)
+                    }
                     .contextMenu {
                         Button {
                             onTap()
