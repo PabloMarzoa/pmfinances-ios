@@ -24,6 +24,12 @@ public enum AppScreen: String, CaseIterable, Identifiable {
     }
 }
 
+private struct NoHighlightButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
+}
+
 public struct ContentView: View {
     @StateObject private var viewModel = FinancialViewModel()
     @AppStorage("app_language") private var appLanguage: String = "es"
@@ -49,10 +55,8 @@ public struct ContentView: View {
                             errorBanner(error)
                         }
 
-                        // Filtros siempre arriba de todo en Registros y Estadísticas
-                        if selectedScreen != .comparison {
-                            FiltersBarView(viewModel: viewModel)
-                        }
+                        // Filtros siempre arriba de todo en todas las pantallas
+                        FiltersBarView(viewModel: viewModel, showTimeRange: selectedScreen != .comparison)
 
                         // Contenido de la pantalla seleccionada
                         switch selectedScreen {
@@ -70,9 +74,10 @@ public struct ContentView: View {
                             transactionsSection
 
                         case .statistics:
+                            let stats = viewModel.stats
                             // Sección de categorías debajo de los filtros
                             CategoryBreakdownView(
-                                stats: viewModel.stats,
+                                stats: stats,
                                 selectedCategories: viewModel.selectedCategories,
                                 onCategoryTapped: { cat in
                                     viewModel.toggleCategory(cat)
@@ -80,13 +85,13 @@ public struct ContentView: View {
                             )
 
                             // Tarjetas KPI
-                            KPICardsView(stats: viewModel.stats)
+                            KPICardsView(stats: stats)
 
                             // Gráfico de evolución mensual
-                            MonthlyEvolutionView(stats: viewModel.stats)
+                            MonthlyEvolutionView(stats: stats)
 
                             // Gráfico de tarta de gastos por categoría (no interactivo)
-                            CategoryPieChartView(stats: viewModel.stats)
+                            CategoryPieChartView(stats: stats)
 
                         case .comparison:
                             ComparisonView(viewModel: viewModel)
@@ -142,7 +147,7 @@ public struct ContentView: View {
                     .animation(.easeInOut, value: viewModel.showSuccessToast)
                 }
             }
-            .navigationTitle(selectedScreen.localizedName)
+            .navigationTitle("")
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif
@@ -193,9 +198,7 @@ public struct ContentView: View {
         Menu {
             ForEach(AppScreen.allCases) { screen in
                 Button {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        selectedScreen = screen
-                    }
+                    selectedScreen = screen
                 } label: {
                     Label {
                         Text(screen.localizedName)
@@ -227,7 +230,12 @@ public struct ContentView: View {
                     .stroke(Color.appBorder, lineWidth: 1)
             )
         }
-        .buttonStyle(.plain)
+        .buttonStyle(NoHighlightButtonStyle())
+        .geometryGroup()
+        .fixedSize()
+        .transaction { transaction in
+            transaction.animation = nil
+        }
     }
 
     private var statusBadgeButton: some View {

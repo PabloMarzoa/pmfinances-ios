@@ -143,7 +143,7 @@ public struct KPICardsView: View {
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .stroke(Color.appBorder, lineWidth: 1)
+                    .stroke(Color.appCardBorder, lineWidth: 1)
             )
             .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 3)
     }

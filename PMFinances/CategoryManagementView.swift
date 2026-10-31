@@ -458,7 +458,7 @@ private struct CategoryEditorModal: View {
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 

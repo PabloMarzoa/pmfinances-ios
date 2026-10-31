@@ -30,40 +30,27 @@ public struct ComparisonView: View {
     private let colorB = Color(red: 0.75, green: 0.40, blue: 0.95) // Purple
 
     public var body: some View {
+        let currentStatsA = statsA
+        let currentStatsB = statsB
+
         VStack(spacing: 16) {
             // 1. Selector de Intervalos A y B
-            intervalsSelectorCard
+            intervalsSelectorCard(statsA: currentStatsA, statsB: currentStatsB)
 
-            // 2. Filtros comunes (Categorías, Tipo, Importe, Buscador)
-            VStack(alignment: .leading, spacing: 6) {
-                HStack(spacing: 6) {
-                    Image(systemName: "line.3.horizontal.decrease.circle.fill")
-                        .font(.system(size: 13))
-                        .foregroundStyle(.secondary)
+            // 2. Tarjetas KPI Comparativas
+            comparisonKPICards(statsA: currentStatsA, statsB: currentStatsB)
 
-                    Text("Filtros comunes para ambos intervalos")
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(.secondary)
-                }
-                .padding(.horizontal, 4)
+            // 3. Gráfico comparativo de Ingresos y Gastos
+            comparisonBarChart(statsA: currentStatsA, statsB: currentStatsB)
 
-                FiltersBarView(viewModel: viewModel, showTimeRange: false)
-            }
-
-            // 3. Tarjetas KPI Comparativas
-            comparisonKPICards
-
-            // 4. Gráfico comparativo de Ingresos y Gastos
-            comparisonBarChart
-
-            // 5. Comparativa detallada por Categoría
-            categoryComparisonBreakdown
+            // 4. Comparativa detallada por Categoría
+            categoryComparisonBreakdown(statsA: currentStatsA, statsB: currentStatsB)
         }
     }
 
     // MARK: - 1. Selector de Intervalos
 
-    private var intervalsSelectorCard: some View {
+    private func intervalsSelectorCard(statsA: FinancialStats, statsB: FinancialStats) -> some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
@@ -167,7 +154,7 @@ public struct ComparisonView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
         .shadow(color: Color.black.opacity(0.25), radius: 6, x: 0, y: 3)
     }
@@ -275,7 +262,7 @@ public struct ComparisonView: View {
 
     // MARK: - 3. Tarjetas KPI Comparativas
 
-    private var comparisonKPICards: some View {
+    private func comparisonKPICards(statsA: FinancialStats, statsB: FinancialStats) -> some View {
         VStack(spacing: 10) {
             // Balance Neto
             comparativeRowCard(
@@ -420,7 +407,7 @@ public struct ComparisonView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -509,7 +496,7 @@ public struct ComparisonView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -523,7 +510,7 @@ public struct ComparisonView: View {
         let color: Color
     }
 
-    private var comparisonBarChart: some View {
+    private func comparisonBarChart(statsA: FinancialStats, statsB: FinancialStats) -> some View {
         let items: [MetricBarItem] = [
             MetricBarItem(metric: "Ingresos", interval: "Intervalo A", amount: statsA.totalIngresos, color: colorA),
             MetricBarItem(metric: "Ingresos", interval: "Intervalo B", amount: statsB.totalIngresos, color: colorB),
@@ -580,7 +567,7 @@ public struct ComparisonView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
         .shadow(color: Color.black.opacity(0.25), radius: 6, x: 0, y: 3)
     }
@@ -597,7 +584,7 @@ public struct ComparisonView: View {
         var maxAmount: Double { max(amountA, amountB) }
     }
 
-    private var categoryComparisonItems: [CategoryComparisonItem] {
+    private func categoryComparisonItems(statsA: FinancialStats, statsB: FinancialStats) -> [CategoryComparisonItem] {
         var mapA: [String: Double] = [:]
         for c in statsA.categoryBreakdown {
             mapA[c.category] = c.total
@@ -625,8 +612,8 @@ public struct ComparisonView: View {
         }.sorted { max($0.amountA, $0.amountB) > max($1.amountA, $1.amountB) }
     }
 
-    private var categoryComparisonBreakdown: some View {
-        let items = categoryComparisonItems
+    private func categoryComparisonBreakdown(statsA: FinancialStats, statsB: FinancialStats) -> some View {
+        let items = categoryComparisonItems(statsA: statsA, statsB: statsB)
 
         return VStack(alignment: .leading, spacing: 14) {
             HStack {
@@ -767,7 +754,7 @@ public struct ComparisonView: View {
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
         .shadow(color: Color.black.opacity(0.25), radius: 6, x: 0, y: 3)
     }

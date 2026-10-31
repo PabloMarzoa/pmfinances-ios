@@ -50,7 +50,7 @@ public struct ConfigView: View {
                         .buttonStyle(.plain)
 
                         Divider()
-                            .background(Color.appBorder)
+                            .background(Color.appDivider)
                             .padding(.leading, 64)
 
                         // 2. Submenú Categorías
@@ -67,7 +67,7 @@ public struct ConfigView: View {
                         .buttonStyle(.plain)
 
                         Divider()
-                            .background(Color.appBorder)
+                            .background(Color.appDivider)
                             .padding(.leading, 64)
 
                         // 3. Submenú Atajos de Siri
@@ -84,7 +84,7 @@ public struct ConfigView: View {
                         .buttonStyle(.plain)
 
                         Divider()
-                            .background(Color.appBorder)
+                            .background(Color.appDivider)
                             .padding(.leading, 64)
 
                         // 4. Submenú Almacenamiento de datos
@@ -104,7 +104,7 @@ public struct ConfigView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     .overlay(
                         RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .stroke(Color.appBorder, lineWidth: 1)
+                            .stroke(Color.appCardBorder, lineWidth: 1)
                     )
 
                     Spacer(minLength: 20)
@@ -205,8 +205,8 @@ public struct LanguageSettingsView: View {
 
     public init() {}
 
-    private let languages: [(code: String, name: String, nativeName: String)] = [
-        ("es", "Español", "Español"),
+    private let languages: [(code: String, name: String, subtitle: String)] = [
+        ("es", "Español", "Spanish"),
         ("en", "Inglés", "English")
     ]
 
@@ -225,11 +225,9 @@ public struct LanguageSettingsView: View {
                                     .font(.system(size: 15, weight: .medium))
                                     .foregroundStyle(.primary)
 
-                                if lang.name != lang.nativeName {
-                                    Text(lang.nativeName)
-                                        .font(.system(size: 12))
-                                        .foregroundStyle(.secondary)
-                                }
+                                Text(lang.subtitle)
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
                             }
 
                             Spacer()
@@ -325,7 +323,7 @@ public struct DataStorageSettingsView: View {
             }
 
             Divider()
-                .background(Color.appBorder)
+                .background(Color.appDivider)
 
             VStack(spacing: 8) {
                 infoRow(label: "Carpeta activa", value: viewModel.currentFolderDisplayName)
@@ -340,7 +338,7 @@ public struct DataStorageSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(viewModel.statusBadgeColor.opacity(0.3), lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -438,7 +436,7 @@ public struct DataStorageSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -645,7 +643,7 @@ public struct ShortcutsSettingsView: View {
             }
 
             Divider()
-                .background(Color.appBorder)
+                .background(Color.appDivider)
 
             Text("El atajo está completamente configurado y listo para usar sin necesidad de crear bloques a mano. Al ejecutarse por voz, desde la app Atajos o desde un widget, te solicita interactivamente los datos del movimiento y lo guarda al instante en tu finanzas.json.")
                 .font(.system(size: 13))
@@ -657,7 +655,7 @@ public struct ShortcutsSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -720,7 +718,7 @@ public struct ShortcutsSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -830,7 +828,7 @@ public struct ShortcutsSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -862,7 +860,7 @@ public struct ShortcutsSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -895,7 +893,7 @@ public struct ShortcutsSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 
@@ -922,7 +920,7 @@ public struct ShortcutsSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
+                .stroke(Color.appCardBorder, lineWidth: 1)
         )
     }
 

@@ -14,7 +14,18 @@ public extension Color {
     static let appSecondaryFill = Color(red: 0.13, green: 0.13, blue: 0.13)
     static let appTertiaryFill = Color(red: 0.18, green: 0.18, blue: 0.18)
     static let appSystemFill = Color(red: 0.22, green: 0.22, blue: 0.22)
+
+    // Standard subtle border for controls, buttons, text fields, chips and content
     static let appBorder = Color.white.opacity(0.14)
+
+    // Brand purple matching the PMFinances app logo (#8233CD)
+    static let appLogoPurple = Color(hex: "#8233CD")
+
+    // Purple border ONLY for cards, matching the app logo
+    static let appCardBorder = Color(hex: "#8233CD")
+
+    // Subtle divider line for internal list/menu separators
+    static let appDivider = Color.white.opacity(0.12)
 
     // MARK: - Hex Conversion
 

@@ -196,7 +196,7 @@ public struct SwipeableTransactionRow: View {
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(Color.appBorder, lineWidth: 0.8)
+                    .stroke(Color.appCardBorder, lineWidth: 1)
             )
             .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 1)
     }

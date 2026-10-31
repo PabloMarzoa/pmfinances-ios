@@ -2025,6 +2025,7 @@
       }
     },
     "Filtros comunes para ambos intervalos" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

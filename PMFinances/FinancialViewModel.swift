@@ -461,6 +461,13 @@ public class FinancialViewModel: ObservableObject {
         return calculateStats(for: recs)
     }
 
+    private static let monthFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "es_ES")
+        formatter.dateFormat = "MMM yy"
+        return formatter
+    }()
+
     public func calculateStats(for records: [FinancialRecord]) -> FinancialStats {
         var s = FinancialStats()
         s.recordCount = records.count
@@ -469,9 +476,7 @@ public class FinancialViewModel: ObservableObject {
         var monthlyMap: [String: (label: String, ingresos: Double, gastos: Double, date: Date)] = [:]
 
         let calendar = Calendar.current
-        let monthFormatter = DateFormatter()
-        monthFormatter.locale = Locale(identifier: "es_ES")
-        monthFormatter.dateFormat = "MMM yy"
+        let monthFormatter = Self.monthFormatter
 
         for r in records {
             if r.tipo == .ingreso {
