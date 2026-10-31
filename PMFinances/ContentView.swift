@@ -1,11 +1,35 @@
 import SwiftUI
 
+public enum AppScreen: String, CaseIterable, Identifiable {
+    case records = "Registros"
+    case statistics = "Estadísticas"
+
+    public var id: String { rawValue }
+
+    public var localizedName: LocalizedStringKey {
+        switch self {
+        case .records: return LocalizedStringKey("Registros")
+        case .statistics: return LocalizedStringKey("Estadísticas")
+        }
+    }
+
+    public var icon: String {
+        switch self {
+        case .records: return "list.bullet.rectangle"
+        case .statistics: return "chart.pie.fill"
+        }
+    }
+}
+
 public struct ContentView: View {
     @StateObject private var viewModel = FinancialViewModel()
     @AppStorage("app_language") private var appLanguage: String = "es"
     @State private var activeSwipedRecordId: String? = nil
+    @State private var selectedScreen: AppScreen = .records
 
-    public init() {}
+    public init(initialScreen: AppScreen = .records) {
+        self._selectedScreen = State(initialValue: initialScreen)
+    }
 
     public var body: some View {
         NavigationStack {
@@ -22,23 +46,43 @@ public struct ContentView: View {
                             errorBanner(error)
                         }
 
-                        // KPI Cards
-                        KPICardsView(stats: viewModel.stats)
-
-                        // Charts & Visualizations
-                        ChartsView(
-                            stats: viewModel.stats,
-                            selectedCategories: viewModel.selectedCategories,
-                            onCategoryTapped: { cat in
-                                viewModel.toggleCategory(cat)
-                            }
-                        )
-
-                        // Filters Bar
+                        // Filtros siempre arriba de todo
                         FiltersBarView(viewModel: viewModel)
 
-                        // Transactions List Section
-                        transactionsSection
+                        // Contenido de la pantalla seleccionada
+                        switch selectedScreen {
+                        case .records:
+                            // Sección de categorías debajo de los filtros
+                            CategoryBreakdownView(
+                                stats: viewModel.stats,
+                                selectedCategories: viewModel.selectedCategories,
+                                onCategoryTapped: { cat in
+                                    viewModel.toggleCategory(cat)
+                                }
+                            )
+
+                            // Sección de movimientos (tabla)
+                            transactionsSection
+
+                        case .statistics:
+                            // Sección de categorías debajo de los filtros
+                            CategoryBreakdownView(
+                                stats: viewModel.stats,
+                                selectedCategories: viewModel.selectedCategories,
+                                onCategoryTapped: { cat in
+                                    viewModel.toggleCategory(cat)
+                                }
+                            )
+
+                            // Tarjetas KPI
+                            KPICardsView(stats: viewModel.stats)
+
+                            // Gráfico de evolución mensual
+                            MonthlyEvolutionView(stats: viewModel.stats)
+
+                            // Gráfico de tarta de gastos por categoría (no interactivo)
+                            CategoryPieChartView(stats: viewModel.stats)
+                        }
                     }
                     .padding(.horizontal, 16)
                     .padding(.top, 12)
@@ -57,20 +101,16 @@ public struct ContentView: View {
                         Button {
                             viewModel.showCreateModal = true
                         } label: {
-                            HStack(spacing: 8) {
-                                Image(systemName: "plus")
-                                    .font(.system(size: 16, weight: .bold))
-                                Text("Nuevo Movimiento")
-                                    .font(.system(size: 15, weight: .semibold))
-                            }
-                            .padding(.horizontal, 18)
-                            .padding(.vertical, 14)
-                            .background(Color.green)
-                            .foregroundStyle(.white)
-                            .clipShape(Capsule())
-                            .shadow(color: Color.green.opacity(0.4), radius: 8, x: 0, y: 4)
+                            Image(systemName: "plus")
+                                .font(.system(size: 22, weight: .bold))
+                                .foregroundStyle(.white)
+                                .frame(width: 56, height: 56)
+                                .background(Color.green)
+                                .clipShape(Circle())
+                                .shadow(color: Color.green.opacity(0.4), radius: 8, x: 0, y: 4)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel("Nuevo Movimiento")
                         .padding(.trailing, 20)
                         .padding(.bottom, 16)
                     }
@@ -94,7 +134,7 @@ public struct ContentView: View {
                     .animation(.easeInOut, value: viewModel.showSuccessToast)
                 }
             }
-            .navigationTitle("Control de Finanzas")
+            .navigationTitle(selectedScreen.localizedName)
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif
@@ -106,14 +146,7 @@ public struct ContentView: View {
                 .sharedBackgroundVisibility(.hidden)
                 .contentMarginsRemoved()
                 ToolbarItem(placement: .principal) {
-                    HStack(spacing: 8) {
-                        Image("AppLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 22, height: 22)
-                        Text("Control de Finanzas")
-                            .font(.system(size: 16, weight: .bold))
-                    }
+                    screenPickerMenu
                 }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     toolbarActionButtons
@@ -124,6 +157,9 @@ public struct ContentView: View {
                 }
                 .sharedBackgroundVisibility(.hidden)
                 .contentMarginsRemoved()
+                ToolbarItem(placement: .principal) {
+                    screenPickerMenu
+                }
                 ToolbarItemGroup(placement: .primaryAction) {
                     toolbarActionButtons
                 }
@@ -141,6 +177,49 @@ public struct ContentView: View {
         }
         .environment(\.locale, Locale(identifier: appLanguage))
         .preferredColorScheme(.dark)
+    }
+
+    // MARK: - Screen Selector Menu (Navigation Bar Title)
+
+    private var screenPickerMenu: some View {
+        Menu {
+            ForEach(AppScreen.allCases) { screen in
+                Button {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        selectedScreen = screen
+                    }
+                } label: {
+                    Label {
+                        Text(screen.localizedName)
+                    } icon: {
+                        if selectedScreen == screen {
+                            Image(systemName: "checkmark")
+                        } else {
+                            Image(systemName: screen.icon)
+                        }
+                    }
+                }
+            }
+        } label: {
+            HStack(spacing: 6) {
+                Text(selectedScreen.localizedName)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundStyle(.primary)
+
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(Color.appCardBackground)
+            .clipShape(Capsule())
+            .overlay(
+                Capsule()
+                    .stroke(Color.appBorder, lineWidth: 1)
+            )
+        }
+        .buttonStyle(.plain)
     }
 
     private var statusBadgeButton: some View {
@@ -325,6 +404,10 @@ public struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+#Preview("Registros") {
+    ContentView(initialScreen: .records)
+}
+
+#Preview("Estadísticas") {
+    ContentView(initialScreen: .statistics)
 }

@@ -776,6 +776,7 @@
       }
     },
     "Control de Finanzas": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -869,6 +870,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Distribución de los gastos en el período"
+          }
+        }
+      }
+    },
+    "Distribución porcentual en gráfico circular": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Percentage distribution in pie chart"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Distribución porcentual en gráfico circular"
           }
         }
       }
@@ -1217,6 +1234,22 @@
         }
       }
     },
+    "Estadísticas": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistics"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estadísticas"
+          }
+        }
+      }
+    },
     "Este mes": {
       "localizations": {
         "en": {
@@ -1293,6 +1326,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "finanzas_export.csv"
+          }
+        }
+      }
+    },
+    "Gasto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expense"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gasto"
           }
         }
       }
@@ -1421,6 +1470,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gestionar Categorías"
+          }
+        }
+      }
+    },
+    "Gráfico de Gastos por Categoría": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses by Category Chart"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gráfico de Gastos por Categoría"
           }
         }
       }
@@ -1847,7 +1912,22 @@
         }
       }
     },
-    "No se encontró ninguna categoría con '%@'": {},
+    "No se encontró ninguna categoría con '%@'": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No category found matching '%@'"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se encontró ninguna categoría con '%@'"
+          }
+        }
+      }
+    },
     "No se encontró ninguna categoría con %@": {
       "extractionState": "stale",
       "localizations": {
@@ -2021,6 +2101,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Recargar Datos del Archivo"
+          }
+        }
+      }
+    },
+    "Registros": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Records"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registros"
           }
         }
       }
@@ -2294,6 +2390,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Total de Categorías"
+          }
+        }
+      }
+    },
+    "Total Gastos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total Expenses"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total Gastos"
           }
         }
       }

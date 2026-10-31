@@ -1,6 +1,7 @@
 import SwiftUI
+import Charts
 
-public struct ChartsView: View {
+public struct CategoryBreakdownView: View {
     public let stats: FinancialStats
     public let selectedCategories: Set<String>
     public let onCategoryTapped: (String) -> Void
@@ -14,18 +15,6 @@ public struct ChartsView: View {
     }
 
     public var body: some View {
-        VStack(spacing: 16) {
-            // Card 1: Gastos por Categoría
-            categoryBreakdownCard
-
-            // Card 2: Evolución Mensual
-            monthlyEvolutionCard
-        }
-    }
-
-    // MARK: - Category Breakdown Card
-
-    private var categoryBreakdownCard: some View {
         VStack(alignment: .leading, spacing: isCollapsed ? 0 : 14) {
             Button {
                 withAnimation(.easeInOut(duration: 0.25)) {
@@ -158,10 +147,16 @@ public struct ChartsView: View {
         )
         .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 3)
     }
+}
 
-    // MARK: - Monthly Evolution Card
+public struct MonthlyEvolutionView: View {
+    public let stats: FinancialStats
 
-    private var monthlyEvolutionCard: some View {
+    public init(stats: FinancialStats) {
+        self.stats = stats
+    }
+
+    public var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
@@ -300,4 +295,159 @@ public struct ChartsView: View {
         )
         .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 3)
     }
+}
+
+public struct CategoryPieChartView: View {
+    public let stats: FinancialStats
+
+    public init(stats: FinancialStats) {
+        self.stats = stats
+    }
+
+    public var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Gráfico de Gastos por Categoría")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(.primary)
+
+                    Text("Distribución porcentual en gráfico circular")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer()
+
+                Image(systemName: "chart.pie.fill")
+                    .font(.system(size: 16))
+                    .foregroundStyle(.secondary)
+            }
+
+            if stats.categoryBreakdown.isEmpty {
+                Text("No hay gastos registrados en este período.")
+                    .font(.system(size: 13))
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.vertical, 32)
+            } else {
+                VStack(spacing: 16) {
+                    // Pie / Donut Chart (visualización clara y estática)
+                    Chart(stats.categoryBreakdown) { cat in
+                        SectorMark(
+                            angle: .value("Gasto", cat.total),
+                            innerRadius: .ratio(0.58),
+                            angularInset: 1.5
+                        )
+                        .cornerRadius(4)
+                        .foregroundStyle(cat.color)
+                    }
+                    .chartBackground { chartProxy in
+                        GeometryReader { geometry in
+                            if let anchor = chartProxy.plotFrame {
+                                let frame = geometry[anchor]
+                                VStack(spacing: 2) {
+                                    Text("Total Gastos")
+                                        .font(.system(size: 10, weight: .medium))
+                                        .foregroundStyle(.secondary)
+
+                                    Text(String(format: "%.2f €", stats.totalGastos))
+                                        .font(.system(size: 13, weight: .bold, design: .rounded))
+                                        .foregroundStyle(.primary)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.8)
+                                }
+                                .frame(width: frame.width * 0.5)
+                                .position(x: frame.midX, y: frame.midY)
+                            }
+                        }
+                    }
+                    .frame(height: 220)
+
+                    // Leyenda informativa no interactiva
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 140), spacing: 8)], spacing: 8) {
+                        ForEach(stats.categoryBreakdown) { cat in
+                            HStack(spacing: 6) {
+                                Circle()
+                                    .fill(cat.color)
+                                    .frame(width: 8, height: 8)
+
+                                Text(cat.category)
+                                    .font(.system(size: 11, weight: .medium))
+                                    .foregroundStyle(.primary)
+                                    .lineLimit(1)
+
+                                Spacer()
+
+                                Text(String(format: "%.1f%%", cat.percentage))
+                                    .font(.system(size: 10, weight: .semibold, design: .monospaced))
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(Color.appSecondaryFill)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .stroke(Color.appBorder, lineWidth: 1)
+                            )
+                        }
+                    }
+                }
+            }
+        }
+        .padding(16)
+        .background(Color.appCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color.appBorder, lineWidth: 1)
+        )
+        .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 3)
+    }
+}
+
+public struct ChartsView: View {
+    public let stats: FinancialStats
+    public let selectedCategories: Set<String>
+    public let onCategoryTapped: (String) -> Void
+
+    public init(stats: FinancialStats, selectedCategories: Set<String>, onCategoryTapped: @escaping (String) -> Void) {
+        self.stats = stats
+        self.selectedCategories = selectedCategories
+        self.onCategoryTapped = onCategoryTapped
+    }
+
+    public var body: some View {
+        VStack(spacing: 16) {
+            CategoryBreakdownView(
+                stats: stats,
+                selectedCategories: selectedCategories,
+                onCategoryTapped: onCategoryTapped
+            )
+
+            MonthlyEvolutionView(stats: stats)
+
+            CategoryPieChartView(stats: stats)
+        }
+    }
+}
+
+#Preview("CategoryPieChartView") {
+    let stats: FinancialStats = {
+        var s = FinancialStats()
+        s.totalGastos = 1420.50
+        s.categoryBreakdown = [
+            CategorySummary(category: "Alimentación", total: 450.0, count: 12, percentage: 31.7, color: .orange),
+            CategorySummary(category: "Vivienda", total: 600.0, count: 2, percentage: 42.2, color: .blue),
+            CategorySummary(category: "Transporte", total: 180.50, count: 5, percentage: 12.7, color: .purple),
+            CategorySummary(category: "Ocio", total: 190.0, count: 4, percentage: 13.4, color: .pink)
+        ]
+        return s
+    }()
+
+    return CategoryPieChartView(stats: stats)
+        .padding()
+        .background(Color.appBackground)
+        .preferredColorScheme(.dark)
 }
