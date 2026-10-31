@@ -189,6 +189,7 @@
         }
       }
     },
+    "%lld disponibles": {},
     "%lld movs": {},
     "%lld registrados": {
       "localizations": {
@@ -351,6 +352,22 @@
       }
     },
     "A: %@": {},
+    "Abrir la App Atajos de Apple": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Apple Shortcuts App"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir la App Atajos de Apple"
+          }
+        }
+      }
+    },
     "Ajustes": {
       "localizations": {
         "en": {
@@ -432,6 +449,48 @@
         }
       }
     },
+    "Añade movimientos directamente a finanzas.json sin abrir la app.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add records directly to finanzas.json without opening the app."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añade movimientos directamente a finanzas.json sin abrir la app."
+          }
+        }
+      }
+    },
+    "Añade un nuevo movimiento a finanzas.json en PMFinances.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adds a new record to finanzas.json in PMFinances."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añade un nuevo movimiento a finanzas.json en PMFinances."
+          }
+        }
+      }
+    },
+    "Añadido a PMFinances: %@ (%@) en %@.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Añadido a PMFinances: %1$@ (%2$@) en %3$@."
+          }
+        }
+      }
+    },
     "Añadir": {
       "localizations": {
         "en": {
@@ -448,6 +507,7 @@
         }
       }
     },
+    "Añadir ${name} de ${cantidad} € en ${categoria}": {},
     "Añadir Categoría": {
       "localizations": {
         "en": {
@@ -460,6 +520,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Añadir Categoría"
+          }
+        }
+      }
+    },
+    "Añadir Registro": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Record"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añadir Registro"
+          }
+        }
+      }
+    },
+    "Añadir Registro Financiero": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Financial Record"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añadir Registro Financiero"
           }
         }
       }
@@ -492,6 +584,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Archivo: finanzas.json"
+          }
+        }
+      }
+    },
+    "Atajos de Siri": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri Shortcuts"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atajos de Siri"
+          }
+        }
+      }
+    },
+    "Automatización con Apple Pay": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Pay Automation"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatización con Apple Pay"
           }
         }
       }
@@ -561,6 +685,22 @@
         }
       }
     },
+    "Botón de Acción y Widgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Action Button and Widgets"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Botón de Acción y Widgets"
+          }
+        }
+      }
+    },
     "Buscar categoría...": {
       "localizations": {
         "en": {
@@ -621,6 +761,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cancelar"
+          }
+        }
+      }
+    },
+    "Cantidad en euros": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount in euros"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cantidad en euros"
           }
         }
       }
@@ -724,6 +880,22 @@
         }
       }
     },
+    "Categoría del movimiento alimentada desde PMFinances": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction category fetched from PMFinances"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categoría del movimiento alimentada desde PMFinances"
+          }
+        }
+      }
+    },
     "Categoría eliminada": {
       "extractionState": "stale",
       "localizations": {
@@ -774,6 +946,22 @@
         }
       }
     },
+    "Categorías Dinámicas en Atajos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dynamic Categories in Shortcuts"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categorías Dinámicas en Atajos"
+          }
+        }
+      }
+    },
     "Categorías restablecidas": {
       "extractionState": "stale",
       "localizations": {
@@ -819,6 +1007,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Color"
+          }
+        }
+      }
+    },
+    "Comandos de Voz con Siri": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri Voice Commands"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comandos de Voz con Siri"
           }
         }
       }
@@ -986,6 +1190,22 @@
         }
       }
     },
+    "Devuelve la lista actual de categorías configuradas en PMFinances.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Returns the current list of categories configured in PMFinances."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devuelve la lista actual de categorías configuradas en PMFinances."
+          }
+        }
+      }
+    },
     "Dif:": {
       "localizations": {
         "en": {
@@ -1126,6 +1346,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "ej. Restaurantes, Farmacia, Viajes..."
+          }
+        }
+      }
+    },
+    "El atajo consulta en tiempo real tus categorías de categorias.json:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The shortcut fetches your categories from categorias.json in real time:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El atajo consulta en tiempo real tus categorías de categorias.json:"
           }
         }
       }
@@ -1476,6 +1712,22 @@
         }
       }
     },
+    "Fecha y hora del movimiento": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date and time of transaction"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fecha y hora del movimiento"
+          }
+        }
+      }
+    },
     "Filtro": {
       "localizations": {
         "en": {
@@ -1556,6 +1808,22 @@
         }
       }
     },
+    "Gasto Recurrente": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recurring Expense"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gasto Recurrente"
+          }
+        }
+      }
+    },
     "Gasto único": {
       "localizations": {
         "en": {
@@ -1568,6 +1836,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gasto único"
+          }
+        }
+      }
+    },
+    "Gasto Único": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One-time Expense"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gasto Único"
           }
         }
       }
@@ -1848,6 +2132,22 @@
         }
       }
     },
+    "Importe (€)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount (€)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importe (€)"
+          }
+        }
+      }
+    },
     "Ingreso": {
       "localizations": {
         "en": {
@@ -1924,6 +2224,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ingresos:"
+          }
+        }
+      }
+    },
+    "Integración con Atajos de Apple": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Shortcuts Integration"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integración con Atajos de Apple"
           }
         }
       }
@@ -2236,6 +2552,22 @@
         }
       }
     },
+    "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name or description of transaction (e.g. Supermarket, Amazon, Salary)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)"
+          }
+        }
+      }
+    },
     "Nueva Categoría": {
       "localizations": {
         "en": {
@@ -2264,6 +2596,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nuevo Movimiento"
+          }
+        }
+      }
+    },
+    "Obtener Categorías de PMFinances": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get PMFinances Categories"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obtener Categorías de PMFinances"
           }
         }
       }
@@ -2332,6 +2680,22 @@
         }
       }
     },
+    "PMFinances incluye acciones nativas para Apple Shortcuts (App Intents). Cualquier atajo que crees se alimenta automáticamente de tus categorías y guarda las transacciones en tu archivo JSON.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PMFinances includes native actions for Apple Shortcuts (App Intents). Any shortcut you create automatically loads your categories and saves transactions to your JSON file."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PMFinances incluye acciones nativas para Apple Shortcuts (App Intents). Cualquier atajo que crees se alimenta automáticamente de tus categorías y guarda las transacciones en tu archivo JSON."
+          }
+        }
+      }
+    },
     "Preajustes:": {
       "localizations": {
         "en": {
@@ -2364,6 +2728,22 @@
         }
       }
     },
+    "Puedes pedirle a Siri que registre tus gastos diciendo:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can ask Siri to log expenses by saying:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puedes pedirle a Siri que registre tus gastos diciendo:"
+          }
+        }
+      }
+    },
     "Rec: %lld€": {
       "localizations": {
         "en": {
@@ -2392,6 +2772,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Recargar Datos del Archivo"
+          }
+        }
+      }
+    },
+    "Registra compras de forma automática al pagar con tu iPhone o Apple Watch:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatically record purchases when paying with iPhone or Apple Watch:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registra compras de forma automática al pagar con tu iPhone o Apple Watch:"
           }
         }
       }
@@ -2637,6 +3033,17 @@
         }
       }
     },
+    "Tienes %lld categorías configuradas en PMFinances: %@.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Tienes %1$lld categorías configuradas en PMFinances: %2$@."
+          }
+        }
+      }
+    },
+    "Tipo": {},
     "Tipo de Movimiento": {
       "localizations": {
         "en": {
@@ -2649,6 +3056,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tipo de Movimiento"
+          }
+        }
+      }
+    },
+    "Tipo de transacción (Gasto Único, Gasto Recurrente o Ingreso)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction type (One-time Expense, Recurring Expense, or Income)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipo de transacción (Gasto Único, Gasto Recurrente o Ingreso)"
           }
         }
       }

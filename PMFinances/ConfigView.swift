@@ -70,7 +70,24 @@ public struct ConfigView: View {
                             .background(Color.appBorder)
                             .padding(.leading, 64)
 
-                        // 3. Submenú Almacenamiento de datos
+                        // 3. Submenú Atajos de Siri
+                        NavigationLink {
+                            ShortcutsSettingsView(viewModel: viewModel)
+                        } label: {
+                            menuRow(
+                                icon: "bolt.badge.automatic.fill",
+                                iconColor: .orange,
+                                title: "Atajos de Siri",
+                                value: "Automatizaciones"
+                            )
+                        }
+                        .buttonStyle(.plain)
+
+                        Divider()
+                            .background(Color.appBorder)
+                            .padding(.leading, 64)
+
+                        // 4. Submenú Almacenamiento de datos
                         NavigationLink {
                             DataStorageSettingsView(viewModel: viewModel)
                         } label: {
@@ -519,6 +536,292 @@ public struct DataStorageSettingsView: View {
             }
         case .failure(let error):
             print("Error selecting folder: \(error.localizedDescription)")
+        }
+    }
+}
+
+// MARK: - 3. Submenú Atajos de Siri y Apple Shortcuts
+
+public struct ShortcutsSettingsView: View {
+    @ObservedObject public var viewModel: FinancialViewModel
+
+    public init(viewModel: FinancialViewModel) {
+        self.viewModel = viewModel
+    }
+
+    private func openShortcutsApp() {
+        #if os(iOS)
+        if let url = URL(string: "shortcuts://") {
+            UIApplication.shared.open(url)
+        }
+        #elseif os(macOS)
+        if let url = URL(string: "shortcuts://") {
+            NSWorkspace.shared.open(url)
+        }
+        #endif
+    }
+
+    public var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                // Header explicativo
+                headerCard
+
+                // Botón abrir app Atajos
+                openShortcutsButton
+
+                // Categorías sincronizadas
+                dynamicCategoriesCard
+
+                // Guía de uso con Siri
+                siriVoiceCard
+
+                // Automatización Apple Pay
+                applePayAutomationCard
+
+                // Botón de acción / Widgets
+                actionButtonWidgetCard
+            }
+            .padding(20)
+        }
+        .background(Color.appBackground)
+        .navigationTitle("Atajos de Siri")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
+    }
+
+    private var headerCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 12) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(Color.orange.opacity(0.18))
+                        .frame(width: 44, height: 44)
+                    Image(systemName: "bolt.badge.automatic.fill")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.orange)
+                }
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Integración con Atajos de Apple")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(.primary)
+
+                    Text("Añade movimientos directamente a finanzas.json sin abrir la app.")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Divider()
+                .background(Color.appBorder)
+
+            Text("PMFinances incluye acciones nativas para Apple Shortcuts (App Intents). Cualquier atajo que crees se alimenta automáticamente de tus categorías y guarda las transacciones en tu archivo JSON.")
+                .font(.system(size: 13))
+                .foregroundStyle(.secondary)
+        }
+        .padding(16)
+        .background(Color.appCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.appBorder, lineWidth: 1)
+        )
+    }
+
+    private var openShortcutsButton: some View {
+        Button {
+            openShortcutsApp()
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "arrow.up.forward.app.fill")
+                    .font(.system(size: 16))
+
+                Text("Abrir la App Atajos de Apple")
+                    .font(.system(size: 15, weight: .bold))
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            .background(Color.orange)
+            .foregroundStyle(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .shadow(color: Color.orange.opacity(0.3), radius: 6, x: 0, y: 3)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var dynamicCategoriesCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "tag.fill")
+                    .font(.system(size: 13))
+                    .foregroundStyle(.green)
+
+                Text("Categorías Dinámicas en Atajos")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(.primary)
+
+                Spacer()
+
+                Text("\(viewModel.categories.count) disponibles")
+                    .font(.system(size: 11, weight: .medium))
+                    .foregroundStyle(.secondary)
+            }
+
+            Text("El atajo consulta en tiempo real tus categorías de categorias.json:")
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
+
+            FlowLayout(spacing: 6) {
+                ForEach(viewModel.categories) { cat in
+                    HStack(spacing: 5) {
+                        Circle()
+                            .fill(cat.color)
+                            .frame(width: 7, height: 7)
+                        Text(cat.name)
+                            .font(.system(size: 11, weight: .medium))
+                            .foregroundStyle(.primary)
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.appSecondaryFill)
+                    .clipShape(Capsule())
+                    .overlay(Capsule().stroke(Color.appBorder, lineWidth: 1))
+                }
+            }
+        }
+        .padding(16)
+        .background(Color.appCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.appBorder, lineWidth: 1)
+        )
+    }
+
+    private var siriVoiceCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "waveform")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(.purple)
+
+                Text("Comandos de Voz con Siri")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(.primary)
+            }
+
+            Text("Puedes pedirle a Siri que registre tus gastos diciendo:")
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
+
+            VStack(alignment: .leading, spacing: 6) {
+                siriExampleRow("“Oye Siri, añade un gasto en PMFinances”")
+                siriExampleRow("“Oye Siri, nuevo registro en PMFinances”")
+                siriExampleRow("“Oye Siri, añade 15 euros a Amazon en PMFinances”")
+            }
+        }
+        .padding(16)
+        .background(Color.appCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.appBorder, lineWidth: 1)
+        )
+    }
+
+    private var applePayAutomationCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "creditcard.fill")
+                    .font(.system(size: 14))
+                    .foregroundStyle(.blue)
+
+                Text("Automatización con Apple Pay")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(.primary)
+            }
+
+            Text("Registra compras de forma automática al pagar con tu iPhone o Apple Watch:")
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
+
+            VStack(alignment: .leading, spacing: 8) {
+                stepRow(step: "1", text: "En la app Atajos, entra en la pestaña 'Automatización'.")
+                stepRow(step: "2", text: "Toca '+' y selecciona el disparador 'Transacción' (Apple Pay).")
+                stepRow(step: "3", text: "Elige tus tarjetas bancarias y marca 'Ejecutar inmediatamente'.")
+                stepRow(step: "4", text: "Agrega la acción 'Añadir Registro Financiero' de PMFinances usando el importe y comercio de la transacción.")
+            }
+        }
+        .padding(16)
+        .background(Color.appCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.appBorder, lineWidth: 1)
+        )
+    }
+
+    private var actionButtonWidgetCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 6) {
+                Image(systemName: "button.programmable")
+                    .font(.system(size: 14))
+                    .foregroundStyle(.orange)
+
+                Text("Botón de Acción y Widgets")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(.primary)
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                stepRow(step: "•", text: "Asigna el atajo al Botón de Acción en Ajustes > Botón de acción > Atajo.")
+                stepRow(step: "•", text: "Añade un widget de Atajos en tu pantalla de inicio o de bloqueo para registrar con un solo toque.")
+            }
+        }
+        .padding(16)
+        .background(Color.appCardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.appBorder, lineWidth: 1)
+        )
+    }
+
+    private func siriExampleRow(_ text: String) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: "mic.fill")
+                .font(.system(size: 11))
+                .foregroundStyle(.purple)
+
+            Text(text)
+                .font(.system(size: 12, weight: .medium, design: .rounded))
+                .foregroundStyle(.primary)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .background(Color.appSecondaryFill)
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+    }
+
+    private func stepRow(step: String, text: String) -> some View {
+        HStack(alignment: .top, spacing: 8) {
+            Text(step)
+                .font(.system(size: 11, weight: .bold))
+                .foregroundStyle(.white)
+                .frame(width: 18, height: 18)
+                .background(Color.orange, in: Circle())
+
+            Text(text)
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
         }
     }
 }
