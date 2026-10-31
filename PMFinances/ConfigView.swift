@@ -601,6 +601,7 @@ public struct ShortcutsSettingsView: View {
                 // Botón de acción / Widgets
                 actionButtonWidgetCard
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(20)
         }
         .background(Color.appBackground)
@@ -651,6 +652,7 @@ public struct ShortcutsSettingsView: View {
                 .foregroundStyle(.secondary)
         }
         .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
@@ -713,6 +715,7 @@ public struct ShortcutsSettingsView: View {
             }
         }
         .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
@@ -741,6 +744,7 @@ public struct ShortcutsSettingsView: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 14)
+                .frame(maxWidth: .infinity)
                 .background(Color.orange)
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
@@ -766,6 +770,7 @@ public struct ShortcutsSettingsView: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
+                .frame(maxWidth: .infinity)
                 .background(Color.appSecondaryFill)
                 .foregroundStyle(.primary)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
@@ -776,6 +781,7 @@ public struct ShortcutsSettingsView: View {
             }
             .buttonStyle(.plain)
         }
+        .frame(maxWidth: .infinity)
     }
 
     private var dynamicCategoriesCard: some View {
@@ -819,6 +825,7 @@ public struct ShortcutsSettingsView: View {
             }
         }
         .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
@@ -850,6 +857,7 @@ public struct ShortcutsSettingsView: View {
             }
         }
         .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
@@ -882,6 +890,7 @@ public struct ShortcutsSettingsView: View {
             }
         }
         .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
@@ -908,6 +917,7 @@ public struct ShortcutsSettingsView: View {
             }
         }
         .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
@@ -932,7 +942,10 @@ public struct ShortcutsSettingsView: View {
                     .font(.system(size: 12))
                     .foregroundStyle(.secondary)
             }
+
+            Spacer()
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func siriExampleRow(_ text: String) -> some View {
@@ -944,9 +957,12 @@ public struct ShortcutsSettingsView: View {
             Text(text)
                 .font(.system(size: 12, weight: .medium, design: .rounded))
                 .foregroundStyle(.primary)
+
+            Spacer()
         }
         .padding(.horizontal, 10)
-        .padding(.vertical, 6)
+        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.appSecondaryFill)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
@@ -962,7 +978,10 @@ public struct ShortcutsSettingsView: View {
             Text(text)
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
+
+            Spacer()
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
