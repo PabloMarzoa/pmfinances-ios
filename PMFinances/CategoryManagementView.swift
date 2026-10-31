@@ -11,8 +11,11 @@ public struct CategoryManagementView: View {
     @State private var showDeleteConfirmation: Bool = false
     @State private var showResetConfirmation: Bool = false
 
-    public init(viewModel: FinancialViewModel) {
+    public var isStandaloneSheet: Bool = false
+
+    public init(viewModel: FinancialViewModel, isStandaloneSheet: Bool = false) {
         self.viewModel = viewModel
+        self.isStandaloneSheet = isStandaloneSheet
     }
 
     private var filteredCategories: [CategoryItem] {
@@ -34,50 +37,65 @@ public struct CategoryManagementView: View {
     }
 
     public var body: some View {
-        NavigationStack {
-            List {
-                headerSection
-                categoriesListSection
-                resetSection
+        if isStandaloneSheet {
+            NavigationStack {
+                mainContent
             }
-            .scrollContentBackground(.hidden)
-            .background(Color.appBackground)
-            .searchable(text: $searchText, prompt: "Buscar categoría...")
-            .navigationTitle("Gestionar Categorías")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
-            .toolbar {
+        } else {
+            mainContent
+        }
+    }
+
+    private var mainContent: some View {
+        List {
+            headerSection
+            categoriesListSection
+            resetSection
+        }
+        .scrollContentBackground(.hidden)
+        .background(Color.appBackground)
+        .searchable(text: $searchText, prompt: "Buscar categoría...")
+        .navigationTitle("Categorías")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
+        .toolbar {
+            if isStandaloneSheet {
                 #if os(iOS)
                 ToolbarItem(placement: .topBarLeading) {
                     CircularDismissButton()
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        isCreatingNew = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 14, weight: .bold))
-                    }
-                    .tint(.green)
-                    .accessibilityLabel("Añadir Categoría")
                 }
                 #else
                 ToolbarItem(placement: .cancellationAction) {
                     CircularDismissButton()
                 }
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        isCreatingNew = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 14, weight: .bold))
-                    }
-                    .tint(.green)
-                    .accessibilityLabel("Añadir Categoría")
-                }
                 #endif
             }
+
+            #if os(iOS)
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    isCreatingNew = true
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 14, weight: .bold))
+                }
+                .tint(.green)
+                .accessibilityLabel("Añadir Categoría")
+            }
+            #else
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    isCreatingNew = true
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 14, weight: .bold))
+                }
+                .tint(.green)
+                .accessibilityLabel("Añadir Categoría")
+            }
+            #endif
+        }
             .sheet(isPresented: $isCreatingNew) {
                 newCategoryModal
             }
@@ -102,11 +120,10 @@ public struct CategoryManagementView: View {
             } message: {
                 Text("Se restaurará la lista de categorías original. ¿Deseas continuar?")
             }
-        }
-        #if os(macOS)
-        .frame(minWidth: 460, minHeight: 520)
-        #endif
-        .preferredColorScheme(.dark)
+            #if os(macOS)
+            .frame(minWidth: 460, minHeight: 520)
+            #endif
+            .preferredColorScheme(.dark)
     }
 
     private var newCategoryModal: some View {
@@ -506,5 +523,5 @@ private struct CategoryEditorModal: View {
 }
 
 #Preview {
-    CategoryManagementView(viewModel: FinancialViewModel())
+    CategoryManagementView(viewModel: FinancialViewModel(), isStandaloneSheet: true)
 }

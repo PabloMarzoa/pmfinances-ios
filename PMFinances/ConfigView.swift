@@ -6,43 +6,96 @@ public struct ConfigView: View {
     @ObservedObject public var viewModel: FinancialViewModel
     @AppStorage("app_language") private var appLanguage: String = "es"
 
-    @State private var showFolderPicker: Bool = false
-    @State private var showCategoryManagement: Bool = false
-    @State private var isReloading: Bool = false
-
     public init(viewModel: FinancialViewModel) {
         self.viewModel = viewModel
+    }
+
+    private var currentLanguageDisplayName: String {
+        switch appLanguage {
+        case "en": return "English"
+        default: return "Español"
+        }
+    }
+
+    private var storageLocationDisplayName: String {
+        if viewModel.isICloudStorage {
+            return "iCloud Drive"
+        } else if viewModel.isCustomFolderConfigured {
+            return "Carpeta local"
+        } else {
+            return "Por defecto"
+        }
     }
 
     public var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(spacing: 24) {
                     // Cabecera de la App
                     appBrandingHeader
 
-                    // Selección de Idioma
-                    languageSection
+                    // Menú de Ajustes agrupado en submenús
+                    VStack(spacing: 0) {
+                        // 1. Submenú Idioma
+                        NavigationLink {
+                            LanguageSettingsView()
+                        } label: {
+                            menuRow(
+                                icon: "globe",
+                                iconColor: .purple,
+                                title: "Idioma",
+                                value: currentLanguageDisplayName
+                            )
+                        }
+                        .buttonStyle(.plain)
 
-                    // Estado actual del almacenamiento
-                    storageStatusCard
+                        Divider()
+                            .background(Color.appBorder)
+                            .padding(.leading, 64)
 
-                    // Gestión de Categorías
-                    categoryManagementSection
+                        // 2. Submenú Categorías
+                        NavigationLink {
+                            CategoryManagementView(viewModel: viewModel)
+                        } label: {
+                            menuRow(
+                                icon: "tag.fill",
+                                iconColor: .green,
+                                title: "Categorías",
+                                value: "\(viewModel.categories.count) categorías"
+                            )
+                        }
+                        .buttonStyle(.plain)
 
-                    // Acciones principales de configuración
-                    folderConfigurationSection
+                        Divider()
+                            .background(Color.appBorder)
+                            .padding(.leading, 64)
 
-                    // Explicación de sincronización iCloud
-                    iCloudInstructionsSection
+                        // 3. Submenú Almacenamiento de datos
+                        NavigationLink {
+                            DataStorageSettingsView(viewModel: viewModel)
+                        } label: {
+                            menuRow(
+                                icon: viewModel.isICloudStorage ? "icloud.fill" : (viewModel.isCustomFolderConfigured ? "folder.fill" : "internaldrive.fill"),
+                                iconColor: viewModel.statusBadgeColor,
+                                title: "Almacenamiento de datos",
+                                value: storageLocationDisplayName
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    .background(Color.appCardBackground)
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .stroke(Color.appBorder, lineWidth: 1)
+                    )
 
-                    // Cargar datos de ejemplo / Restablecer
-                    advancedSection
+                    Spacer(minLength: 20)
                 }
                 .padding(20)
             }
             .background(Color.appBackground)
-            .navigationTitle("Almacenamiento y Sincronización")
+            .navigationTitle("Ajustes")
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif
@@ -57,16 +110,6 @@ public struct ConfigView: View {
                 }
                 #endif
             }
-            .fileImporter(
-                isPresented: $showFolderPicker,
-                allowedContentTypes: [.folder],
-                allowsMultipleSelection: false
-            ) { result in
-                handleFolderSelection(result: result)
-            }
-            .sheet(isPresented: $showCategoryManagement) {
-                CategoryManagementView(viewModel: viewModel)
-            }
         }
         .environment(\.locale, Locale(identifier: appLanguage))
         #if os(macOS)
@@ -75,14 +118,46 @@ public struct ConfigView: View {
         .preferredColorScheme(.dark)
     }
 
-    // MARK: - Subviews
+    // MARK: - Menu Row Component
+
+    private func menuRow(icon: String, iconColor: Color, title: LocalizedStringKey, value: String) -> some View {
+        HStack(spacing: 14) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(iconColor.opacity(0.18))
+                    .frame(width: 38, height: 38)
+                Image(systemName: icon)
+                    .font(.system(size: 17))
+                    .foregroundStyle(iconColor)
+            }
+
+            Text(title)
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundStyle(.primary)
+
+            Spacer()
+
+            Text(value)
+                .font(.system(size: 14))
+                .foregroundStyle(.secondary)
+
+            Image(systemName: "chevron.right")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(Color.secondary.opacity(0.5))
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 14)
+        .contentShape(Rectangle())
+    }
+
+    // MARK: - Branding Header
 
     private var appBrandingHeader: some View {
         HStack(spacing: 14) {
             Image("AppLogo")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 44, height: 44)
+                .frame(width: 48, height: 48)
                 .padding(6)
                 .background(Color.appCardBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
@@ -93,7 +168,7 @@ public struct ConfigView: View {
 
             VStack(alignment: .leading, spacing: 3) {
                 Text("PMFinances")
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .font(.system(size: 19, weight: .bold, design: .rounded))
                     .foregroundStyle(.primary)
 
                 Text("Gestión y control de finanzas personales")
@@ -104,33 +179,114 @@ public struct ConfigView: View {
             Spacer()
         }
     }
+}
 
-    private var languageSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 8) {
-                Image(systemName: "globe")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.purple)
+// MARK: - 1. Submenú Idioma
 
+public struct LanguageSettingsView: View {
+    @AppStorage("app_language") private var appLanguage: String = "es"
+
+    public init() {}
+
+    private let languages: [(code: String, name: String, nativeName: String)] = [
+        ("es", "Español", "Español"),
+        ("en", "Inglés", "English")
+    ]
+
+    public var body: some View {
+        List {
+            Section {
+                ForEach(languages, id: \.code) { lang in
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            appLanguage = lang.code
+                        }
+                    } label: {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(lang.name)
+                                    .font(.system(size: 15, weight: .medium))
+                                    .foregroundStyle(.primary)
+
+                                if lang.name != lang.nativeName {
+                                    Text(lang.nativeName)
+                                        .font(.system(size: 12))
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+
+                            Spacer()
+
+                            if appLanguage == lang.code {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 14, weight: .bold))
+                                    .foregroundStyle(Color.green)
+                            }
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    .listRowBackground(Color.appCardBackground)
+                }
+            } header: {
                 Text("Idioma de la Aplicación")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(.primary)
+            } footer: {
+                Text("El cambio de idioma se aplica inmediatamente a toda la aplicación.")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
             }
-
-            Picker("Idioma", selection: $appLanguage) {
-                Text("Español").tag("es")
-                Text("English").tag("en")
-            }
-            .pickerStyle(.segmented)
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(Color.appBorder, lineWidth: 1)
-        )
+        .scrollContentBackground(.hidden)
+        .background(Color.appBackground)
+        .navigationTitle("Idioma")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
+}
+
+// MARK: - 3. Submenú Almacenamiento de Datos
+
+public struct DataStorageSettingsView: View {
+    @ObservedObject public var viewModel: FinancialViewModel
+    @State private var showFolderPicker: Bool = false
+
+    public init(viewModel: FinancialViewModel) {
+        self.viewModel = viewModel
+    }
+
+    public var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                // Estado actual del almacenamiento
+                storageStatusCard
+
+                // Configuración de ubicación
+                folderConfigurationSection
+
+                // Guía de sincronización con iCloud
+                iCloudInstructionsSection
+
+                // Opciones avanzadas de datos
+                advancedSection
+            }
+            .padding(20)
+        }
+        .background(Color.appBackground)
+        .navigationTitle("Almacenamiento de datos")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
+        .fileImporter(
+            isPresented: $showFolderPicker,
+            allowedContentTypes: [.folder],
+            allowsMultipleSelection: false
+        ) { result in
+            handleFolderSelection(result: result)
+        }
+    }
+
+    // MARK: - Subviews
 
     private var storageStatusCard: some View {
         let meta = viewModel.metadata
@@ -169,54 +325,6 @@ public struct ConfigView: View {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .stroke(viewModel.statusBadgeColor.opacity(0.3), lineWidth: 1)
         )
-    }
-
-    private var categoryManagementSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Categorías de Movimientos")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(.secondary)
-
-            Button {
-                showCategoryManagement = true
-            } label: {
-                HStack(spacing: 14) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(Color.green.opacity(0.18))
-                            .frame(width: 40, height: 40)
-                        Image(systemName: "tag.fill")
-                            .font(.system(size: 18))
-                            .foregroundStyle(Color.green)
-                    }
-
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("Gestionar Categorías")
-                            .font(.system(size: 15, weight: .bold))
-                            .foregroundStyle(.primary)
-
-                        Text("\(viewModel.categories.count) categorías configuradas")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.secondary)
-                    }
-
-                    Spacer()
-
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(.secondary)
-                }
-                .padding(.horizontal, 14)
-                .padding(.vertical, 12)
-                .background(Color.appCardBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .stroke(Color.appBorder, lineWidth: 1)
-                )
-            }
-            .buttonStyle(.plain)
-        }
     }
 
     private var folderConfigurationSection: some View {
