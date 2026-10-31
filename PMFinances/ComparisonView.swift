@@ -355,7 +355,7 @@ public struct ComparisonView: View {
                     Image(systemName: diff >= 0 ? "arrow.up.right" : "arrow.down.right")
                         .font(.system(size: 10, weight: .bold))
 
-                    Text("\(diff >= 0 ? "+" : "")\(String(format: isCurrency ? "%.2f €" : "%.1f", diff)) (\(diff >= 0 ? "+" : "")\(String(format: "%.1f%%", pctChange)))")
+                    Text("\(diff >= 0 ? "+" : "")\(String(format: isCurrency ? "%.2f €" : "%.1f", diff)) (\(diff >= 0 ? "+" : "")\("\(String(format: "%.1f", pctChange))%"))")
                         .font(.system(size: 11, weight: .bold, design: .monospaced))
                 }
                 .padding(.horizontal, 8)
@@ -442,7 +442,7 @@ public struct ComparisonView: View {
                 Spacer()
 
                 if let isPositive = isPositive {
-                    Text("\(diff >= 0 ? "+" : "")\(String(format: "%.1f%%", pctChange))")
+                    Text("\(diff >= 0 ? "+" : "")\("\(String(format: "%.1f", pctChange))%")")
                         .font(.system(size: 10, weight: .bold, design: .monospaced))
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)

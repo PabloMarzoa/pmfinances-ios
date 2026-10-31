@@ -24,12 +24,6 @@ public enum AppScreen: String, CaseIterable, Identifiable {
     }
 }
 
-private struct NoHighlightButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-    }
-}
-
 public struct ContentView: View {
     @StateObject private var viewModel = FinancialViewModel()
     @AppStorage("app_language") private var appLanguage: String = "es"
@@ -147,10 +141,20 @@ public struct ContentView: View {
                     .animation(.easeInOut, value: viewModel.showSuccessToast)
                 }
             }
-            .navigationTitle("")
+            .navigationTitle(selectedScreen.localizedName)
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif
+            .toolbarTitleMenu {
+                Picker(selection: $selectedScreen) {
+                    ForEach(AppScreen.allCases) { screen in
+                        Label(screen.localizedName, systemImage: screen.icon)
+                            .tag(screen)
+                    }
+                } label: {
+                    EmptyView()
+                }
+            }
             .toolbar {
                 #if os(iOS)
                 ToolbarItem(placement: .topBarLeading) {
@@ -158,9 +162,6 @@ public struct ContentView: View {
                 }
                 .sharedBackgroundVisibility(.hidden)
                 .contentMarginsRemoved()
-                ToolbarItem(placement: .principal) {
-                    screenPickerMenu
-                }
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     toolbarActionButtons
                 }
@@ -170,9 +171,6 @@ public struct ContentView: View {
                 }
                 .sharedBackgroundVisibility(.hidden)
                 .contentMarginsRemoved()
-                ToolbarItem(placement: .principal) {
-                    screenPickerMenu
-                }
                 ToolbarItemGroup(placement: .primaryAction) {
                     toolbarActionButtons
                 }
@@ -192,51 +190,7 @@ public struct ContentView: View {
         .preferredColorScheme(.dark)
     }
 
-    // MARK: - Screen Selector Menu (Navigation Bar Title)
-
-    private var screenPickerMenu: some View {
-        Menu {
-            ForEach(AppScreen.allCases) { screen in
-                Button {
-                    selectedScreen = screen
-                } label: {
-                    Label {
-                        Text(screen.localizedName)
-                    } icon: {
-                        if selectedScreen == screen {
-                            Image(systemName: "checkmark")
-                        } else {
-                            Image(systemName: screen.icon)
-                        }
-                    }
-                }
-            }
-        } label: {
-            HStack(spacing: 6) {
-                Text(selectedScreen.localizedName)
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundStyle(.primary)
-
-                Image(systemName: "chevron.down")
-                    .font(.system(size: 11, weight: .bold))
-                    .foregroundStyle(.secondary)
-            }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 6)
-            .background(Color.appCardBackground)
-            .clipShape(Capsule())
-            .overlay(
-                Capsule()
-                    .stroke(Color.appBorder, lineWidth: 1)
-            )
-        }
-        .buttonStyle(NoHighlightButtonStyle())
-        .geometryGroup()
-        .fixedSize()
-        .transaction { transaction in
-            transaction.animation = nil
-        }
-    }
+    // MARK: - Navigation Bar Items
 
     private var statusBadgeButton: some View {
         Button {

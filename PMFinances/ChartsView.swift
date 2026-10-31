@@ -118,7 +118,7 @@ public struct CategoryBreakdownView: View {
                                             .font(.system(size: 13, weight: .semibold, design: .monospaced))
                                             .foregroundStyle(.primary)
 
-                                        Text(String(format: "%.1f%%", cat.percentage))
+                                        Text("\(String(format: "%.1f", cat.percentage))%")
                                             .font(.system(size: 11))
                                             .foregroundStyle(.secondary)
                                     }
@@ -379,7 +379,7 @@ public struct CategoryPieChartView: View {
 
                                 Spacer()
 
-                                Text(String(format: "%.1f%%", cat.percentage))
+                                Text("\(String(format: "%.1f", cat.percentage))%")
                                     .font(.system(size: 10, weight: .semibold, design: .monospaced))
                                     .foregroundStyle(.secondary)
                             }

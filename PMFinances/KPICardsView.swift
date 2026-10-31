@@ -120,7 +120,7 @@ public struct KPICardsView: View {
                             .background(Color.purple.opacity(0.15), in: Circle())
                     }
 
-                    Text(String(format: "%.1f%%", stats.tasaAhorro))
+                    Text("\(String(format: "%.1f", stats.tasaAhorro))%")
                         .font(.system(size: 20, weight: .bold, design: .rounded))
                         .foregroundStyle(.primary)
                         .lineLimit(1)
