@@ -126,7 +126,7 @@ public struct ComparisonView: View {
 
         VStack(spacing: 16) {
             // 1. Selector de Intervalos A y B
-            intervalsSelectorCard(statsA: currentStatsA, statsB: currentStatsB)
+            intervalsSelectorCard()
 
             // 2. Tarjetas KPI Comparativas
             comparisonKPICards(statsA: currentStatsA, statsB: currentStatsB)
@@ -141,7 +141,7 @@ public struct ComparisonView: View {
 
     // MARK: - 1. Selector de Intervalos
 
-    private func intervalsSelectorCard(statsA: FinancialStats, statsB: FinancialStats) -> some View {
+    private func intervalsSelectorCard() -> some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
@@ -196,8 +196,7 @@ public struct ComparisonView: View {
                     selectedRange: $rangeA,
                     selectedMonths: $selectedMonthsA,
                     customStart: $customStartA,
-                    customEnd: $customEndA,
-                    recordCount: statsA.recordCount
+                    customEnd: $customEndA
                 )
 
                 // Divider / VS badge
@@ -219,8 +218,7 @@ public struct ComparisonView: View {
                     selectedRange: $rangeB,
                     selectedMonths: $selectedMonthsB,
                     customStart: $customStartB,
-                    customEnd: $customEndB,
-                    recordCount: statsB.recordCount
+                    customEnd: $customEndB
                 )
             }
 
@@ -269,8 +267,7 @@ public struct ComparisonView: View {
         selectedRange: Binding<TimeRangeFilter?>,
         selectedMonths: Binding<Set<String>>,
         customStart: Binding<Date>,
-        customEnd: Binding<Date>,
-        recordCount: Int
+        customEnd: Binding<Date>
     ) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 6) {
@@ -281,12 +278,6 @@ public struct ComparisonView: View {
                 Text(title)
                     .font(.system(size: 12, weight: .bold))
                     .foregroundStyle(color)
-
-                Spacer()
-
-                Text("\(recordCount) \(String(localized: "movs"))")
-                    .font(.system(size: 10, weight: .semibold, design: .monospaced))
-                    .foregroundStyle(.secondary)
             }
 
             Menu {
