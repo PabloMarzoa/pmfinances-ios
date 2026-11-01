@@ -194,7 +194,6 @@ public struct CreateRecordView: View {
         #if os(macOS)
         .frame(minWidth: 440, idealWidth: 460, minHeight: 480)
         #endif
-        .preferredColorScheme(.dark)
     }
 
     private func save() {

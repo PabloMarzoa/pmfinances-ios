@@ -156,11 +156,11 @@ public struct ComparisonView: View {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(Color.appCardBorder, lineWidth: 1)
         )
-        .shadow(color: Color.black.opacity(0.25), radius: 6, x: 0, y: 3)
+        .appCardShadow()
     }
 
     private func intervalBox(
-        title: String,
+        title: LocalizedStringKey,
         color: Color,
         selectedRange: Binding<TimeRangeFilter>,
         customStart: Binding<Date>,
@@ -179,7 +179,7 @@ public struct ComparisonView: View {
 
                 Spacer()
 
-                Text("\(recordCount) movs")
+                Text("\(recordCount) \(String(localized: "movs"))")
                     .font(.system(size: 10, weight: .semibold, design: .monospaced))
                     .foregroundStyle(.secondary)
             }
@@ -246,7 +246,7 @@ public struct ComparisonView: View {
         )
     }
 
-    private func presetButton(_ title: String, action: @escaping () -> Void) -> some View {
+    private func presetButton(_ title: LocalizedStringKey, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(title)
                 .font(.system(size: 10, weight: .semibold))
@@ -317,7 +317,7 @@ public struct ComparisonView: View {
                     valA: Double(statsA.recordCount),
                     valB: Double(statsB.recordCount),
                     isCurrency: false,
-                    suffix: " movs",
+                    suffix: " \(String(localized: "movs"))",
                     isHigherBetter: nil
                 )
             }
@@ -325,7 +325,7 @@ public struct ComparisonView: View {
     }
 
     private func comparativeRowCard(
-        title: String,
+        title: LocalizedStringKey,
         icon: String,
         valA: Double,
         valB: Double,
@@ -412,7 +412,7 @@ public struct ComparisonView: View {
     }
 
     private func comparativeMetricCard(
-        title: String,
+        title: LocalizedStringKey,
         icon: String,
         iconColor: Color,
         valA: Double,
@@ -452,6 +452,10 @@ public struct ComparisonView: View {
                 }
             }
 
+            let formattedValA = isCurrency ? String(format: "%.2f €", valA) : "\(String(format: "%.1f", valA))\(suffix)"
+            let formattedValB = isCurrency ? String(format: "%.2f €", valB) : "\(String(format: "%.1f", valB))\(suffix)"
+            let formattedDiff = isCurrency ? String(format: "%.2f €", diff) : "\(String(format: "%.1f", diff))\(suffix)"
+
             VStack(alignment: .leading, spacing: 6) {
                 // Row A
                 HStack {
@@ -460,7 +464,7 @@ public struct ComparisonView: View {
                         .font(.system(size: 11, weight: .medium))
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text(String(format: isCurrency ? "%.2f €" : "%.1f\(suffix)", valA))
+                    Text(formattedValA)
                         .font(.system(size: 13, weight: .bold, design: .monospaced))
                         .foregroundStyle(.primary)
                 }
@@ -472,7 +476,7 @@ public struct ComparisonView: View {
                         .font(.system(size: 11, weight: .medium))
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text(String(format: isCurrency ? "%.2f €" : "%.1f\(suffix)", valB))
+                    Text(formattedValB)
                         .font(.system(size: 13, weight: .bold, design: .monospaced))
                         .foregroundStyle(.primary)
                 }
@@ -483,7 +487,7 @@ public struct ComparisonView: View {
                         .font(.system(size: 10, weight: .medium))
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text("\(diff >= 0 ? "+" : "")\(String(format: isCurrency ? "%.2f €" : "%.1f\(suffix)", diff))")
+                    Text("\(diff >= 0 ? "+" : "")\(formattedDiff)")
                         .font(.system(size: 11, weight: .semibold, design: .monospaced))
                         .foregroundStyle(isPositive == nil ? Color.secondary : (isPositive! ? Color.green : Color.red))
                 }
@@ -511,13 +515,19 @@ public struct ComparisonView: View {
     }
 
     private func comparisonBarChart(statsA: FinancialStats, statsB: FinancialStats) -> some View {
+        let labelA = String(localized: "Intervalo A")
+        let labelB = String(localized: "Intervalo B")
+        let metricIncome = String(localized: "Ingresos")
+        let metricExpenses = String(localized: "Gastos")
+        let metricBalance = String(localized: "Balance")
+
         let items: [MetricBarItem] = [
-            MetricBarItem(metric: "Ingresos", interval: "Intervalo A", amount: statsA.totalIngresos, color: colorA),
-            MetricBarItem(metric: "Ingresos", interval: "Intervalo B", amount: statsB.totalIngresos, color: colorB),
-            MetricBarItem(metric: "Gastos", interval: "Intervalo A", amount: statsA.totalGastos, color: colorA),
-            MetricBarItem(metric: "Gastos", interval: "Intervalo B", amount: statsB.totalGastos, color: colorB),
-            MetricBarItem(metric: "Balance", interval: "Intervalo A", amount: max(statsA.balanceNeto, 0), color: colorA),
-            MetricBarItem(metric: "Balance", interval: "Intervalo B", amount: max(statsB.balanceNeto, 0), color: colorB)
+            MetricBarItem(metric: metricIncome, interval: labelA, amount: statsA.totalIngresos, color: colorA),
+            MetricBarItem(metric: metricIncome, interval: labelB, amount: statsB.totalIngresos, color: colorB),
+            MetricBarItem(metric: metricExpenses, interval: labelA, amount: statsA.totalGastos, color: colorA),
+            MetricBarItem(metric: metricExpenses, interval: labelB, amount: statsB.totalGastos, color: colorB),
+            MetricBarItem(metric: metricBalance, interval: labelA, amount: max(statsA.balanceNeto, 0), color: colorA),
+            MetricBarItem(metric: metricBalance, interval: labelB, amount: max(statsB.balanceNeto, 0), color: colorB)
         ]
 
         return VStack(alignment: .leading, spacing: 14) {
@@ -537,27 +547,36 @@ public struct ComparisonView: View {
                 HStack(spacing: 12) {
                     HStack(spacing: 4) {
                         Circle().fill(colorA).frame(width: 8, height: 8)
-                        Text("A: \(rangeA.title)").font(.system(size: 10)).foregroundStyle(.secondary)
+                        Text("A: ")
+                            .font(.system(size: 10, weight: .bold))
+                        + Text(rangeA.localizedTitle)
+                            .font(.system(size: 10))
                     }
+                    .foregroundStyle(.secondary)
+
                     HStack(spacing: 4) {
                         Circle().fill(colorB).frame(width: 8, height: 8)
-                        Text("B: \(rangeB.title)").font(.system(size: 10)).foregroundStyle(.secondary)
+                        Text("B: ")
+                            .font(.system(size: 10, weight: .bold))
+                        + Text(rangeB.localizedTitle)
+                            .font(.system(size: 10))
                     }
+                    .foregroundStyle(.secondary)
                 }
             }
 
             Chart(items) { item in
                 BarMark(
-                    x: .value("Métrica", item.metric),
-                    y: .value("Importe", item.amount)
+                    x: .value(String(localized: "Métrica"), item.metric),
+                    y: .value(String(localized: "Importe"), item.amount)
                 )
-                .foregroundStyle(by: .value("Intervalo", item.interval))
-                .position(by: .value("Intervalo", item.interval))
+                .foregroundStyle(by: .value(String(localized: "Intervalo"), item.interval))
+                .position(by: .value(String(localized: "Intervalo"), item.interval))
                 .cornerRadius(4)
             }
             .chartForegroundStyleScale([
-                "Intervalo A": colorA,
-                "Intervalo B": colorB
+                labelA: colorA,
+                labelB: colorB
             ])
             .chartLegend(.hidden)
             .frame(height: 180)
@@ -569,7 +588,7 @@ public struct ComparisonView: View {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(Color.appCardBorder, lineWidth: 1)
         )
-        .shadow(color: Color.black.opacity(0.25), radius: 6, x: 0, y: 3)
+        .appCardShadow()
     }
 
     // MARK: - 5. Comparativa por Categoría
@@ -655,7 +674,7 @@ public struct ComparisonView: View {
                                     .fill(item.color)
                                     .frame(width: 12, height: 12)
 
-                                Text(item.category)
+                                Text(LocalizedStringKey(item.category))
                                     .font(.system(size: 13, weight: .semibold))
                                     .foregroundStyle(.primary)
 
@@ -669,7 +688,7 @@ public struct ComparisonView: View {
                                 HStack(spacing: 3) {
                                     Image(systemName: diff <= 0 ? "arrow.down" : "arrow.up")
                                         .font(.system(size: 9, weight: .bold))
-                                    Text("\(diff >= 0 ? "+" : "")\(String(format: "%.2f €", diff)) (\(diff >= 0 ? "+" : "")\(String(format: "%.0f%%", pct)))")
+                                    Text("\(diff >= 0 ? "+" : "")\(String(format: "%.2f €", diff)) (\(diff >= 0 ? "+" : "")\(String(format: "%.0f", pct))%)")
                                         .font(.system(size: 10, weight: .bold, design: .monospaced))
                                 }
                                 .padding(.horizontal, 6)
@@ -756,7 +775,7 @@ public struct ComparisonView: View {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(Color.appCardBorder, lineWidth: 1)
         )
-        .shadow(color: Color.black.opacity(0.25), radius: 6, x: 0, y: 3)
+        .appCardShadow()
     }
 }
 

@@ -307,7 +307,7 @@ public struct FiltersBarView: View {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(Color.appCardBorder, lineWidth: 1)
         )
-        .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 3)
+        .appCardShadow()
     }
 
     @ViewBuilder

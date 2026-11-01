@@ -27,7 +27,13 @@ public enum AppScreen: String, CaseIterable, Identifiable {
 public struct ContentView: View {
     @StateObject private var viewModel = FinancialViewModel()
     @AppStorage("app_language") private var appLanguage: String = "es"
+    @AppStorage("app_appearance") private var appAppearance: String = "system"
+    @Environment(\.colorScheme) private var colorScheme
     @State private var activeSwipedRecordId: String? = nil
+
+    private var preferredColorScheme: ColorScheme? {
+        AppAppearance(rawValue: appAppearance)?.colorScheme
+    }
     @State private var selectedScreen: AppScreen = .records
 
     public init(initialScreen: AppScreen = .records) {
@@ -37,6 +43,8 @@ public struct ContentView: View {
     public var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
+                appAmbientBackground
+
                 ScrollView {
                     VStack(spacing: 16) {
                         // Storage Folder Banner (if default local)
@@ -95,7 +103,7 @@ public struct ContentView: View {
                     .padding(.top, 12)
                     .padding(.bottom, 80) // Spacing for floating button
                 }
-                .background(Color.appBackground)
+                .scrollContentBackground(.hidden)
                 .refreshable {
                     await viewModel.loadData()
                 }
@@ -187,7 +195,43 @@ public struct ContentView: View {
             }
         }
         .environment(\.locale, Locale(identifier: appLanguage))
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(preferredColorScheme)
+    }
+
+    // MARK: - Ambient Background
+
+    private var appAmbientBackground: some View {
+        let isDark = colorScheme == .dark
+
+        return ZStack {
+            Color.appBackground
+
+            // Resplandor púrpura superior izquierdo (GPU nativo, cero coste de desenfoque)
+            RadialGradient(
+                gradient: Gradient(colors: [
+                    Color.appLogoPurple.opacity(isDark ? 0.24 : 0.08),
+                    Color.appLogoPurple.opacity(isDark ? 0.08 : 0.02),
+                    Color.clear
+                ]),
+                center: .topLeading,
+                startRadius: 10,
+                endRadius: 360
+            )
+
+            // Resplandor púrpura centro-derecho
+            RadialGradient(
+                gradient: Gradient(colors: [
+                    Color.appLogoPurple.opacity(isDark ? 0.18 : 0.06),
+                    Color.appLogoPurple.opacity(isDark ? 0.05 : 0.015),
+                    Color.clear
+                ]),
+                center: UnitPoint(x: 0.9, y: 0.45),
+                startRadius: 20,
+                endRadius: 380
+            )
+        }
+        .ignoresSafeArea()
+        .allowsHitTesting(false)
     }
 
     // MARK: - Navigation Bar Items

@@ -236,7 +236,6 @@ public struct EditRecordView: View {
         #if os(macOS)
         .frame(minWidth: 440, idealWidth: 460, minHeight: 520)
         #endif
-        .preferredColorScheme(.dark)
     }
 
     private func save() {

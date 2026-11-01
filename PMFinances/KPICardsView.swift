@@ -145,7 +145,7 @@ public struct KPICardsView: View {
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .stroke(Color.appCardBorder, lineWidth: 1)
             )
-            .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 3)
+            .appCardShadow()
     }
 
     private func formatCurrency(_ value: Double) -> String {

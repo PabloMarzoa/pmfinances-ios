@@ -173,7 +173,7 @@ public final class LocalStorageService: Sendable {
             return []
         }
 
-        let didStart = folderURL.startAccessingSecurityScopedResource()
+        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
@@ -196,7 +196,7 @@ public final class LocalStorageService: Sendable {
             throw NSError(domain: "LocalStorageService", code: 404, userInfo: [NSLocalizedDescriptionKey: "No se encontró la carpeta de destino."])
         }
 
-        let didStart = folderURL.startAccessingSecurityScopedResource()
+        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
@@ -249,7 +249,7 @@ public final class LocalStorageService: Sendable {
             return FinancialCategory.defaultCategories
         }
 
-        let didStart = folderURL.startAccessingSecurityScopedResource()
+        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
@@ -274,7 +274,7 @@ public final class LocalStorageService: Sendable {
             throw NSError(domain: "LocalStorageService", code: 404, userInfo: [NSLocalizedDescriptionKey: "No se encontró la carpeta de destino."])
         }
 
-        let didStart = folderURL.startAccessingSecurityScopedResource()
+        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
@@ -296,7 +296,7 @@ public final class LocalStorageService: Sendable {
             return FileStorageMetadata(exists: false, lastModified: nil, sizeInBytes: 0, recordCount: 0, fileName: fileName)
         }
 
-        let didStart = folderURL.startAccessingSecurityScopedResource()
+        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()

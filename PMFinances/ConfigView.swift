@@ -10,14 +10,24 @@ public struct ConfigView: View {
         self.viewModel = viewModel
     }
 
-    private var currentLanguageDisplayName: String {
+    @AppStorage("app_appearance") private var appAppearance: String = "system"
+
+    private var currentLanguageDisplayName: LocalizedStringKey {
         switch appLanguage {
         case "en": return "English"
         default: return "Español"
         }
     }
 
-    private var storageLocationDisplayName: String {
+    private var currentAppearanceDisplayName: LocalizedStringKey {
+        switch appAppearance {
+        case "light": return "Claro"
+        case "dark": return "Oscuro"
+        default: return "Sistema"
+        }
+    }
+
+    private var storageLocationDisplayName: LocalizedStringKey {
         if viewModel.isICloudStorage {
             return "iCloud Drive"
         } else if viewModel.isCustomFolderConfigured {
@@ -53,7 +63,24 @@ public struct ConfigView: View {
                             .background(Color.appDivider)
                             .padding(.leading, 64)
 
-                        // 2. Submenú Categorías
+                        // 2. Submenú Aspecto (Tema)
+                        NavigationLink {
+                            AppearanceSettingsView()
+                        } label: {
+                            menuRow(
+                                icon: "circle.lefthalf.filled",
+                                iconColor: .indigo,
+                                title: "Aspecto",
+                                value: currentAppearanceDisplayName
+                            )
+                        }
+                        .buttonStyle(.plain)
+
+                        Divider()
+                            .background(Color.appDivider)
+                            .padding(.leading, 64)
+
+                        // 3. Submenú Categorías
                         NavigationLink {
                             CategoryManagementView(viewModel: viewModel)
                         } label: {
@@ -70,7 +97,7 @@ public struct ConfigView: View {
                             .background(Color.appDivider)
                             .padding(.leading, 64)
 
-                        // 3. Submenú Atajos de Siri
+                        // 4. Submenú Atajos de Siri
                         NavigationLink {
                             ShortcutsSettingsView(viewModel: viewModel)
                         } label: {
@@ -87,7 +114,7 @@ public struct ConfigView: View {
                             .background(Color.appDivider)
                             .padding(.leading, 64)
 
-                        // 4. Submenú Almacenamiento de datos
+                        // 5. Submenú Almacenamiento de datos
                         NavigationLink {
                             DataStorageSettingsView(viewModel: viewModel)
                         } label: {
@@ -132,12 +159,11 @@ public struct ConfigView: View {
         #if os(macOS)
         .frame(minWidth: 440, idealWidth: 460, minHeight: 520)
         #endif
-        .preferredColorScheme(.dark)
     }
 
     // MARK: - Menu Row Component
 
-    private func menuRow(icon: String, iconColor: Color, title: LocalizedStringKey, value: String) -> some View {
+    private func menuRow(icon: String, iconColor: Color, title: LocalizedStringKey, value: LocalizedStringKey) -> some View {
         HStack(spacing: 14) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -207,7 +233,7 @@ public struct LanguageSettingsView: View {
 
     private let languages: [(code: String, name: String, subtitle: String)] = [
         ("es", "Español", "Spanish"),
-        ("en", "Inglés", "English")
+        ("en", "English", "Inglés")
     ]
 
     public var body: some View {
@@ -313,8 +339,16 @@ public struct DataStorageSettingsView: View {
                     .foregroundStyle(viewModel.statusBadgeColor)
 
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(viewModel.isICloudStorage ? "Sincronizado con iCloud" : (viewModel.isCustomFolderConfigured ? "Carpeta Personalizada" : "Almacenamiento Local"))
-                        .font(.system(size: 16, weight: .bold))
+                    if viewModel.isICloudStorage {
+                        Text("Sincronizado con iCloud")
+                            .font(.system(size: 16, weight: .bold))
+                    } else if viewModel.isCustomFolderConfigured {
+                        Text("Carpeta Personalizada")
+                            .font(.system(size: 16, weight: .bold))
+                    } else {
+                        Text("Almacenamiento Local")
+                            .font(.system(size: 16, weight: .bold))
+                    }
 
                     Text("Archivo: finanzas.json")
                         .font(.system(size: 13))
@@ -354,8 +388,13 @@ public struct DataStorageSettingsView: View {
                 HStack {
                     Image(systemName: "folder.badge.plus")
                         .font(.system(size: 16))
-                    Text(viewModel.isCustomFolderConfigured ? "Cambiar Carpeta de Guardado" : "Seleccionar Carpeta (iCloud o Local)")
-                        .font(.system(size: 15, weight: .bold))
+                    if viewModel.isCustomFolderConfigured {
+                        Text("Cambiar Carpeta de Guardado")
+                            .font(.system(size: 15, weight: .bold))
+                    } else {
+                        Text("Seleccionar Carpeta (iCloud o Local)")
+                            .font(.system(size: 15, weight: .bold))
+                    }
                     Spacer()
                     Image(systemName: "chevron.right")
                         .font(.system(size: 13, weight: .semibold))
@@ -364,7 +403,7 @@ public struct DataStorageSettingsView: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 14)
                 .background(Color.appCardBackground)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -496,13 +535,13 @@ public struct DataStorageSettingsView: View {
         }
     }
 
-    private func infoRow(label: String, value: String) -> some View {
+    private func infoRow(label: LocalizedStringKey, value: String) -> some View {
         HStack {
             Text(label)
                 .font(.system(size: 13))
                 .foregroundStyle(.secondary)
             Spacer()
-            Text(value)
+            Text(LocalizedStringKey(value))
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundStyle(.primary)
                 .lineLimit(1)
@@ -511,7 +550,7 @@ public struct DataStorageSettingsView: View {
     }
 
     @ViewBuilder
-    private func instructionRow(step: String, text: String) -> some View {
+    private func instructionRow(step: String, text: LocalizedStringKey) -> some View {
         HStack(alignment: .top, spacing: 8) {
             Text(step)
                 .font(.system(size: 11, weight: .bold))
@@ -924,7 +963,7 @@ public struct ShortcutsSettingsView: View {
         )
     }
 
-    private func requirementRow(icon: String, color: Color, title: String, detail: String) -> some View {
+    private func requirementRow(icon: String, color: Color, title: LocalizedStringKey, detail: LocalizedStringKey) -> some View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: icon)
                 .font(.system(size: 14))
@@ -946,7 +985,7 @@ public struct ShortcutsSettingsView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private func siriExampleRow(_ text: String) -> some View {
+    private func siriExampleRow(_ text: LocalizedStringKey) -> some View {
         HStack(spacing: 8) {
             Image(systemName: "mic.fill")
                 .font(.system(size: 11))
@@ -965,7 +1004,7 @@ public struct ShortcutsSettingsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
-    private func stepRow(step: String, text: String) -> some View {
+    private func stepRow(step: String, text: LocalizedStringKey) -> some View {
         HStack(alignment: .top, spacing: 8) {
             Text(step)
                 .font(.system(size: 11, weight: .bold))
@@ -980,6 +1019,78 @@ public struct ShortcutsSettingsView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+// MARK: - Appearance Settings Subview
+
+public struct AppearanceSettingsView: View {
+    @AppStorage("app_appearance") private var appAppearance: String = "system"
+
+    public init() {}
+
+    private let options: [(id: String, title: LocalizedStringKey, icon: String, subtitle: LocalizedStringKey)] = [
+        ("system", "Sistema", "circle.lefthalf.filled", "Se adapta automáticamente al tema de tu dispositivo"),
+        ("light", "Claro", "sun.max.fill", "Aspecto claro permanente con tarjetas blancas"),
+        ("dark", "Oscuro", "moon.fill", "Aspecto oscuro elegante con negros profundos")
+    ]
+
+    public var body: some View {
+        List {
+            Section {
+                ForEach(options, id: \.id) { opt in
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            appAppearance = opt.id
+                        }
+                    } label: {
+                        HStack(spacing: 14) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .fill(Color.appSecondaryFill)
+                                    .frame(width: 32, height: 32)
+                                Image(systemName: opt.icon)
+                                    .font(.system(size: 15))
+                                    .foregroundStyle(opt.id == "light" ? Color.orange : (opt.id == "dark" ? Color.indigo : Color.purple))
+                            }
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(opt.title)
+                                    .font(.system(size: 15, weight: .medium))
+                                    .foregroundStyle(.primary)
+
+                                Text(opt.subtitle)
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            Spacer()
+
+                            if appAppearance == opt.id {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 14, weight: .bold))
+                                    .foregroundStyle(Color.green)
+                            }
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    .listRowBackground(Color.appCardBackground)
+                }
+            } header: {
+                Text("Tema de la Aplicación")
+            } footer: {
+                Text("Puedes sincronizar el aspecto con el modo del sistema o forzar siempre el tema Claro u Oscuro.")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .scrollContentBackground(.hidden)
+        .background(Color.appBackground)
+        .navigationTitle("Aspecto")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 

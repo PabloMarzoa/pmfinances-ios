@@ -198,7 +198,7 @@ public struct SwipeableTransactionRow: View {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .stroke(Color.appCardBorder, lineWidth: 1)
             )
-            .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 1)
+            .appCardShadow(radius: 6, y: 2, opacity: 0.10)
     }
 
     private var dragGesture: some Gesture {

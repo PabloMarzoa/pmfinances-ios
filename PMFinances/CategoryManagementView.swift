@@ -123,7 +123,6 @@ public struct CategoryManagementView: View {
             #if os(macOS)
             .frame(minWidth: 460, minHeight: 520)
             #endif
-            .preferredColorScheme(.dark)
     }
 
     private var newCategoryModal: some View {
@@ -174,7 +173,7 @@ public struct CategoryManagementView: View {
                         .foregroundStyle(.secondary)
                     Text("\(viewModel.categories.count) configuradas")
                         .font(.system(size: 18, weight: .bold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                 }
 
                 Spacer()
@@ -205,11 +204,19 @@ public struct CategoryManagementView: View {
     private var categoriesListSection: some View {
         Section(header: Text("Tus Categorías").foregroundStyle(.secondary)) {
             if filteredCategories.isEmpty {
-                Text(searchText.isEmpty ? "No hay categorías configuradas" : "No se encontró ninguna categoría con '\(searchText)'")
-                    .font(.system(size: 13))
-                    .foregroundStyle(.secondary)
-                    .padding(.vertical, 8)
-                    .listRowBackground(Color.appCardBackground)
+                if searchText.isEmpty {
+                    Text("No hay categorías configuradas")
+                        .font(.system(size: 13))
+                        .foregroundStyle(.secondary)
+                        .padding(.vertical, 8)
+                        .listRowBackground(Color.appCardBackground)
+                } else {
+                    Text("No se encontró ninguna categoría con '\(searchText)'")
+                        .font(.system(size: 13))
+                        .foregroundStyle(.secondary)
+                        .padding(.vertical, 8)
+                        .listRowBackground(Color.appCardBackground)
+                }
             } else {
                 ForEach(filteredCategories) { item in
                     categoryRow(for: item)
@@ -416,7 +423,6 @@ private struct CategoryEditorModal: View {
                 selectedColor = Color(hex: initialHex)
             }
         }
-        .preferredColorScheme(.dark)
     }
 
     private func saveCategory() {
@@ -439,9 +445,15 @@ private struct CategoryEditorModal: View {
                     .fill(selectedColor)
                     .frame(width: 10, height: 10)
 
-                Text(name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Nombre categoría" : name)
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.primary)
+                if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    Text("Nombre categoría")
+                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.primary)
+                } else {
+                    Text(name)
+                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.primary)
+                }
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
