@@ -34,7 +34,8 @@ public struct CategoryItem: Identifiable, Hashable, Codable, Sendable {
         self.hexColor = hexColor
     }
 
-    nonisolated public init(name: String, color: Color) {
+    @MainActor
+    public init(name: String, color: Color) {
         self.name = name
         self.hexColor = color.toHex()
     }
@@ -88,7 +89,7 @@ public final class CategoryRegistry: @unchecked Sendable {
 }
 
 public struct FinancialCategory: Sendable {
-    public static let defaultCategories: [CategoryItem] = [
+    nonisolated public static let defaultCategories: [CategoryItem] = [
         CategoryItem(name: "Amazon", hexColor: "#F59E0B"),
         CategoryItem(name: "Apple", hexColor: "#A855F7"),
         CategoryItem(name: "Care", hexColor: "#EC4899"),

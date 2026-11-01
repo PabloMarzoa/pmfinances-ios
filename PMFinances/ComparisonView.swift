@@ -547,19 +547,23 @@ public struct ComparisonView: View {
                 HStack(spacing: 12) {
                     HStack(spacing: 4) {
                         Circle().fill(colorA).frame(width: 8, height: 8)
-                        Text("A: ")
-                            .font(.system(size: 10, weight: .bold))
-                        + Text(rangeA.localizedTitle)
-                            .font(.system(size: 10))
+                        HStack(spacing: 2) {
+                            Text("A: ")
+                                .font(.system(size: 10, weight: .bold))
+                            Text(rangeA.localizedTitle)
+                                .font(.system(size: 10))
+                        }
                     }
                     .foregroundStyle(.secondary)
 
                     HStack(spacing: 4) {
                         Circle().fill(colorB).frame(width: 8, height: 8)
-                        Text("B: ")
-                            .font(.system(size: 10, weight: .bold))
-                        + Text(rangeB.localizedTitle)
-                            .font(.system(size: 10))
+                        HStack(spacing: 2) {
+                            Text("B: ")
+                                .font(.system(size: 10, weight: .bold))
+                            Text(rangeB.localizedTitle)
+                                .font(.system(size: 10))
+                        }
                     }
                     .foregroundStyle(.secondary)
                 }

@@ -92,6 +92,7 @@ public struct AddFinancialRecordIntent: AppIntent {
         }
     }
 
+    @MainActor
     public func perform() async throws -> some IntentResult & ProvidesDialog {
         // 1. Importe / Cantidad (solicitar si no se ha proporcionado)
         let resolvedAmount: Double
@@ -167,6 +168,7 @@ public struct GetCategoriesIntent: AppIntent {
 
     public init() {}
 
+    @MainActor
     public func perform() async throws -> some IntentResult & ReturnsValue<[String]> & ProvidesDialog {
         let categories = (try? LocalStorageService.shared.fetchCategories()) ?? FinancialCategory.defaultCategories
         let names = categories.map { $0.name }

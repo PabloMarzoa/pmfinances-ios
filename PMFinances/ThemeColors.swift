@@ -123,6 +123,7 @@ public extension Color {
         )
     }
 
+    @MainActor
     func toHex() -> String {
         #if canImport(UIKit)
         let uiColor = UIColor(self)
