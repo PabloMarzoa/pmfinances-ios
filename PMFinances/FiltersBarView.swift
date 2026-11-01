@@ -231,7 +231,7 @@ public struct FiltersBarView: View {
                     }
                 } label: {
                     HStack(spacing: 5) {
-                        Text(viewModel.hasAmountFilter ? viewModel.amountFilterLabel : "Importe")
+                        amountButtonLabelView
                             .font(.system(size: 12, weight: .medium))
                     }
                     .padding(.horizontal, 10)
@@ -329,6 +329,15 @@ public struct FiltersBarView: View {
             Text(type.localizedName)
         } else {
             Text(viewModel.selectedType)
+        }
+    }
+
+    @ViewBuilder
+    private var amountButtonLabelView: some View {
+        if viewModel.hasAmountFilter {
+            Text(viewModel.amountFilterLabel)
+        } else {
+            Text("Importe")
         }
     }
 }
