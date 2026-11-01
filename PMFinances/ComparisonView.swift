@@ -83,39 +83,31 @@ public struct ComparisonView: View {
         }
     }
 
-    private func boxLabel(range: TimeRangeFilter?, selectedMonths: Set<String>) -> String {
+    @ViewBuilder
+    private func intervalLabelView(
+        range: TimeRangeFilter?,
+        selectedMonths: Set<String>,
+        emptyFallback: LocalizedStringKey = "Seleccionar"
+    ) -> some View {
         if !selectedMonths.isEmpty {
             let months = availableMonths.filter { selectedMonths.contains($0.id) }
             if months.count == 1 {
-                return months[0].label
+                Text(months[0].label)
             } else if months.count == 2 {
-                return "\(months[0].shortLabel), \(months[1].shortLabel)"
+                Text("\(months[0].shortLabel), \(months[1].shortLabel)")
             } else {
-                return "\(months.count) \(String(localized: "meses"))"
+                HStack(spacing: 2) {
+                    Text("\(months.count) ")
+                    Text("meses")
+                }
             }
         } else if let range = range {
-            return range.title
+            Text(range.localizedTitle)
         } else {
-            return String(localized: "Seleccionar")
+            Text(emptyFallback)
         }
     }
 
-    private func intervalTitle(range: TimeRangeFilter?, selectedMonths: Set<String>) -> String {
-        if !selectedMonths.isEmpty {
-            let months = availableMonths.filter { selectedMonths.contains($0.id) }
-            if months.count == 1 {
-                return months[0].label
-            } else if months.count <= 2 {
-                return months.map { $0.shortLabel }.joined(separator: ", ")
-            } else {
-                return "\(months.count) \(String(localized: "meses"))"
-            }
-        } else if let range = range {
-            return range.title
-        } else {
-            return String(localized: "Sin selección")
-        }
-    }
 
     private let colorA = Color(red: 0.15, green: 0.65, blue: 1.0) // Cyan/Blue
     private let colorB = Color(red: 0.75, green: 0.40, blue: 0.95) // Purple
@@ -342,7 +334,7 @@ public struct ComparisonView: View {
                 }
             } label: {
                 HStack {
-                    Text(boxLabel(range: selectedRange.wrappedValue, selectedMonths: selectedMonths.wrappedValue))
+                    intervalLabelView(range: selectedRange.wrappedValue, selectedMonths: selectedMonths.wrappedValue)
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundStyle(.primary)
                         .lineLimit(1)
@@ -553,7 +545,7 @@ public struct ComparisonView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 4) {
                         Circle().fill(colorA).frame(width: 6, height: 6)
-                        Text(intervalTitle(range: rangeA, selectedMonths: selectedMonthsA))
+                        intervalLabelView(range: rangeA, selectedMonths: selectedMonthsA, emptyFallback: "Sin selección")
                             .font(.system(size: 11))
                             .foregroundStyle(.secondary)
                     }
@@ -571,7 +563,7 @@ public struct ComparisonView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 4) {
                         Circle().fill(colorB).frame(width: 6, height: 6)
-                        Text(intervalTitle(range: rangeB, selectedMonths: selectedMonthsB))
+                        intervalLabelView(range: rangeB, selectedMonths: selectedMonthsB, emptyFallback: "Sin selección")
                             .font(.system(size: 11))
                             .foregroundStyle(.secondary)
                     }
@@ -730,7 +722,7 @@ public struct ComparisonView: View {
                         HStack(spacing: 2) {
                             Text("A: ")
                                 .font(.system(size: 10, weight: .bold))
-                            Text(intervalTitle(range: rangeA, selectedMonths: selectedMonthsA))
+                            intervalLabelView(range: rangeA, selectedMonths: selectedMonthsA, emptyFallback: "Sin selección")
                                 .font(.system(size: 10))
                         }
                     }
@@ -741,7 +733,7 @@ public struct ComparisonView: View {
                         HStack(spacing: 2) {
                             Text("B: ")
                                 .font(.system(size: 10, weight: .bold))
-                            Text(intervalTitle(range: rangeB, selectedMonths: selectedMonthsB))
+                            intervalLabelView(range: rangeB, selectedMonths: selectedMonthsB, emptyFallback: "Sin selección")
                                 .font(.system(size: 10))
                         }
                     }
