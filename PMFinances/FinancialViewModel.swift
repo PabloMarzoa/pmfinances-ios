@@ -461,6 +461,51 @@ public class FinancialViewModel: ObservableObject {
         return calculateStats(for: recs)
     }
 
+    public func stats(forMonths monthKeys: Set<String>) -> FinancialStats {
+        let recs = filteredRecords(forMonths: monthKeys)
+        return calculateStats(for: recs)
+    }
+
+    public func filteredRecords(forMonths monthKeys: Set<String>) -> [FinancialRecord] {
+        guard !monthKeys.isEmpty else { return [] }
+        let calendar = Calendar.current
+
+        return allRecords.filter { record in
+            let year = calendar.component(.year, from: record.fecha)
+            let month = calendar.component(.month, from: record.fecha)
+            let key = String(format: "%04d-%02d", year, month)
+            if !monthKeys.contains(key) {
+                return false
+            }
+
+            if !selectedCategories.isEmpty && !selectedCategories.contains(record.categoria) {
+                return false
+            }
+
+            if selectedType != "all" && record.tipo.rawValue != selectedType {
+                return false
+            }
+
+            if let min = minAmount, record.cantidad < min {
+                return false
+            }
+            if let max = maxAmount, record.cantidad > max {
+                return false
+            }
+
+            let query = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            if !query.isEmpty {
+                let matchName = record.name.lowercased().contains(query)
+                let matchCat = record.categoria.lowercased().contains(query)
+                if !matchName && !matchCat {
+                    return false
+                }
+            }
+
+            return true
+        }
+    }
+
     private static let monthFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "es_ES")

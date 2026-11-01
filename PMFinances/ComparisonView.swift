@@ -1,16 +1,36 @@
 import SwiftUI
 import Charts
 
+public struct ComparisonMonthItem: Identifiable, Hashable, Equatable, Sendable {
+    public let id: String
+    public let year: Int
+    public let month: Int
+    public let label: String
+    public let shortLabel: String
+
+    public init(id: String, year: Int, month: Int, label: String, shortLabel: String) {
+        self.id = id
+        self.year = year
+        self.month = month
+        self.label = label
+        self.shortLabel = shortLabel
+    }
+}
+
 public struct ComparisonView: View {
     @ObservedObject public var viewModel: FinancialViewModel
 
+    @AppStorage("app_language") private var appLanguage: String = "es"
+
     // Interval A state
-    @State private var rangeA: TimeRangeFilter = .currentMonth
+    @State private var rangeA: TimeRangeFilter? = .currentMonth
+    @State private var selectedMonthsA: Set<String> = []
     @State private var customStartA: Date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date())) ?? Date()
     @State private var customEndA: Date = Date()
 
     // Interval B state
-    @State private var rangeB: TimeRangeFilter = .lastMonth
+    @State private var rangeB: TimeRangeFilter? = .lastMonth
+    @State private var selectedMonthsB: Set<String> = []
     @State private var customStartB: Date = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()
     @State private var customEndB: Date = Date()
 
@@ -18,12 +38,83 @@ public struct ComparisonView: View {
         self.viewModel = viewModel
     }
 
+    private var availableMonths: [ComparisonMonthItem] {
+        let locale = Locale(identifier: appLanguage)
+        let monthNameFormatter = DateFormatter()
+        monthNameFormatter.locale = locale
+        monthNameFormatter.dateFormat = "MMMM yyyy"
+
+        let shortFormatter = DateFormatter()
+        shortFormatter.locale = locale
+        shortFormatter.dateFormat = "MMM yy"
+
+        let calendar = Calendar.current
+        let referenceDate = Date()
+        var items: [ComparisonMonthItem] = []
+        for offset in 0..<12 {
+            guard let date = calendar.date(byAdding: .month, value: -offset, to: referenceDate) else { continue }
+            let year = calendar.component(.year, from: date)
+            let month = calendar.component(.month, from: date)
+            let id = String(format: "%04d-%02d", year, month)
+            let label = monthNameFormatter.string(from: date).capitalized
+            let shortLabel = shortFormatter.string(from: date).capitalized
+            items.append(ComparisonMonthItem(id: id, year: year, month: month, label: label, shortLabel: shortLabel))
+        }
+        return items
+    }
+
     private var statsA: FinancialStats {
-        viewModel.stats(for: rangeA, customStart: customStartA, customEnd: customEndA)
+        if !selectedMonthsA.isEmpty {
+            return viewModel.stats(forMonths: selectedMonthsA)
+        } else if let range = rangeA {
+            return viewModel.stats(for: range, customStart: customStartA, customEnd: customEndA)
+        } else {
+            return FinancialStats()
+        }
     }
 
     private var statsB: FinancialStats {
-        viewModel.stats(for: rangeB, customStart: customStartB, customEnd: customEndB)
+        if !selectedMonthsB.isEmpty {
+            return viewModel.stats(forMonths: selectedMonthsB)
+        } else if let range = rangeB {
+            return viewModel.stats(for: range, customStart: customStartB, customEnd: customEndB)
+        } else {
+            return FinancialStats()
+        }
+    }
+
+    private func boxLabel(range: TimeRangeFilter?, selectedMonths: Set<String>) -> String {
+        if !selectedMonths.isEmpty {
+            let months = availableMonths.filter { selectedMonths.contains($0.id) }
+            if months.count == 1 {
+                return months[0].label
+            } else if months.count == 2 {
+                return "\(months[0].shortLabel), \(months[1].shortLabel)"
+            } else {
+                return "\(months.count) \(String(localized: "meses"))"
+            }
+        } else if let range = range {
+            return range.title
+        } else {
+            return String(localized: "Seleccionar")
+        }
+    }
+
+    private func intervalTitle(range: TimeRangeFilter?, selectedMonths: Set<String>) -> String {
+        if !selectedMonths.isEmpty {
+            let months = availableMonths.filter { selectedMonths.contains($0.id) }
+            if months.count == 1 {
+                return months[0].label
+            } else if months.count <= 2 {
+                return months.map { $0.shortLabel }.joined(separator: ", ")
+            } else {
+                return "\(months.count) \(String(localized: "meses"))"
+            }
+        } else if let range = range {
+            return range.title
+        } else {
+            return String(localized: "Sin selección")
+        }
     }
 
     private let colorA = Color(red: 0.15, green: 0.65, blue: 1.0) // Cyan/Blue
@@ -69,12 +160,17 @@ public struct ComparisonView: View {
                 Button {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         let tempRange = rangeA
+                        let tempMonths = selectedMonthsA
                         let tempStart = customStartA
                         let tempEnd = customEndA
+
                         rangeA = rangeB
+                        selectedMonthsA = selectedMonthsB
                         customStartA = customStartB
                         customEndA = customEndB
+
                         rangeB = tempRange
+                        selectedMonthsB = tempMonths
                         customStartB = tempStart
                         customEndB = tempEnd
                     }
@@ -98,6 +194,7 @@ public struct ComparisonView: View {
                     title: "Intervalo A",
                     color: colorA,
                     selectedRange: $rangeA,
+                    selectedMonths: $selectedMonthsA,
                     customStart: $customStartA,
                     customEnd: $customEndA,
                     recordCount: statsA.recordCount
@@ -120,6 +217,7 @@ public struct ComparisonView: View {
                     title: "Intervalo B",
                     color: colorB,
                     selectedRange: $rangeB,
+                    selectedMonths: $selectedMonthsB,
                     customStart: $customStartB,
                     customEnd: $customEndB,
                     recordCount: statsB.recordCount
@@ -134,17 +232,23 @@ public struct ComparisonView: View {
 
                 presetButton("Mes vs Anterior") {
                     rangeA = .currentMonth
+                    selectedMonthsA.removeAll()
                     rangeB = .lastMonth
+                    selectedMonthsB.removeAll()
                 }
 
                 presetButton("3M vs 6M") {
                     rangeA = .last3Months
+                    selectedMonthsA.removeAll()
                     rangeB = .last6Months
+                    selectedMonthsB.removeAll()
                 }
 
                 presetButton("Este Año vs Todo") {
                     rangeA = .currentYear
+                    selectedMonthsA.removeAll()
                     rangeB = .all
+                    selectedMonthsB.removeAll()
                 }
             }
             .padding(.top, 4)
@@ -162,7 +266,8 @@ public struct ComparisonView: View {
     private func intervalBox(
         title: LocalizedStringKey,
         color: Color,
-        selectedRange: Binding<TimeRangeFilter>,
+        selectedRange: Binding<TimeRangeFilter?>,
+        selectedMonths: Binding<Set<String>>,
         customStart: Binding<Date>,
         customEnd: Binding<Date>,
         recordCount: Int
@@ -185,21 +290,68 @@ public struct ComparisonView: View {
             }
 
             Menu {
-                ForEach(TimeRangeFilter.allCases) { range in
-                    Button {
-                        selectedRange.wrappedValue = range
-                    } label: {
-                        HStack {
-                            Text(range.localizedTitle)
-                            if selectedRange.wrappedValue == range {
-                                Image(systemName: "checkmark")
+                // Sección 1: Selección por Meses (Últimos 12 meses)
+                Section {
+                    ForEach(availableMonths) { item in
+                        Button {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                selectedRange.wrappedValue = nil
+                                if selectedMonths.wrappedValue.contains(item.id) {
+                                    selectedMonths.wrappedValue.remove(item.id)
+                                    if selectedMonths.wrappedValue.isEmpty {
+                                        selectedRange.wrappedValue = .currentMonth
+                                    }
+                                } else {
+                                    selectedMonths.wrappedValue.insert(item.id)
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(item.label)
+                                if selectedMonths.wrappedValue.contains(item.id) {
+                                    Image(systemName: "checkmark")
+                                }
                             }
                         }
                     }
+
+                    if !selectedMonths.wrappedValue.isEmpty {
+                        Button(role: .destructive) {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                selectedMonths.wrappedValue.removeAll()
+                                selectedRange.wrappedValue = .currentMonth
+                            }
+                        } label: {
+                            Label("Limpiar selección de meses", systemImage: "xmark.circle")
+                        }
+                    }
+                } header: {
+                    Text("Últimos 12 Meses")
+                }
+
+                // Sección 2: Rangos Predefinidos
+                Section {
+                    ForEach(TimeRangeFilter.allCases) { range in
+                        Button {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                selectedMonths.wrappedValue.removeAll()
+                                selectedRange.wrappedValue = range
+                            }
+                        } label: {
+                            HStack {
+                                Text(range.localizedTitle)
+                                if selectedRange.wrappedValue == range && selectedMonths.wrappedValue.isEmpty {
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Rangos Predefinidos")
                 }
             } label: {
                 HStack {
-                    Text(selectedRange.wrappedValue.localizedTitle)
+                    Text(boxLabel(range: selectedRange.wrappedValue, selectedMonths: selectedMonths.wrappedValue))
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundStyle(.primary)
                         .lineLimit(1)
@@ -220,6 +372,43 @@ public struct ComparisonView: View {
                 )
             }
             .buttonStyle(.plain)
+
+            // Chips horizontales de meses seleccionados
+            if !selectedMonths.wrappedValue.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 4) {
+                        ForEach(availableMonths.filter { selectedMonths.wrappedValue.contains($0.id) }) { item in
+                            HStack(spacing: 3) {
+                                Text(item.shortLabel)
+                                    .font(.system(size: 10, weight: .semibold))
+
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.2)) {
+                                        selectedMonths.wrappedValue.remove(item.id)
+                                        if selectedMonths.wrappedValue.isEmpty {
+                                            selectedRange.wrappedValue = .currentMonth
+                                        }
+                                    }
+                                } label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .font(.system(size: 10))
+                                }
+                                .buttonStyle(.plain)
+                            }
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 3)
+                            .background(color.opacity(0.15))
+                            .foregroundStyle(color)
+                            .clipShape(Capsule())
+                            .overlay(
+                                Capsule()
+                                    .stroke(color.opacity(0.3), lineWidth: 1)
+                            )
+                        }
+                    }
+                    .padding(.top, 2)
+                }
+            }
 
             if selectedRange.wrappedValue == .custom {
                 VStack(spacing: 4) {
@@ -373,7 +562,7 @@ public struct ComparisonView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 4) {
                         Circle().fill(colorA).frame(width: 6, height: 6)
-                        Text(rangeA.localizedTitle)
+                        Text(intervalTitle(range: rangeA, selectedMonths: selectedMonthsA))
                             .font(.system(size: 11))
                             .foregroundStyle(.secondary)
                     }
@@ -391,7 +580,7 @@ public struct ComparisonView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 4) {
                         Circle().fill(colorB).frame(width: 6, height: 6)
-                        Text(rangeB.localizedTitle)
+                        Text(intervalTitle(range: rangeB, selectedMonths: selectedMonthsB))
                             .font(.system(size: 11))
                             .foregroundStyle(.secondary)
                     }
@@ -550,7 +739,7 @@ public struct ComparisonView: View {
                         HStack(spacing: 2) {
                             Text("A: ")
                                 .font(.system(size: 10, weight: .bold))
-                            Text(rangeA.localizedTitle)
+                            Text(intervalTitle(range: rangeA, selectedMonths: selectedMonthsA))
                                 .font(.system(size: 10))
                         }
                     }
@@ -561,7 +750,7 @@ public struct ComparisonView: View {
                         HStack(spacing: 2) {
                             Text("B: ")
                                 .font(.system(size: 10, weight: .bold))
-                            Text(rangeB.localizedTitle)
+                            Text(intervalTitle(range: rangeB, selectedMonths: selectedMonthsB))
                                 .font(.system(size: 10))
                         }
                     }
