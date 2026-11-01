@@ -158,13 +158,6 @@ public struct SwipeableTransactionRow: View {
                         Color.clear
                             .frame(width: 95)
                             .contentShape(Rectangle())
-                            .onTapGesture {
-                                if offset != 0 {
-                                    closeSwipe()
-                                } else {
-                                    onTap()
-                                }
-                            }
                             .gesture(dragGesture)
                     }
                     .contextMenu {

@@ -1,3 +1,4 @@
+import UniformTypeIdentifiers
 import SwiftUI
 
 public enum AppScreen: String, CaseIterable, Identifiable {
@@ -21,6 +22,17 @@ public enum AppScreen: String, CaseIterable, Identifiable {
         case .statistics: return "chart.pie.fill"
         case .comparison: return "arrow.left.arrow.right"
         }
+    }
+}
+
+public struct CsvExportPayload: Transferable {
+    public let generateCsv: () -> String
+
+    public static var transferRepresentation: some TransferRepresentation {
+        DataRepresentation(exportedContentType: .commaSeparatedText) { payload in
+            Data(payload.generateCsv().utf8)
+        }
+        .suggestedFileName("finanzas_export.csv")
     }
 }
 
@@ -264,9 +276,9 @@ public struct ContentView: View {
 
     @ViewBuilder
     private var toolbarActionButtons: some View {
-        // Export CSV
+        // Export CSV (Lazy Transferable: only generated upon user tap)
         ShareLink(
-            item: viewModel.generateCsvContent(),
+            item: CsvExportPayload(generateCsv: { viewModel.generateCsvContent() }),
             preview: SharePreview("finanzas_export.csv", image: Image(systemName: "tablecells"))
         ) {
             Image(systemName: "square.and.arrow.up")

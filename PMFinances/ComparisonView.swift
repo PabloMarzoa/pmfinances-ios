@@ -38,19 +38,35 @@ public struct ComparisonView: View {
         self.viewModel = viewModel
     }
 
+    private static var monthFormatterCache: [String: (full: DateFormatter, short: DateFormatter)] = [:]
+    private static let formatterLock = NSLock()
+
+    private static func formatters(for language: String) -> (full: DateFormatter, short: DateFormatter) {
+        formatterLock.lock()
+        defer { formatterLock.unlock() }
+        if let cached = monthFormatterCache[language] {
+            return cached
+        }
+        let locale = Locale(identifier: language)
+        let full = DateFormatter()
+        full.locale = locale
+        full.dateFormat = "MMMM yyyy"
+
+        let short = DateFormatter()
+        short.locale = locale
+        short.dateFormat = "MMM yy"
+
+        let pair = (full, short)
+        monthFormatterCache[language] = pair
+        return pair
+    }
+
     private var availableMonths: [ComparisonMonthItem] {
-        let locale = Locale(identifier: appLanguage)
-        let monthNameFormatter = DateFormatter()
-        monthNameFormatter.locale = locale
-        monthNameFormatter.dateFormat = "MMMM yyyy"
-
-        let shortFormatter = DateFormatter()
-        shortFormatter.locale = locale
-        shortFormatter.dateFormat = "MMM yy"
-
+        let (monthNameFormatter, shortFormatter) = Self.formatters(for: appLanguage)
         let calendar = Calendar.current
         let referenceDate = Date()
         var items: [ComparisonMonthItem] = []
+        items.reserveCapacity(12)
         for offset in 0..<12 {
             guard let date = calendar.date(byAdding: .month, value: -offset, to: referenceDate) else { continue }
             let year = calendar.component(.year, from: date)

@@ -32,8 +32,38 @@ public final class LocalStorageService: Sendable {
     private let fileName = "finanzas.json"
     private let categoriesFileName = "categorias.json"
 
+    private let cacheLock = NSLock()
+    private var cachedStorageFolderURL: URL?
+    private var cachedIsICloudStorage: Bool = false
+    private var cachedDisplayName: String = "Carpeta local de la App"
+    private var isCacheValid: Bool = false
+
     private init() {
         createDefaultFolderIfNeeded()
+    }
+
+    private func invalidateCache() {
+        cacheLock.lock()
+        isCacheValid = false
+        cachedStorageFolderURL = nil
+        cacheLock.unlock()
+    }
+
+    private func requiresSecurityScope(for url: URL) -> Bool {
+        guard let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return false
+        }
+        if url.path.hasPrefix(docs.path) {
+            return false
+        }
+        return true
+    }
+
+    private func startAccessIfNeeded(for folderURL: URL) -> Bool {
+        guard isCustomFolderConfigured && requiresSecurityScope(for: folderURL) else {
+            return false
+        }
+        return folderURL.startAccessingSecurityScopedResource()
     }
 
     // MARK: - Folder Management
@@ -43,38 +73,44 @@ public final class LocalStorageService: Sendable {
     }
 
     public var currentFolderDisplayName: String {
-        if let stored = UserDefaults.standard.string(forKey: customPathDisplayKey), !stored.isEmpty {
-            return stored
-        }
-        if let folderURL = getStorageFolderURL() {
-            return folderURL.lastPathComponent
-        }
-        return "Carpeta local de la App"
+        _ = getStorageFolderURL()
+        cacheLock.lock()
+        defer { cacheLock.unlock() }
+        return cachedDisplayName
     }
 
     public var isICloudStorage: Bool {
-        guard let folderURL = getStorageFolderURL() else { return false }
-        let path = folderURL.path.lowercased()
-        return path.contains("mobile documents") || path.contains("icloud")
+        _ = getStorageFolderURL()
+        cacheLock.lock()
+        defer { cacheLock.unlock() }
+        return cachedIsICloudStorage
     }
 
     public func saveFolderURL(_ url: URL) throws {
-        let didStart = url.startAccessingSecurityScopedResource()
+        let needsScope = requiresSecurityScope(for: url)
+        let didStart = needsScope ? url.startAccessingSecurityScopedResource() : false
         defer {
             if didStart {
                 url.stopAccessingSecurityScopedResource()
             }
         }
 
-        #if os(iOS) || os(macOS)
+        #if os(iOS)
         let bookmarkData = try url.bookmarkData(
-            options: .minimalBookmark,
+            options: [],
             includingResourceValuesForKeys: nil,
             relativeTo: nil
         )
+        #elseif os(macOS)
+        let bookmarkData = try url.bookmarkData(
+            options: .withSecurityScope,
+            includingResourceValuesForKeys: nil,
+            relativeTo: nil
+        )
+        #endif
         UserDefaults.standard.set(bookmarkData, forKey: bookmarkKey)
         UserDefaults.standard.set(url.lastPathComponent, forKey: customPathDisplayKey)
-        #endif
+        invalidateCache()
 
         // Ensure finanzas.json exists in the newly selected folder
         let fileURL = url.appendingPathComponent(fileName)
@@ -97,22 +133,65 @@ public final class LocalStorageService: Sendable {
     public func resetToDefaultFolder() {
         UserDefaults.standard.removeObject(forKey: bookmarkKey)
         UserDefaults.standard.removeObject(forKey: customPathDisplayKey)
+        invalidateCache()
         createDefaultFolderIfNeeded()
     }
 
     public func getStorageFolderURL() -> URL? {
+        cacheLock.lock()
+        if isCacheValid {
+            let url = cachedStorageFolderURL
+            cacheLock.unlock()
+            return url
+        }
+        cacheLock.unlock()
+
+        let resolved = resolveStorageFolderURL()
+
+        cacheLock.lock()
+        cachedStorageFolderURL = resolved
+        if let resolved = resolved {
+            let path = resolved.path.lowercased()
+            cachedIsICloudStorage = path.contains("mobile documents") || path.contains("icloud")
+            if let stored = UserDefaults.standard.string(forKey: customPathDisplayKey), !stored.isEmpty {
+                cachedDisplayName = stored
+            } else {
+                cachedDisplayName = resolved.lastPathComponent
+            }
+        } else {
+            cachedIsICloudStorage = false
+            cachedDisplayName = "Carpeta local de la App"
+        }
+        isCacheValid = true
+        cacheLock.unlock()
+
+        return resolved
+    }
+
+    private func resolveStorageFolderURL() -> URL? {
         if let bookmarkData = UserDefaults.standard.data(forKey: bookmarkKey) {
             var isStale = false
             do {
+                #if os(iOS)
+                let resolveOptions: URL.BookmarkResolutionOptions = .withoutUI
+                #elseif os(macOS)
+                let resolveOptions: URL.BookmarkResolutionOptions = [.withoutUI, .withSecurityScope]
+                #endif
+
                 let resolvedURL = try URL(
                     resolvingBookmarkData: bookmarkData,
-                    options: .withoutUI,
+                    options: resolveOptions,
                     relativeTo: nil,
                     bookmarkDataIsStale: &isStale
                 )
                 if isStale {
+                    #if os(iOS)
+                    let bookmarkOptions: URL.BookmarkCreationOptions = []
+                    #elseif os(macOS)
+                    let bookmarkOptions: URL.BookmarkCreationOptions = .withSecurityScope
+                    #endif
                     if let freshBookmark = try? resolvedURL.bookmarkData(
-                        options: .minimalBookmark,
+                        options: bookmarkOptions,
                         includingResourceValuesForKeys: nil,
                         relativeTo: nil
                     ) {
@@ -173,7 +252,7 @@ public final class LocalStorageService: Sendable {
             return []
         }
 
-        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
+        let didStart = startAccessIfNeeded(for: folderURL)
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
@@ -196,7 +275,7 @@ public final class LocalStorageService: Sendable {
             throw NSError(domain: "LocalStorageService", code: 404, userInfo: [NSLocalizedDescriptionKey: "No se encontró la carpeta de destino."])
         }
 
-        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
+        let didStart = startAccessIfNeeded(for: folderURL)
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
@@ -249,7 +328,7 @@ public final class LocalStorageService: Sendable {
             return FinancialCategory.defaultCategories
         }
 
-        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
+        let didStart = startAccessIfNeeded(for: folderURL)
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
@@ -274,7 +353,7 @@ public final class LocalStorageService: Sendable {
             throw NSError(domain: "LocalStorageService", code: 404, userInfo: [NSLocalizedDescriptionKey: "No se encontró la carpeta de destino."])
         }
 
-        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
+        let didStart = startAccessIfNeeded(for: folderURL)
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
@@ -296,7 +375,7 @@ public final class LocalStorageService: Sendable {
             return FileStorageMetadata(exists: false, lastModified: nil, sizeInBytes: 0, recordCount: 0, fileName: fileName)
         }
 
-        let didStart = isCustomFolderConfigured ? folderURL.startAccessingSecurityScopedResource() : false
+        let didStart = startAccessIfNeeded(for: folderURL)
         defer {
             if didStart {
                 folderURL.stopAccessingSecurityScopedResource()
