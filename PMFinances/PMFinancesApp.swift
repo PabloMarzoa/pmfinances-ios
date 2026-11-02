@@ -1,6 +1,6 @@
 import SwiftUI
 
-@main struct MyApp: App {
+@main struct PMFinancesApp: App {
     @AppStorage("app_language") private var appLanguage: String = "es"
     @AppStorage("app_appearance") private var appAppearance: String = "system"
 
