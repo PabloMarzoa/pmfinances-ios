@@ -43,9 +43,6 @@ public struct ContentView: View {
     @Environment(\.colorScheme) private var colorScheme
     @State private var activeSwipedRecordId: String? = nil
 
-    private var preferredColorScheme: ColorScheme? {
-        AppAppearance(rawValue: appAppearance)?.colorScheme
-    }
     @State private var selectedScreen: AppScreen = .records
 
     public init(initialScreen: AppScreen = .records) {
@@ -207,7 +204,12 @@ public struct ContentView: View {
             }
         }
         .environment(\.locale, Locale(identifier: appLanguage))
-        .preferredColorScheme(preferredColorScheme)
+        .onAppear {
+            AppAppearance.apply(appearance: appAppearance)
+        }
+        .onChange(of: appAppearance) { _, newAppearance in
+            AppAppearance.apply(appearance: newAppearance)
+        }
     }
 
     // MARK: - Ambient Background
@@ -365,19 +367,21 @@ public struct ContentView: View {
     // MARK: - Transactions Section
 
     private var transactionsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        let records = viewModel.filteredRecords
+
+        return VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Movimientos")
                     .font(.system(size: 17, weight: .bold))
 
                 Spacer()
 
-                Text("\(viewModel.filteredRecords.count) registrados")
+                Text("\(records.count) registrados")
                     .font(.system(size: 12, weight: .medium, design: .monospaced))
                     .foregroundStyle(.secondary)
             }
 
-            if viewModel.filteredRecords.isEmpty {
+            if records.isEmpty {
                 VStack(spacing: 8) {
                     Image(systemName: "tray")
                         .font(.system(size: 32))
@@ -410,7 +414,7 @@ public struct ContentView: View {
                 )
             } else {
                 LazyVStack(spacing: 8) {
-                    ForEach(viewModel.filteredRecords) { record in
+                    ForEach(records) { record in
                         SwipeableTransactionRow(
                             record: record,
                             activeSwipedId: $activeSwipedRecordId,

@@ -93,29 +93,63 @@ public struct FinancialCategory: Sendable {
         CategoryItem(name: "Amazon", hexColor: "#F59E0B"),
         CategoryItem(name: "Apple", hexColor: "#A855F7"),
         CategoryItem(name: "Care", hexColor: "#EC4899"),
-        CategoryItem(name: "Coche", hexColor: "#3B82F6"),
-        CategoryItem(name: "Comida", hexColor: "#10B981"),
         CategoryItem(name: "Disney", hexColor: "#06B6D4"),
-        CategoryItem(name: "Efectivo", hexColor: "#14B8A6"),
-        CategoryItem(name: "Gasolina", hexColor: "#F97316"),
         CategoryItem(name: "Google", hexColor: "#EF4444"),
         CategoryItem(name: "Netflix", hexColor: "#E11D48"),
-        CategoryItem(name: "Nómina", hexColor: "#10B981"),
         CategoryItem(name: "iCloud", hexColor: "#6366F1"),
-        CategoryItem(name: "Ocio", hexColor: "#8B5CF6"),
-        CategoryItem(name: "Otros", hexColor: "#64748B"),
-        CategoryItem(name: "Piso", hexColor: "#0284C7"),
-        CategoryItem(name: "Préstamo personal", hexColor: "#D97706"),
-        CategoryItem(name: "Sanitas", hexColor: "#059669"),
-        CategoryItem(name: "Seguro coche", hexColor: "#EA580C"),
         CategoryItem(name: "Skyshowtime", hexColor: "#A855F7"),
-        CategoryItem(name: "Teléfono", hexColor: "#38BDF8"),
-        CategoryItem(name: "Télegram", hexColor: "#0EA5E9"),
         CategoryItem(name: "YouTube", hexColor: "#DC2626")
     ]
 
     public static var standardCategories: [String] {
         CategoryRegistry.shared.allCategories()
+    }
+
+    nonisolated public static let paletteHexColors: [String] = [
+        "#10B981", "#059669", "#06B6D4", "#0284C7",
+        "#3B82F6", "#6366F1", "#8B5CF6", "#A855F7",
+        "#EC4899", "#E11D48", "#EF4444", "#DC2626",
+        "#F97316", "#EA580C", "#F59E0B", "#D97706",
+        "#14B8A6", "#64748B"
+    ]
+
+    nonisolated private static let knownCategoryHexColors: [String: String] = [
+        "amazon": "#F59E0B",
+        "apple": "#A855F7",
+        "care": "#EC4899",
+        "coche": "#3B82F6",
+        "comida": "#10B981",
+        "disney": "#06B6D4",
+        "efectivo": "#14B8A6",
+        "gasolina": "#F97316",
+        "google": "#EF4444",
+        "netflix": "#E11D48",
+        "nómina": "#10B981",
+        "nomina": "#10B981",
+        "icloud": "#6366F1",
+        "ocio": "#8B5CF6",
+        "otros": "#64748B",
+        "other": "#64748B",
+        "piso": "#0284C7",
+        "préstamo personal": "#D97706",
+        "prestamo personal": "#D97706",
+        "sanitas": "#059669",
+        "seguro coche": "#EA580C",
+        "skyshowtime": "#A855F7",
+        "teléfono": "#38BDF8",
+        "telefono": "#38BDF8",
+        "télegram": "#0EA5E9",
+        "telegram": "#0EA5E9",
+        "youtube": "#DC2626"
+    ]
+
+    nonisolated public static func defaultColorHex(for categoryName: String) -> String {
+        let key = categoryName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        if let known = knownCategoryHexColors[key] {
+            return known
+        }
+        let hash = abs(key.utf8.reduce(5381) { (($0 << 5) &+ $0) &+ Int($1) })
+        return paletteHexColors[hash % paletteHexColors.count]
     }
 
     public static func register(categories: [CategoryItem]) {
@@ -135,21 +169,35 @@ public struct FinancialRecord: Identifiable, Codable, Equatable, Sendable {
     public var fecha: Date
     public var tipo: TransactionType
 
-    public var fechaString: String {
+    private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "es_ES")
         formatter.dateFormat = "d/M/yyyy"
-        return formatter.string(from: fecha)
-    }
+        return formatter
+    }()
 
-    public var formattedAmount: String {
+    private static let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = "EUR"
         formatter.currencySymbol = "€"
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
-        return formatter.string(from: NSNumber(value: cantidad)) ?? String(format: "%.2f €", cantidad)
+        return formatter
+    }()
+
+    private static let formatterLock = NSLock()
+
+    public var fechaString: String {
+        Self.formatterLock.lock()
+        defer { Self.formatterLock.unlock() }
+        return Self.dateFormatter.string(from: fecha)
+    }
+
+    public var formattedAmount: String {
+        Self.formatterLock.lock()
+        defer { Self.formatterLock.unlock() }
+        return Self.currencyFormatter.string(from: NSNumber(value: cantidad)) ?? String(format: "%.2f €", cantidad)
     }
 
     nonisolated public init(id: String = UUID().uuidString, name: String, cantidad: Double, categoria: String, fecha: Date, tipo: TransactionType) {

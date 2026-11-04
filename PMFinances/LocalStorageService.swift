@@ -7,20 +7,34 @@ public struct FileStorageMetadata: Sendable {
     public let recordCount: Int
     public let fileName: String
 
-    public var formattedSize: String {
+    private static let byteCountFormatter: ByteCountFormatter = {
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = [.useBytes, .useKB, .useMB]
         formatter.countStyle = .file
-        return formatter.string(fromByteCount: sizeInBytes)
-    }
+        return formatter
+    }()
 
-    public var formattedDate: String {
-        guard let lastModified else { return "No disponible" }
+    private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "es_ES")
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
-        return formatter.string(from: lastModified)
+        return formatter
+    }()
+
+    private static let formatterLock = NSLock()
+
+    public var formattedSize: String {
+        Self.formatterLock.lock()
+        defer { Self.formatterLock.unlock() }
+        return Self.byteCountFormatter.string(fromByteCount: sizeInBytes)
+    }
+
+    public var formattedDate: String {
+        guard let lastModified else { return "No disponible" }
+        Self.formatterLock.lock()
+        defer { Self.formatterLock.unlock() }
+        return Self.dateFormatter.string(from: lastModified)
     }
 }
 
@@ -30,7 +44,29 @@ public final class LocalStorageService: Sendable {
     private let bookmarkKey = "finanzas_storage_folder_bookmark"
     private let customPathDisplayKey = "finanzas_storage_folder_display_path"
     private let fileName = "finanzas.json"
-    private let categoriesFileName = "categorias.json"
+    private let categoriesFileName = "categories.json"
+    private let legacyCategoriesFileName = "categorias.json"
+
+    private static let recordsDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return decoder
+    }()
+
+    private static let recordsEncoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        encoder.dateEncodingStrategy = .iso8601
+        return encoder
+    }()
+
+    private static let categoriesDecoder = JSONDecoder()
+
+    private static let categoriesEncoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        return encoder
+    }()
 
     private let cacheLock = NSLock()
     private var cachedStorageFolderURL: URL?
@@ -119,14 +155,24 @@ public final class LocalStorageService: Sendable {
             try writeRecords(initialRecords, to: fileURL)
         }
 
-        // Ensure categorias.json exists in the newly selected folder
+        // Ensure categories.json exists in the newly selected folder (migrating legacy categorias.json if needed)
         let categoriesURL = url.appendingPathComponent(categoriesFileName)
+        let legacyCatURL = url.appendingPathComponent(legacyCategoriesFileName)
         if !FileManager.default.fileExists(atPath: categoriesURL.path) {
-            let defaults = FinancialCategory.defaultCategories
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-            let data = try encoder.encode(defaults)
-            try data.write(to: categoriesURL, options: .atomic)
+            if FileManager.default.fileExists(atPath: legacyCatURL.path) {
+                try? FileManager.default.moveItem(at: legacyCatURL, to: categoriesURL)
+            } else {
+                let defaults = FinancialCategory.defaultCategories
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+                let data = try encoder.encode(defaults)
+                try data.write(to: categoriesURL, options: .atomic)
+            }
+        }
+
+        // Auto-sync any categories found in the records to categories.json
+        if let existingRecords = try? fetchRecords() {
+            _ = try? syncCategoriesWithRecords(existingRecords)
         }
     }
 
@@ -235,13 +281,21 @@ public final class LocalStorageService: Sendable {
             try? writeRecords(initialRecords, to: fileURL)
         }
         let catURL = folder.appendingPathComponent(categoriesFileName)
+        let legacyCatURL = folder.appendingPathComponent(legacyCategoriesFileName)
         if !FileManager.default.fileExists(atPath: catURL.path) {
-            let defaults = FinancialCategory.defaultCategories
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-            if let data = try? encoder.encode(defaults) {
-                try? data.write(to: catURL, options: .atomic)
+            if FileManager.default.fileExists(atPath: legacyCatURL.path) {
+                try? FileManager.default.moveItem(at: legacyCatURL, to: catURL)
+            } else {
+                let defaults = FinancialCategory.defaultCategories
+                if let data = try? Self.categoriesEncoder.encode(defaults) {
+                    try? data.write(to: catURL, options: .atomic)
+                }
             }
+        }
+
+        // Auto-sync any categories found in the records to categories.json
+        if let existingRecords = try? fetchRecords() {
+            _ = try? syncCategoriesWithRecords(existingRecords)
         }
     }
 
@@ -264,9 +318,7 @@ public final class LocalStorageService: Sendable {
         }
 
         let data = try Data(contentsOf: fileURL)
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        let records = try decoder.decode([FinancialRecord].self, from: data)
+        let records = try Self.recordsDecoder.decode([FinancialRecord].self, from: data)
         return records
     }
 
@@ -286,6 +338,7 @@ public final class LocalStorageService: Sendable {
     }
 
     public func createRecord(name: String, cantidad: Double, categoria: String, tipo: TransactionType, fecha: Date) throws -> FinancialRecord {
+        ensureCategoryExists(named: categoria)
         var records = try fetchRecords()
         let newRecord = FinancialRecord(
             id: UUID().uuidString,
@@ -301,6 +354,7 @@ public final class LocalStorageService: Sendable {
     }
 
     public func updateRecord(_ updated: FinancialRecord) throws {
+        ensureCategoryExists(named: updated.categoria)
         var records = try fetchRecords()
         if let index = records.firstIndex(where: { $0.id == updated.id }) {
             records[index] = updated
@@ -319,6 +373,48 @@ public final class LocalStorageService: Sendable {
     public func loadDemoData() throws {
         let sample = MockData.generateMockRecords()
         try saveAllRecords(sample)
+        _ = try? syncCategoriesWithRecords(sample)
+    }
+
+    // MARK: - Category Sync with Records
+
+    @discardableResult
+    public func syncCategoriesWithRecords(_ records: [FinancialRecord]) throws -> [CategoryItem] {
+        var currentCategories = (try? fetchCategories()) ?? FinancialCategory.defaultCategories
+        let existingNames = Set(currentCategories.map { $0.name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() })
+        var newItems: [CategoryItem] = []
+        var addedNames = Set<String>()
+
+        for record in records {
+            let trimmed = record.categoria.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty else { continue }
+            let lower = trimmed.lowercased()
+            if !existingNames.contains(lower) && !addedNames.contains(lower) {
+                addedNames.insert(lower)
+                let hex = FinancialCategory.defaultColorHex(for: trimmed)
+                newItems.append(CategoryItem(name: trimmed, hexColor: hex))
+            }
+        }
+
+        if !newItems.isEmpty {
+            currentCategories.append(contentsOf: newItems)
+            currentCategories.sort(by: { $0.name.localizedStandardCompare($1.name) == .orderedAscending })
+            try saveCategories(currentCategories)
+        }
+
+        return currentCategories
+    }
+
+    public func ensureCategoryExists(named categoryName: String) {
+        let trimmed = categoryName.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        guard var currentCategories = try? fetchCategories() else { return }
+        if !currentCategories.contains(where: { $0.name.caseInsensitiveCompare(trimmed) == .orderedSame }) {
+            let hex = FinancialCategory.defaultColorHex(for: trimmed)
+            currentCategories.append(CategoryItem(name: trimmed, hexColor: hex))
+            currentCategories.sort(by: { $0.name.localizedStandardCompare($1.name) == .orderedAscending })
+            try? saveCategories(currentCategories)
+        }
     }
 
     // MARK: - Categories CRUD
@@ -336,14 +432,20 @@ public final class LocalStorageService: Sendable {
         }
 
         if !FileManager.default.fileExists(atPath: fileURL.path) {
+            let legacyCatURL = folderURL.appendingPathComponent(legacyCategoriesFileName)
+            if FileManager.default.fileExists(atPath: legacyCatURL.path) {
+                try? FileManager.default.moveItem(at: legacyCatURL, to: fileURL)
+            }
+        }
+
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
             let defaults = FinancialCategory.defaultCategories
             try? saveCategories(defaults)
             return defaults
         }
 
         let data = try Data(contentsOf: fileURL)
-        let decoder = JSONDecoder()
-        let items = try decoder.decode([CategoryItem].self, from: data)
+        let items = try Self.categoriesDecoder.decode([CategoryItem].self, from: data)
         CategoryRegistry.shared.register(categories: items)
         return items
     }
@@ -360,9 +462,7 @@ public final class LocalStorageService: Sendable {
             }
         }
 
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        let data = try encoder.encode(categories)
+        let data = try Self.categoriesEncoder.encode(categories)
         try data.write(to: fileURL, options: .atomic)
 
         CategoryRegistry.shared.reset(to: categories)
@@ -370,7 +470,7 @@ public final class LocalStorageService: Sendable {
 
     // MARK: - Metadata
 
-    public func getMetadata() -> FileStorageMetadata {
+    public func getMetadata(knownRecordCount: Int? = nil) -> FileStorageMetadata {
         guard let fileURL = getDatabaseFileURL(), let folderURL = getStorageFolderURL() else {
             return FileStorageMetadata(exists: false, lastModified: nil, sizeInBytes: 0, recordCount: 0, fileName: fileName)
         }
@@ -388,17 +488,15 @@ public final class LocalStorageService: Sendable {
 
         var fileSize: Int64 = 0
         var modDate: Date? = nil
-        var count = 0
+        var count = knownRecordCount ?? 0
 
         if let attrs = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
             fileSize = (attrs[.size] as? NSNumber)?.int64Value ?? 0
             modDate = attrs[.modificationDate] as? Date
         }
 
-        if let data = try? Data(contentsOf: fileURL) {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            if let records = try? decoder.decode([FinancialRecord].self, from: data) {
+        if knownRecordCount == nil, let data = try? Data(contentsOf: fileURL) {
+            if let records = try? Self.recordsDecoder.decode([FinancialRecord].self, from: data) {
                 count = records.count
             }
         }
@@ -413,10 +511,7 @@ public final class LocalStorageService: Sendable {
     }
 
     private func writeRecords(_ records: [FinancialRecord], to url: URL) throws {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        encoder.dateEncodingStrategy = .iso8601
-        let data = try encoder.encode(records)
+        let data = try Self.recordsEncoder.encode(records)
         try data.write(to: url, options: .atomic)
     }
 }

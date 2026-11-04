@@ -26,11 +26,20 @@ public struct CategoryManagementView: View {
         return viewModel.categories.filter { $0.name.lowercased().contains(query) }
     }
 
+    private var isCategoryInUse: Bool {
+        guard let item = categoryToDelete else { return false }
+        return viewModel.recordCount(for: item.name) > 0
+    }
+
+    private var deleteAlertTitle: LocalizedStringKey {
+        isCategoryInUse ? "Categoría en Uso" : "Eliminar Categoría"
+    }
+
     private var deleteAlertMessage: LocalizedStringKey {
         guard let item = categoryToDelete else { return "" }
         let count = viewModel.recordCount(for: item.name)
         if count > 0 {
-            return "Hay \(count) transacciones registradas con la categoría '\(item.name)'. Si la eliminas, esas transacciones se moverán a 'Otros'."
+            return "La categoría '\(item.name)' tiene \(count) transacciones registradas y no se puede eliminar. Para eliminarla, cambia primero la categoría de esas transacciones o elimínalas."
         } else {
             return "¿Seguro que deseas eliminar la categoría '\(item.name)'?"
         }
@@ -102,11 +111,15 @@ public struct CategoryManagementView: View {
             .sheet(item: $categoryToEdit) { item in
                 editCategoryModal(item: item)
             }
-            .alert("Eliminar Categoría", isPresented: $showDeleteConfirmation) {
-                Button("Cancelar", role: .cancel) {}
-                Button("Eliminar", role: .destructive) {
-                    if let item = categoryToDelete {
-                        executeDelete(item)
+            .alert(deleteAlertTitle, isPresented: $showDeleteConfirmation) {
+                if isCategoryInUse {
+                    Button("Entendido", role: .cancel) {}
+                } else {
+                    Button("Cancelar", role: .cancel) {}
+                    Button("Eliminar", role: .destructive) {
+                        if let item = categoryToDelete {
+                            executeDelete(item)
+                        }
                     }
                 }
             } message: {
@@ -254,7 +267,7 @@ public struct CategoryManagementView: View {
             }
             .listRowBackground(Color.appCardBackground)
         } footer: {
-            Text("Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación.")
+            Text("Al restablecer, volverás a la lista de \(FinancialCategory.defaultCategories.count) categorías estándar sugeridas por la aplicación.")
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
         }

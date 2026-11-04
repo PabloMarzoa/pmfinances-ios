@@ -29,6 +29,54 @@ public enum AppAppearance: String, CaseIterable, Identifiable {
         case .dark: return "Oscuro"
         }
     }
+
+    @MainActor
+    public static func apply(appearance: String) {
+        let mode = AppAppearance(rawValue: appearance) ?? .system
+        #if canImport(UIKit)
+        let style: UIUserInterfaceStyle
+        switch mode {
+        case .system:
+            style = .unspecified
+        case .light:
+            style = .light
+        case .dark:
+            style = .dark
+        }
+        for scene in UIApplication.shared.connectedScenes {
+            if let windowScene = scene as? UIWindowScene {
+                for window in windowScene.windows {
+                    window.overrideUserInterfaceStyle = style
+                    if let root = window.rootViewController {
+                        applyStyle(style, to: root)
+                    }
+                }
+            }
+        }
+        #elseif canImport(AppKit)
+        switch mode {
+        case .system:
+            NSApp.appearance = nil
+        case .light:
+            NSApp.appearance = NSAppearance(named: .aqua)
+        case .dark:
+            NSApp.appearance = NSAppearance(named: .darkAqua)
+        }
+        #endif
+    }
+
+    #if canImport(UIKit)
+    @MainActor
+    private static func applyStyle(_ style: UIUserInterfaceStyle, to vc: UIViewController) {
+        vc.overrideUserInterfaceStyle = style
+        for child in vc.children {
+            applyStyle(style, to: child)
+        }
+        if let presented = vc.presentedViewController {
+            applyStyle(style, to: presented)
+        }
+    }
+    #endif
 }
 
 public extension Color {

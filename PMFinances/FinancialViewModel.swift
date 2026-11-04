@@ -3,7 +3,9 @@ import Combine
 
 @MainActor
 public class FinancialViewModel: ObservableObject {
-    @Published public var allRecords: [FinancialRecord] = []
+    @Published public var allRecords: [FinancialRecord] = [] {
+        didSet { invalidateFilterCache() }
+    }
     @Published public var isLoading: Bool = false
     @Published public var errorMessage: String? = nil
 
@@ -15,14 +17,39 @@ public class FinancialViewModel: ObservableObject {
     @Published public var toastMessage: String = ""
 
     // Filters
-    @Published public var timeRange: TimeRangeFilter = .currentMonth
-    @Published public var selectedCategories: Set<String> = []
-    @Published public var selectedType: String = "all" // "all", "Ingreso", "Gasto recurrente", "Gasto único"
-    @Published public var searchQuery: String = ""
-    @Published public var customStartDate: Date = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()
-    @Published public var customEndDate: Date = Date()
-    @Published public var minAmount: Double? = nil
-    @Published public var maxAmount: Double? = nil
+    @Published public var timeRange: TimeRangeFilter = .currentMonth {
+        didSet { invalidateFilterCache() }
+    }
+    @Published public var selectedCategories: Set<String> = [] {
+        didSet { invalidateFilterCache() }
+    }
+    @Published public var selectedType: String = "all" { // "all", "Ingreso", "Gasto recurrente", "Gasto único"
+        didSet { invalidateFilterCache() }
+    }
+    @Published public var searchQuery: String = "" {
+        didSet { invalidateFilterCache() }
+    }
+    @Published public var customStartDate: Date = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date() {
+        didSet { invalidateFilterCache() }
+    }
+    @Published public var customEndDate: Date = Date() {
+        didSet { invalidateFilterCache() }
+    }
+    @Published public var minAmount: Double? = nil {
+        didSet { invalidateFilterCache() }
+    }
+    @Published public var maxAmount: Double? = nil {
+        didSet { invalidateFilterCache() }
+    }
+
+    // Memoization Cache
+    private var _cachedFilteredRecords: [FinancialRecord]? = nil
+    private var _cachedStats: FinancialStats? = nil
+
+    private func invalidateFilterCache() {
+        _cachedFilteredRecords = nil
+        _cachedStats = nil
+    }
 
     // Categories
     @Published public var categories: [CategoryItem] = []
@@ -58,7 +85,7 @@ public class FinancialViewModel: ObservableObject {
     }
 
     public var metadata: FileStorageMetadata {
-        storageService.getMetadata()
+        storageService.getMetadata(knownRecordCount: allRecords.count)
     }
 
     public var statusBadgeTitle: String {
@@ -116,7 +143,8 @@ public class FinancialViewModel: ObservableObject {
         do {
             let fetched = try storageService.fetchRecords()
             self.allRecords = fetched.sorted(by: { $0.fecha > $1.fecha })
-            self.categories = (try? storageService.fetchCategories()) ?? FinancialCategory.defaultCategories
+            let synced = (try? storageService.syncCategoriesWithRecords(fetched)) ?? (try? storageService.fetchCategories()) ?? FinancialCategory.defaultCategories
+            self.categories = synced
             self.isLoading = false
         } catch {
             self.errorMessage = error.localizedDescription
@@ -124,7 +152,8 @@ public class FinancialViewModel: ObservableObject {
             if self.allRecords.isEmpty {
                 self.allRecords = MockData.generateMockRecords()
             }
-            self.categories = (try? storageService.fetchCategories()) ?? FinancialCategory.defaultCategories
+            let synced = (try? storageService.syncCategoriesWithRecords(self.allRecords)) ?? (try? storageService.fetchCategories()) ?? FinancialCategory.defaultCategories
+            self.categories = synced
         }
     }
 
@@ -135,6 +164,7 @@ public class FinancialViewModel: ObservableObject {
             let saved = try storageService.createRecord(name: name, cantidad: cantidad, categoria: categoria, tipo: tipo, fecha: fecha)
             allRecords.insert(saved, at: 0)
             allRecords.sort(by: { $0.fecha > $1.fecha })
+            self.categories = (try? storageService.fetchCategories()) ?? categories
             showToast("Movimiento guardado en finanzas.json")
         } catch {
             showToast("Error al guardar: \(error.localizedDescription)")
@@ -150,6 +180,7 @@ public class FinancialViewModel: ObservableObject {
 
         do {
             try storageService.updateRecord(updated)
+            self.categories = (try? storageService.fetchCategories()) ?? categories
             showToast("Movimiento actualizado")
         } catch {
             allRecords[index] = original
@@ -252,27 +283,17 @@ public class FinancialViewModel: ObservableObject {
     }
 
     public func deleteCategory(_ category: CategoryItem) async {
+        guard recordCount(for: category.name) == 0 else {
+            showToast("No se puede eliminar una categoría con transacciones")
+            return
+        }
+
         var updatedList = categories
         updatedList.removeAll(where: { $0.name == category.name })
 
         do {
             try storageService.saveCategories(updatedList)
             self.categories = updatedList
-
-            // Reassign existing records with this deleted category to "Otros"
-            var recordsChanged = false
-            var updatedRecords = allRecords
-            for i in 0..<updatedRecords.count {
-                if updatedRecords[i].categoria == category.name {
-                    updatedRecords[i].categoria = "Otros"
-                    recordsChanged = true
-                }
-            }
-            if recordsChanged {
-                try storageService.saveAllRecords(updatedRecords)
-                self.allRecords = updatedRecords
-            }
-
             showToast("Categoría eliminada")
         } catch {
             showToast("Error al eliminar categoría: \(error.localizedDescription)")
@@ -283,7 +304,9 @@ public class FinancialViewModel: ObservableObject {
         let defaults = FinancialCategory.defaultCategories
         do {
             try storageService.saveCategories(defaults)
-            self.categories = defaults
+            // Re-sync with existing records so no existing record loses its category
+            let synced = (try? storageService.syncCategoriesWithRecords(allRecords)) ?? defaults
+            self.categories = synced
             showToast("Categorías restablecidas")
         } catch {
             showToast("Error al restablecer categorías: \(error.localizedDescription)")
@@ -361,7 +384,12 @@ public class FinancialViewModel: ObservableObject {
     // MARK: - Filtered Records
 
     public var filteredRecords: [FinancialRecord] {
-        filteredRecords(for: timeRange, customStart: customStartDate, customEnd: customEndDate)
+        if let cached = _cachedFilteredRecords {
+            return cached
+        }
+        let computed = filteredRecords(for: timeRange, customStart: customStartDate, customEnd: customEndDate)
+        _cachedFilteredRecords = computed
+        return computed
     }
 
     public func filteredRecords(
@@ -449,7 +477,12 @@ public class FinancialViewModel: ObservableObject {
     // MARK: - Stats Calculation
 
     public var stats: FinancialStats {
-        calculateStats(for: filteredRecords)
+        if let cached = _cachedStats {
+            return cached
+        }
+        let computed = calculateStats(for: filteredRecords)
+        _cachedStats = computed
+        return computed
     }
 
     public func stats(
@@ -540,8 +573,9 @@ public class FinancialViewModel: ObservableObject {
                 expenseByCat[r.categoria] = current
             }
 
-            let year = calendar.component(.year, from: r.fecha)
-            let month = calendar.component(.month, from: r.fecha)
+            let comps = calendar.dateComponents([.year, .month], from: r.fecha)
+            let year = comps.year ?? 0
+            let month = comps.month ?? 0
             let key = String(format: "%04d-%02d", year, month)
 
             var monthData = monthlyMap[key] ?? (

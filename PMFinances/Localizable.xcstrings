@@ -20,6 +20,22 @@
         }
       }
     },
+    "Versión %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión %@"
+          }
+        }
+      }
+    },
     "-%lld€" : {
       "localizations" : {
         "en" : {
@@ -525,18 +541,18 @@
         }
       }
     },
-    "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación." : {
+    "Al restablecer, volverás a la lista de %lld categorías estándar sugeridas por la aplicación." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resetting will restore the 22 standard categories recommended by the app."
+            "value" : "Resetting will restore the %lld standard categories recommended by the app."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Al restablecer, volverás a la lista de 22 categorías estándar sugeridas por la aplicación."
+            "value" : "Al restablecer, volverás a la lista de %lld categorías estándar sugeridas por la aplicación."
           }
         }
       }
@@ -636,16 +652,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añade un widget de Atajos en tu pantalla de inicio o de bloqueo para registrar con un solo toque."
-          }
-        }
-      }
-    },
-    "Añadido a PMFinances: %@ (%@) en %@ como %@." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Añadido a PMFinances: %1$@ (%2$@) en %3$@ como %4$@."
           }
         }
       }
@@ -1320,6 +1326,22 @@
         }
       }
     },
+    "Categoría en Uso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category in Use"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría en Uso"
+          }
+        }
+      }
+    },
     "Categorías" : {
       "localizations" : {
         "en" : {
@@ -1385,6 +1407,9 @@
           }
         }
       }
+    },
+    "Categories" : {
+
     },
     "Cerrar" : {
       "localizations" : {
@@ -1869,18 +1894,18 @@
         }
       }
     },
-    "El atajo consulta en tiempo real tus categorías de categorias.json:" : {
+    "El atajo consulta en tiempo real tus categorías de categories.json:" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The shortcut fetches your categories from categorias.json in real time:"
+            "value" : "The shortcut fetches your categories from categories.json in real time:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El atajo consulta en tiempo real tus categorías de categorias.json:"
+            "value" : "El atajo consulta en tiempo real tus categorías de categories.json:"
           }
         }
       }
@@ -2057,6 +2082,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inglés"
+          }
+        }
+      }
+    },
+    "Entendido" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Understood"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entendido"
           }
         }
       }
@@ -2326,7 +2367,6 @@
       }
     },
     "Fecha y hora del movimiento" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2343,6 +2383,7 @@
       }
     },
     "Fecha y hora del movimiento (por defecto el momento en que se crea el registro)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2699,22 +2740,6 @@
         }
       }
     },
-    "Hay %lld transacciones registradas con la categoría '%@'. Si la eliminas, esas transacciones se moverán a 'Otros'." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "There are %1$lld transactions recorded with category '%2$@'. If deleted, they will be moved to 'Others'."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hay %1$lld transacciones registradas con la categoría '%2$@'. Si la eliminas, esas transacciones se moverán a 'Otros'."
-          }
-        }
-      }
-    },
     "iCloud Drive" : {
 
     },
@@ -2960,6 +2985,7 @@
       }
     },
     "Introduce el concepto o comercio:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2976,6 +3002,7 @@
       }
     },
     "Introduce el importe o cantidad en euros (€):" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2987,6 +3014,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Introduce el importe o cantidad en euros (€):"
+          }
+        }
+      }
+    },
+    "La categoría '%@' tiene %lld transacciones registradas y no se puede eliminar. Para eliminarla, cambia primero la categoría de esas transacciones o elimínalas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category '%1$@' has %2$lld recorded transactions and cannot be deleted. To delete it, first change the category of those transactions or remove them."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La categoría '%1$@' tiene %2$lld transacciones registradas y no se puede eliminar. Para eliminarla, cambia primero la categoría de esas transacciones o elimínalas."
           }
         }
       }
@@ -3250,6 +3293,9 @@
         }
       }
     },
+    "New Record" : {
+
+    },
     "No hay categorías configuradas" : {
       "localizations" : {
         "en" : {
@@ -3395,7 +3441,11 @@
         }
       }
     },
+    "Nombre o descripción del movimiento" : {
+
+    },
     "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3959,6 +4009,7 @@
       }
     },
     "Selecciona el tipo de movimiento:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3975,6 +4026,7 @@
       }
     },
     "Selecciona una categoría:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4178,16 +4230,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tema de la Aplicación"
-          }
-        }
-      }
-    },
-    "Tienes %lld categorías configuradas en PMFinances: %@." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Tienes %1$lld categorías configuradas en PMFinances: %2$@."
           }
         }
       }

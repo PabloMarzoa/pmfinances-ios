@@ -37,6 +37,12 @@ public struct ConfigView: View {
         }
     }
 
+    private var appVersionString: String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.5"
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+        return "\(version) (\(build))"
+    }
+
     public var body: some View {
         NavigationStack {
             ScrollView {
@@ -134,6 +140,19 @@ public struct ConfigView: View {
                             .stroke(Color.appCardBorder, lineWidth: 1)
                     )
 
+                    // App Version Footer
+                    VStack(spacing: 4) {
+                        Text("PMFinances")
+                            .font(.system(size: 13, weight: .semibold, design: .rounded))
+                            .foregroundStyle(.secondary)
+
+                        Text("Versión \(appVersionString)")
+                            .font(.system(size: 11, weight: .regular))
+                            .foregroundStyle(Color.secondary.opacity(0.8))
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.top, 4)
+
                     Spacer(minLength: 20)
                 }
                 .padding(20)
@@ -156,6 +175,9 @@ public struct ConfigView: View {
             }
         }
         .environment(\.locale, Locale(identifier: appLanguage))
+        .onChange(of: appAppearance) { _, newAppearance in
+            AppAppearance.apply(appearance: newAppearance)
+        }
         #if os(macOS)
         .frame(minWidth: 440, idealWidth: 460, minHeight: 520)
         #endif
@@ -588,7 +610,8 @@ public struct ShortcutsSettingsView: View {
 
     private func runShortcut() {
         #if os(iOS)
-        if let url = URL(string: "shortcuts://run-shortcut?name=Nuevo%20Registro") {
+        let shortcutName = DeviceLanguage.isSpanish ? "Nuevo%20Registro" : "New%20Record"
+        if let url = URL(string: "shortcuts://run-shortcut?name=\(shortcutName)") {
             UIApplication.shared.open(url) { success in
                 if !success, let fallback = URL(string: "shortcuts://") {
                     UIApplication.shared.open(fallback)
@@ -839,7 +862,7 @@ public struct ShortcutsSettingsView: View {
                     .foregroundStyle(.secondary)
             }
 
-            Text("El atajo consulta en tiempo real tus categorías de categorias.json:")
+            Text("El atajo consulta en tiempo real tus categorías de categories.json:")
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
 
@@ -1091,6 +1114,9 @@ public struct AppearanceSettingsView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .onChange(of: appAppearance) { _, newAppearance in
+            AppAppearance.apply(appearance: newAppearance)
+        }
     }
 }
 

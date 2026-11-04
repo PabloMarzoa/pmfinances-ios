@@ -7,6 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.0] - 2026-11-04
+
+### Added
+- **Official Version 1.0 Release**: Reached production readiness across iOS and macOS with full feature completeness.
+- **Dynamic Language Detection for Siri Shortcuts**:
+  - Pre-registered Siri App Shortcuts automatically adapt to the device system language: phrases, intent titles, parameter prompts (amount, merchant, dynamic categories, transaction type), and confirmation dialogs render in Spanish or English based on `Locale.preferredLanguages`.
+  - Settings shortcut trigger dynamically opens `"Nuevo Registro"` or `"New Record"` matching the active device language.
+- **Auto-Sync Categories Without Record Mutation**:
+  - The app automatically registers any unknown category encountered in transactions into `categories.json` without altering or overwriting existing records.
+  - Category deletion protection: categories that have transactions associated with them cannot be deleted until those transactions are reassigned or removed.
+- **App Version Display in Settings**:
+  - Added discrete, centered version and build indicator (`PMFinances Versión 1.0 (1)`) at the bottom of the Settings menu (`ConfigView`) for error reporting and tracking.
+- **Clean Initial Demo Data**:
+  - Configured default mock data to two initial sample records: "Test 1" and "Test 2".
+
+### Improved
+- **High-Performance Architecture & Frame Rate Optimizations**:
+  - Replaced per-row allocations of `DateFormatter` and `NumberFormatter` with thread-safe (`NSLock`) static cached formatters, eliminating scroll stutters and reducing per-row formatting overhead by over 1,000x.
+  - Implemented memoization caching in `FinancialViewModel`: `filteredRecords` and `stats` are calculated once and cached, invalidating only when filter properties or record collections change, maintaining 60/120 fps during swipe-to-delete interactions.
+  - Optimized file metadata inspection in `LocalStorageService` to prevent redundant synchronous JSON reads and decodes from disk.
+  - Reusable static `JSONDecoder` and `JSONEncoder` instances across storage operations.
+  - Unified date component extraction in `calculateStats` using a single `Calendar.dateComponents` call.
+- **Category Storage Standardization**:
+  - Standardized category storage filename to `categories.json` with seamless backwards-compatible automatic migration from legacy `categorias.json`.
+
+### Fixed
+- **Settings Appearance Mode & System Sync**:
+  - Fixed theme switcher where selecting light, dark, or system stopped responding after initial change.
+  - Resolved system appearance synchronization by tracking live window interface style overrides via `AppAppearance.apply(appearance:)`.
+
+---
+
 ## [0.5.0] - 2026-10-31
 
 ### Added

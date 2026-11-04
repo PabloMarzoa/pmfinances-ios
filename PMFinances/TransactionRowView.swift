@@ -8,15 +8,17 @@ public struct TransactionRowView: View {
     }
 
     public var body: some View {
-        HStack(spacing: 12) {
+        let categoryColor = FinancialCategory.color(for: record.categoria)
+
+        return HStack(spacing: 12) {
             // Category Icon/Color Circle
             ZStack {
                 Circle()
-                    .fill(FinancialCategory.color(for: record.categoria).opacity(0.2))
+                    .fill(categoryColor.opacity(0.2))
                     .frame(width: 40, height: 40)
 
                 Circle()
-                    .fill(FinancialCategory.color(for: record.categoria))
+                    .fill(categoryColor)
                     .frame(width: 14, height: 14)
             }
 
@@ -283,7 +285,7 @@ public struct SwipeableTransactionRow: View {
                 id: "1",
                 name: "Compra Mercadona",
                 cantidad: 64.20,
-                categoria: "Comida",
+                categoria: "Amazon",
                 fecha: Date(),
                 tipo: .gastoUnico
             ),

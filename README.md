@@ -1,6 +1,6 @@
 # PMFinances
 
-**PMFinances** es una aplicación moderna y nativa para iOS de finanzas personales y control de gastos, desarrollada en SwiftUI puro con arquitectura MVVM. Diseñada con una estética oscura y limpia, acentos en color verde/púrpura y una arquitectura centrada en la privacidad, ofrece una visión integral y en tiempo real de tu salud financiera sin depender de servidores de terceros ni requerir cuentas de usuario.
+**PMFinances** es una aplicación moderna y nativa para iOS y macOS de finanzas personales y control de gastos, desarrollada en SwiftUI puro con arquitectura MVVM. Diseñada con una estética limpia, contrastada, soporte nativo de temas Claro/Oscuro/Sistema y una arquitectura centrada en la privacidad, ofrece una visión integral y en tiempo real de tu salud financiera sin depender de servidores de terceros ni requerir cuentas de usuario.
 
 ---
 
@@ -9,7 +9,7 @@
 ### 1. Tres Pantallas Principales (Selector en Barra Superior)
 - **Registros**:
   - Listado cronológico de movimientos con tarjetas elegantes y contrastadas.
-  - **Deslizar para borrar optimizado**: El gesto de borrado rápido se activa únicamente al deslizar desde el lado derecho de la fila (zona del importe), garantizando un desplazamiento vertical (*scroll*) suave y sin interferencias en el resto de la fila.
+  - **Deslizar para borrar optimizado**: El gesto de borrado rápido se activa únicamente al deslizar desde el lado derecho de la fila (zona del importe), garantizando un desplazamiento vertical (*scroll*) suave y fluido a 60/120 fps sin interferencias en el resto de la fila.
   - Menú contextual al mantener pulsado para editar o eliminar.
   - Desglose superior de categorías con selección interactiva.
   - Botón flotante para registrar nuevos movimientos rápidamente.
@@ -28,23 +28,29 @@
 
 ### 2. Atajo Completo Autónomo y Siri (Apple Shortcuts & App Intents)
 
-PMFinances incluye un **atajo nativo 100% completo y listo para usar** mediante el framework moderno **App Intents**. No es necesario diseñar flujos ni conectar bloques manualmente en la app Atajos; el atajo **"Nuevo Registro"** ya viene creado y preconfigurado en el sistema operativo.
+PMFinances incluye un **atajo nativo 100% completo y listo para usar** mediante el framework moderno **App Intents**. No es necesario diseñar flujos ni conectar bloques manualmente en la app Atajos; el atajo ya viene creado y preconfigurado en el sistema operativo.
+
+#### Idioma Dinámico del Dispositivo
+El atajo detecta automáticamente el idioma de tu iPhone:
+- **En iPhones en Español**: El atajo se llama **"Nuevo Registro"** y las frases por voz, diálogos de pregunta y confirmación se ejecutan íntegramente en español.
+- **En iPhones en Inglés u otros idiomas**: El atajo se registra como **"New Record"** y toda la interacción por voz/pantalla se realiza en inglés.
 
 #### ¿Qué tiene que hacer el usuario al descargarse la app para usarlo?
 **Absolutamente nada técnico ni manual.** Al instalar PMFinances, iOS registra automáticamente el atajo en el sistema. Cualquier usuario puede utilizarlo al instante de 3 formas:
 1. **Con la voz mediante Siri (sin tocar nada)**:
-   - Diciendo: *“Oye Siri, nuevo registro en PMFinances”* (o *“Oye Siri, añade un gasto en PMFinances”*).
+   - En español: *“Oye Siri, nuevo registro en PMFinances”* (o *“Oye Siri, añade un gasto en PMFinances”*).
+   - En inglés: *“Hey Siri, new record in PMFinances”* (o *“Hey Siri, add financial record in PMFinances”*).
    - Siri preguntará interactivamente por voz o tarjeta en pantalla los datos requeridos y guardará el registro.
 2. **Desde la App Atajos de Apple**:
-   - Abrir la app nativa **Atajos**; en la sección de PMFinances aparecerá el atajo **"Nuevo Registro"** listo para pulsar.
+   - Abrir la app nativa **Atajos**; en la sección de PMFinances aparecerá el atajo listo para pulsar.
 3. **Desde los Ajustes de la App**:
-   - En *Ajustes > Atajos de Siri*, pulsar directamente en **"Ejecutar Atajo 'Nuevo Registro'"**.
+   - En *Ajustes > Atajos de Siri*, pulsar directamente en **"Ejecutar Atajo"**.
 
 #### Flujo Interactivo Completo (5 Datos Requeridos):
 Al ejecutarse, el atajo solicita de forma guiada y autónoma:
 1. **Importe / Cantidad (€)**: Solicita el valor numérico (ej. *45,50 €*).
 2. **Concepto o Comercio**: Pregunta el nombre o descripción del gasto/ingreso (ej. *Mercadona, Amazon, Nómina*).
-3. **Categoría Dinámica**: Muestra un selector interactivo alimentado **en tiempo real** con las categorías de `categorias.json`.
+3. **Categoría Dinámica**: Muestra un selector interactivo alimentado **en tiempo real** con las categorías de `categories.json`.
 4. **Tipo de Movimiento**: Selector interactivo entre *Gasto Único*, *Gasto Recurrente* o *Ingreso*.
 5. **Fecha del Momento de Creación**: Asigna automáticamente la fecha y hora exacta en la que se ejecuta el atajo.
 
@@ -52,9 +58,9 @@ Al finalizar, escribe la transacción directamente en el archivo `finanzas.json`
 
 #### Configuraciones Opcionales para Máxima Comodidad:
 - **Botón de Acción (iPhone 15 Pro, iPhone 16)**:
-  - En *Ajustes de iOS > Botón de Acción > Atajo > Nuevo Registro*. Permite registrar un gasto en 2 segundos manteniendo pulsado el botón lateral.
+  - En *Ajustes de iOS > Botón de Acción > Atajo > Nuevo Registro / New Record*. Permite registrar un gasto en 2 segundos manteniendo pulsado el botón lateral.
 - **Widgets de Pantalla de Bloqueo o Inicio**:
-  - Añade un widget de la app Atajos apuntando a *Nuevo Registro* para tener un acceso directo permanente.
+  - Añade un widget de la app Atajos apuntando al atajo para tener un acceso directo permanente.
 - **Automatización Inmediata con Apple Pay**:
   1. En la app **Atajos**, ve a la pestaña **Automatización**.
   2. Pulsa en **+** y selecciona **Transacción** (Apple Pay).
@@ -66,16 +72,19 @@ Al finalizar, escribe la transacción directamente en el archivo `finanzas.json`
 ### 3. Ajustes Reorganizados en Submenús
 El menú de configuración se organiza en apartados temáticos estructurados:
 1. **Idioma**: Selección dinámica entre **Español** e **Inglés**, con aplicación inmediata sin reiniciar.
-2. **Categorías**:
-   - Creación, edición de nombre y borrado de categorías.
-   - Selector de colores personalizado (paleta predefinida o rueda cromática del sistema).
-   - Almacenamiento independiente en `categorias.json` y sincronización en cascada.
-3. **Atajos de Siri**:
-   - Guía interactiva de uso, visualización de categorías dinámicas activas y acceso directo para abrir la app Atajos de Apple.
-4. **Almacenamiento de Datos**:
+2. **Aspecto**: Selector entre modo **Claro**, **Oscuro** o **Sincronizar con el sistema** con propagación reactiva en tiempo real.
+3. **Categorías**:
+   - Creación, edición de nombre y borrado de categorías con paleta de colores personalizable.
+   - **Auto-sincronización no destructiva**: Si un registro contiene una categoría nueva, se incorpora automáticamente a `categories.json` sin alterar el movimiento original.
+   - **Protección contra borrado**: Si una categoría tiene transacciones registradas, la app impide su borrado accidental hasta que se reasignen o eliminen dichos movimientos.
+4. **Atajos de Siri**:
+   - Guía interactiva de uso, visualización de categorías dinámicas activas y acceso directo para abrir o ejecutar el atajo nativo.
+5. **Almacenamiento de Datos**:
    - Selección de carpeta personalizada mediante el selector nativo de archivos.
    - Detección automática y soporte completo para **iCloud Drive** (sincronización multi-dispositivo vía *Security-Scoped Bookmarks*).
    - Recarga de datos y carga de datos de demostración con un toque.
+6. **Control de Versión**:
+   - Muestra en la parte inferior de los ajustes la versión activa y el número de compilación (ej. `PMFinances Versión 1.0 (1)`) para seguimiento e informe de errores.
 
 ---
 
@@ -85,6 +94,14 @@ El menú de configuración se organiza en apartados temáticos estructurados:
 - **Tipo de Movimiento**: *Todos, Gastos únicos, Gastos recurrentes, Ingresos*.
 - **Rango de Importe**: Menor a 50 €, 50 € - 200 €, 200 € - 500 €, Más de 500 €, o valores exactos.
 - **Buscador de Texto en Tiempo Real**: Filtrado instantáneo por nombre o categoría.
+
+---
+
+## Rendimiento y Optimización
+PMFinances 1.0 incorpora una arquitectura optimizada para un consumo mínimo de batería y una tasa de refresco fluida de 60/120 Hz:
+- **Caché de formateadores con exclusión mutua**: Reutilización segura (`NSLock`) de formateadores de moneda y fecha, evitando instanciaciones redundantes por celda durante el scroll.
+- **Memoización reactiva en ViewModel**: El filtrado y cálculo estadístico se computa de forma memoizada e incremental, invalidándose únicamente ante mutaciones de datos o filtros.
+- **Decodificación JSON bajo demanda**: Inspección de metadatos de almacenamiento sin deserialización síncrona repetitiva de disco.
 
 ---
 
@@ -106,7 +123,7 @@ La app no requiere bases de datos propietarias. Toda la información reside en a
 ]
 ```
 
-- **`categorias.json`**:
+- **`categories.json`** *(con migración transparente desde el antiguo `categorias.json`)*:
 ```json
 [
   {
@@ -126,5 +143,5 @@ La app no requiere bases de datos propietarias. Toda la información reside en a
 
 - **Lenguaje y UI**: Swift 5.0+ / Swift 6, SwiftUI puro, Swift Charts, AppIntents.
 - **Arquitectura**: MVVM con clara separación entre modelo (`FinancialRecord`), persistencia (`LocalStorageService`), estado y lógica de negocio (`FinancialViewModel`) y vistas modulares.
-- **Compatibilidad**: iOS 17.0+ (Universal iPhone y iPad).
-- **Diseño**: Modo oscuro nativo de alto contraste optimizado para pantallas OLED.
+- **Compatibilidad**: iOS 17.0+ y macOS 14.0+ (Universal).
+- **Diseño**: Compatibilidad total con modo claro y oscuro, con paletas semánticas y contrastes optimizados para pantallas OLED.

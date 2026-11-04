@@ -7,7 +7,7 @@ public struct CreateRecordView: View {
     @State private var name: String = ""
     @State private var amountString: String = ""
     @State private var tipo: TransactionType = .gastoUnico
-    @State private var categoria: String = "Comida"
+    @State private var categoria: String = FinancialCategory.defaultCategories.first?.name ?? "Amazon"
     @State private var fecha: Date = Date()
     @State private var isSaving: Bool = false
 
@@ -189,6 +189,11 @@ public struct CreateRecordView: View {
                     }
                 }
                 #endif
+            }
+            .onAppear {
+                if !viewModel.categoryNames.contains(categoria), let first = viewModel.categoryNames.first {
+                    categoria = first
+                }
             }
         }
         #if os(macOS)

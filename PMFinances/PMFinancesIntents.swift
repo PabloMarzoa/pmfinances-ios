@@ -1,6 +1,15 @@
 import Foundation
 import AppIntents
 
+// MARK: - Device Language Helper
+
+public enum DeviceLanguage: Sendable {
+    public static var isSpanish: Bool {
+        let preferred = Locale.preferredLanguages.first?.lowercased() ?? Locale.current.language.languageCode?.identifier.lowercased() ?? "en"
+        return preferred.hasPrefix("es")
+    }
+}
+
 // MARK: - Transaction Type Intent Enum
 
 public enum TransactionTypeIntentOption: String, AppEnum, Sendable {
@@ -17,10 +26,18 @@ public enum TransactionTypeIntentOption: String, AppEnum, Sendable {
     ]
 
     public var localizedTitle: String {
-        switch self {
-        case .gastoUnico: return "Gasto Único"
-        case .gastoRecurrente: return "Gasto Recurrente"
-        case .ingreso: return "Ingreso"
+        if DeviceLanguage.isSpanish {
+            switch self {
+            case .gastoUnico: return "Gasto Único"
+            case .gastoRecurrente: return "Gasto Recurrente"
+            case .ingreso: return "Ingreso"
+            }
+        } else {
+            switch self {
+            case .gastoUnico: return "One-off Expense"
+            case .gastoRecurrente: return "Recurring Expense"
+            case .ingreso: return "Income"
+            }
         }
     }
 
@@ -41,7 +58,8 @@ public struct DynamicCategoryOptionsProvider: DynamicOptionsProvider {
     public func results() async throws -> [String] {
         let categories = (try? LocalStorageService.shared.fetchCategories()) ?? FinancialCategory.defaultCategories
         let names = categories.map { $0.name }.filter { !$0.isEmpty }
-        return names.isEmpty ? ["Otros"] : names
+        let fallback = DeviceLanguage.isSpanish ? "Otros" : "Other"
+        return names.isEmpty ? [fallback] : names
     }
 }
 
@@ -59,7 +77,7 @@ public struct AddFinancialRecordIntent: AppIntent {
 
     @Parameter(
         title: "Concepto",
-        description: "Nombre o descripción del movimiento (ej. Supermercado, Amazon, Nómina)"
+        description: "Nombre o descripción del movimiento"
     )
     public var name: String?
 
@@ -78,7 +96,7 @@ public struct AddFinancialRecordIntent: AppIntent {
 
     @Parameter(
         title: "Fecha",
-        description: "Fecha y hora del movimiento (por defecto el momento en que se crea el registro)",
+        description: "Fecha y hora del movimiento",
         default: .now
     )
     public var fecha: Date
@@ -94,13 +112,18 @@ public struct AddFinancialRecordIntent: AppIntent {
 
     @MainActor
     public func perform() async throws -> some IntentResult & ProvidesDialog {
+        let isSpanish = DeviceLanguage.isSpanish
+
         // 1. Importe / Cantidad (solicitar si no se ha proporcionado)
         let resolvedAmount: Double
         if let c = cantidad, c > 0 {
             resolvedAmount = c
         } else {
+            let prompt = isSpanish
+                ? "Introduce el importe o cantidad en euros (€):"
+                : "Enter the amount in euros (€):"
             resolvedAmount = try await $cantidad.requestValue(
-                IntentDialog("Introduce el importe o cantidad en euros (€):")
+                IntentDialog(stringLiteral: prompt)
             )
         }
 
@@ -109,23 +132,27 @@ public struct AddFinancialRecordIntent: AppIntent {
         if let n = name?.trimmingCharacters(in: .whitespacesAndNewlines), !n.isEmpty {
             resolvedName = n
         } else {
+            let prompt = isSpanish
+                ? "Introduce el concepto o comercio:"
+                : "Enter the description or merchant:"
             resolvedName = try await $name.requestValue(
-                IntentDialog("Introduce el concepto o comercio:")
+                IntentDialog(stringLiteral: prompt)
             )
         }
 
-        // 3. Categoría (alimentada en tiempo real de categorias.json)
+        // 3. Categoría (alimentada en tiempo real de categories.json)
         let categories = (try? LocalStorageService.shared.fetchCategories()) ?? FinancialCategory.defaultCategories
         let categoryNames = categories.map { $0.name }.filter { !$0.isEmpty }
-        let validCategories = categoryNames.isEmpty ? ["Otros"] : categoryNames
+        let validCategories = categoryNames.isEmpty ? ["Amazon"] : categoryNames
 
         let resolvedCategory: String
         if let cat = categoria?.trimmingCharacters(in: .whitespacesAndNewlines), !cat.isEmpty {
             resolvedCategory = cat
         } else {
+            let prompt = isSpanish ? "Selecciona una categoría:" : "Select a category:"
             resolvedCategory = try await $categoria.requestDisambiguation(
                 among: validCategories,
-                dialog: IntentDialog("Selecciona una categoría:")
+                dialog: IntentDialog(stringLiteral: prompt)
             )
         }
 
@@ -134,9 +161,10 @@ public struct AddFinancialRecordIntent: AppIntent {
         if let t = tipo {
             resolvedTipo = t
         } else {
+            let prompt = isSpanish ? "Selecciona el tipo de movimiento:" : "Select transaction type:"
             resolvedTipo = try await $tipo.requestDisambiguation(
                 among: TransactionTypeIntentOption.allCases,
-                dialog: IntentDialog("Selecciona el tipo de movimiento:")
+                dialog: IntentDialog(stringLiteral: prompt)
             )
         }
 
@@ -154,8 +182,11 @@ public struct AddFinancialRecordIntent: AppIntent {
 
         let formattedAmount = String(format: "%.2f €", abs(resolvedAmount))
         let tipoName = resolvedTipo.localizedTitle
+        let resultMsg = isSpanish
+            ? "Añadido a PMFinances: \(resolvedName) (\(formattedAmount)) en \(resolvedCategory) como \(tipoName)."
+            : "Added to PMFinances: \(resolvedName) (\(formattedAmount)) in \(resolvedCategory) as \(tipoName)."
         return .result(
-            dialog: "Añadido a PMFinances: \(resolvedName) (\(formattedAmount)) en \(resolvedCategory) como \(tipoName)."
+            dialog: IntentDialog(stringLiteral: resultMsg)
         )
     }
 }
@@ -172,9 +203,13 @@ public struct GetCategoriesIntent: AppIntent {
     public func perform() async throws -> some IntentResult & ReturnsValue<[String]> & ProvidesDialog {
         let categories = (try? LocalStorageService.shared.fetchCategories()) ?? FinancialCategory.defaultCategories
         let names = categories.map { $0.name }
+        let isSpanish = DeviceLanguage.isSpanish
+        let dialogMsg = isSpanish
+            ? "Tienes \(names.count) categorías configuradas en PMFinances: \(names.joined(separator: ", "))."
+            : "You have \(names.count) categories configured in PMFinances: \(names.joined(separator: ", "))."
         return .result(
             value: names,
-            dialog: "Tienes \(names.count) categorías configuradas en PMFinances: \(names.joined(separator: ", "))."
+            dialog: IntentDialog(stringLiteral: dialogMsg)
         )
     }
 }
@@ -183,26 +218,54 @@ public struct GetCategoriesIntent: AppIntent {
 
 public struct PMFinancesShortcuts: AppShortcutsProvider {
     public static var appShortcuts: [AppShortcut] {
-        AppShortcut(
-            intent: AddFinancialRecordIntent(),
-            phrases: [
-                "Añadir gasto en \(.applicationName)",
-                "Nuevo registro en \(.applicationName)",
-                "Añadir movimiento a \(.applicationName)",
-                "Registrar gasto con \(.applicationName)",
-                "Crear gasto en \(.applicationName)"
-            ],
-            shortTitle: "Nuevo Registro",
-            systemImageName: "plus.circle.fill"
-        )
-        AppShortcut(
-            intent: GetCategoriesIntent(),
-            phrases: [
-                "Categorías de \(.applicationName)",
-                "Mostrar categorías en \(.applicationName)"
-            ],
-            shortTitle: "Categorías",
-            systemImageName: "tag.fill"
-        )
+        if DeviceLanguage.isSpanish {
+            return [
+                AppShortcut(
+                    intent: AddFinancialRecordIntent(),
+                    phrases: [
+                        "Añadir gasto en \(.applicationName)",
+                        "Nuevo registro en \(.applicationName)",
+                        "Añadir movimiento a \(.applicationName)",
+                        "Registrar gasto con \(.applicationName)",
+                        "Crear gasto en \(.applicationName)"
+                    ],
+                    shortTitle: "Nuevo Registro",
+                    systemImageName: "plus.circle.fill"
+                ),
+                AppShortcut(
+                    intent: GetCategoriesIntent(),
+                    phrases: [
+                        "Categorías de \(.applicationName)",
+                        "Mostrar categorías en \(.applicationName)"
+                    ],
+                    shortTitle: "Categorías",
+                    systemImageName: "tag.fill"
+                )
+            ]
+        } else {
+            return [
+                AppShortcut(
+                    intent: AddFinancialRecordIntent(),
+                    phrases: [
+                        "Add expense in \(.applicationName)",
+                        "New record in \(.applicationName)",
+                        "Add transaction to \(.applicationName)",
+                        "Record expense with \(.applicationName)",
+                        "Create expense in \(.applicationName)"
+                    ],
+                    shortTitle: "New Record",
+                    systemImageName: "plus.circle.fill"
+                ),
+                AppShortcut(
+                    intent: GetCategoriesIntent(),
+                    phrases: [
+                        "Categories of \(.applicationName)",
+                        "Show categories in \(.applicationName)"
+                    ],
+                    shortTitle: "Categories",
+                    systemImageName: "tag.fill"
+                )
+            ]
+        }
     }
 }

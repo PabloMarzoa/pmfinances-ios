@@ -148,13 +148,21 @@ public struct KPICardsView: View {
             .appCardShadow()
     }
 
-    private func formatCurrency(_ value: Double) -> String {
+    private static let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = "EUR"
         formatter.currencySymbol = "€"
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
-        return formatter.string(from: NSNumber(value: abs(value))) ?? String(format: "%.2f €", abs(value))
+        return formatter
+    }()
+
+    private static let formatterLock = NSLock()
+
+    private func formatCurrency(_ value: Double) -> String {
+        Self.formatterLock.lock()
+        defer { Self.formatterLock.unlock() }
+        return Self.currencyFormatter.string(from: NSNumber(value: abs(value))) ?? String(format: "%.2f €", abs(value))
     }
 }
